@@ -79,14 +79,10 @@ class Expression(Pattern):
 
     @classmethod
     def _check(cls, name, params, string):
+        print("requesting expr", name, "params", params, "in", repr(string))
         tests: list[tuple[float | int, dict]] = []
-        if isinstance(cls.ENTRIES[name], re.Pattern):
-            if name.search(string):
-                return (100, 0, {})
-            else:
-                return (-1, -1, {})
-        print(name, params, string, cls.ENTRIES[name])
         for id, (score, regex) in enumerate(cls.ENTRIES[name]):
+            print("item:", id, "score:", score, "regex:", regex)
             vars = {}
             mat = regex.search(string)
             if not mat:
@@ -97,6 +93,7 @@ class Expression(Pattern):
                 continue
             for (paramname, paramargs), arg in zip(params, args):
                 vars[paramname] = arg
+                print("    ", (paramname, paramargs), arg)
                 _, pscore, pvars = Expression._check(paramname, paramargs, arg)
                 for k, v in pvars.items():
                     vars[paramname + "." + k] = v
