@@ -9,17 +9,17 @@
 Djamago
 ==================================================
 
-Have you ever used [chatbot AI](https://pypi.org/project/chatbotAI/)
+Have you ever used `chatbot AI <https://pypi.org/project/chatbotAI/>`_
 It is a python module for creating chatting robots.
 
 I used chatbotai since it was extremely difficult to use ai powerred modules
-like [chatterbot](https://pypi.org/project/chatterbot/) which could not
+like  `chatterbot <https://pypi.org/project/chatterbot/>`_ which could not
 install on my pc, or trying to generate them myself using torch or tensorflow.
 
 Djamago provides a simple, bulky but personalized approach to that
 by adding support for some parsing like tools.
 
-Djamago deeply uses [pyoload](https://pypi.org/project/pyoload)
+Djamago deeply uses `pyoload <https://pypi.org/project/pyoload>`_
 and so will you see in the examples
 
 --------------------------------------------------
