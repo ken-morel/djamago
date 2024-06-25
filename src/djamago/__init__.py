@@ -79,28 +79,41 @@ class Expression(Pattern):
 
     @classmethod
     def _check(cls, name, params, string):
-        print("requesting expr", name, "params", params, "in", repr(string))
+        # print("requesting expr", name, "params", params, "in", repr(string))
         tests: list[tuple[float | int, dict]] = []
         for id, (score, regex) in enumerate(cls.ENTRIES[name]):
-            print("item:", id, "score:", score, "regex:", regex)
+            # print("item:", id, "score:", score, "regex:", regex)
             vars = {}
             mat = regex.search(string)
             if not mat:
+                # print("  no match")
                 continue
             args = mat.groups()
-            args = args[len(params):]
+            # print("match", args, params)
+            args = args[:len(params)]
+            # print("strip", args)
             if len(params) != len(args):
+                # print("     LENGTH DISMATCH")
                 continue
-            for (paramname, paramargs), arg in zip(params, args):
-                vars[paramname] = arg
-                print("    ", (paramname, paramargs), arg)
-                _, pscore, pvars = Expression._check(paramname, paramargs, arg)
-                for k, v in pvars.items():
-                    vars[paramname + "." + k] = v
-                if pscore == -1:
-                    continue
+            for param, arg in zip(params, args):
+                if isinstance(param, tuple):
+                    paramname, paramargs = param
+                    vars[paramname] = arg
+                    # print("    ", (paramname, paramargs), arg)
+                    _, pscore, pvars = Expression._check(paramname, paramargs, arg)
+                    for k, v in pvars.items():
+                        vars[paramname + "." + k] = v
+                    if pscore == -1:
+                        continue
+                    else:
+                        score += pscore
+                elif isinstance(param, re.Pattern):
+                    if param.search(arg):
+                        score += 100
+                    else:
+                        return -1, -1, {}
                 else:
-                    score += pscore
+                    raise Exception()
             tests.append((score, id, vars))
 
         if len(tests) == 0:

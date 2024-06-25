@@ -25,9 +25,11 @@ and so will you see in the examples
 --------------------------------------------------
 How works
 --------------------------------------------------
-![](flow.png)
+
+![flow.png](flow.png)
 
 .. code-block:: python
+
   from djamago import *
 
 
@@ -37,50 +39,76 @@ How works
 
 
   @Pango.topic
+  @annotate
   class Main(Topic):
-      @overload
-      def morning(node: "Node", id: Values((0,)), match: re.Match):
-          node.response = "Hy"
-          node.topics = ("main", )
+      @Callback(
+          Expression("greetings")
+      )
+      def morning(node: "Node", id: Values((0, 1, 2)), vars):
+          if id == 0:
+              node.response = "Hy"
+              node.topics = ("main",)
+          elif id == 1:
+              node.response = node.query + ", How are you?"
+              node.topics = ("greet",)
+              return node
+          elif id == 2:
+              node.response = "How strange greetings!"
+              node.topics = ("main",)
+              return node
           return node
 
-      @overload
-      def morning(node: "Node", id: Values((1,)), match: re.Match):
-          node.response = match.string + ", How are you?"
-          node.topics = ("greet", )
+      @Callback(
+          Expression('whois(".*")'),
+      )
+      def whois(node, id, var):
+          node.response = "I do not know him/her, you tell me"
+          node.topics = ("main",)
           return node
 
-      @overload
-      def morning(node: "Node", id: Values((2,)), match: re.Match):
-          node.response = "How strange greetings!"
-          node.topics = ("main", )
-          return node
-
-      morning = Callback(ReGex([
-          (100, r"hello"),
-          (100, r"good (morning|evening|night|after-?noon)"),
-          (20, r"good day"),
-      ]))(morning)
-
-      @Callback(ReGex([
-          (0, r".*"),
-      ]))
+      @Callback(
+          ReGex(
+              [
+                  (0, r".*"),
+              ]
+          )
+      )
       def hello(node, id, match):
           node.response = "Did not understand"
-          node.topics = ("main", )
+          node.topics = ("main",)
           return node
 
 
   @Pango.topic
   class Greet(Topic):
-      @Callback(ReGex([
-          (0, r".*"),
-      ]))
-      def dum(node, id, match):
+      @Callback(
+          ReGex(
+              [
+                  (0, r".*"),
+              ]
+          )
+      )
+      def dummy(node, id, match):
           node.response = "Did you know?..."
-          node.topics = ("main", )
+          node.topics = ("main",)
           return node
 
+  Expression.register("whois", [
+      (100, r"(?:who is) (.*)"),
+      (30, r"(?:do you know) (.*)"),
+  ]);
+  Expression.register("name", [
+      (50, r"[\w\- ]+(?: [\w\- ]+)*")
+  ]);
+  Expression.register("whatis", [
+      (100, r"(?:what is) (.*)"),
+      (50, r"(?:tell me what is) (.*)"),
+  ]);
+  Expression.register("greetings", [
+      (100, r"hello"),
+      (100, r"good (?:morning|evening|night|after-?noon)"),
+      (20, r"good day"),
+  ]);
 
   p = Pango()
   while True:
