@@ -2,7 +2,7 @@ from pathlib import Path
 
 from setuptools import setup, find_packages
 
-from pyoload import __version__
+from djamago import __version__
 
 project_dir = Path(__file__).parent
 

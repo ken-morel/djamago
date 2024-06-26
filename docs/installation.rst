@@ -12,14 +12,17 @@ using pip
 from pypi
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-using `pip install pyoload`
+using `pip install djamago`
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 from github source
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-using `pip install git+https://github.com/ken-morel/pyoload.git`
+.. code-block:: bash
+  git clone https://github.com/ken-morel/djamago
+  cd djamago/src
+  pip install .
 
 .. warning:: github installation
 
-  The github version **WILL** have breakages as I work on `pyoload`.
+  The github version **WILL** have breakages as I work on `djamago`.

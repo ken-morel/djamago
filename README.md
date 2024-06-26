@@ -9,7 +9,7 @@
 [![Pypi downloads](https://img.shields.io/pypi/dw/djamago)](https://pypi.org/project/djamago)
 [![Pypi downloads](https://img.shields.io/pypi/dm/djamago)](https://pypi.org/project/djamago)
 <p align="center">
-    ![djamago logo](djamago.png)
+    <img src="djamago.png" alt="" />
 </p>
 
 # Djamago
@@ -27,6 +27,10 @@ by adding support for some parsing like tools.
 Djamago deeply uses `djamago <https://pypi.org/project/djamago>`_
 and so will you see in the examples
 
+If you want to create a little chatbot, with simple and clear code... I will
+discourage you, It still appears that code with `djamago` is still somehow
+bulky or junk, but I'm working on that.
+
 ## How works
 
 
@@ -35,21 +39,96 @@ and so will you see in the examples
 
 ![flow.png](flow.png)
 
+
+
+A sample `djamago` project
+
+here the structure of the sample
+```cmd
+example
+│   expressions.py
+│   main.py
+│
+└───topics
+        djamago.py
+        main.py
+        __init__.py
+```
+
+### main.py
+
 ```python
+import expressions  # Expressions
+
 from djamago import *
+# from topics import djamago  # topics
+from topics import main
 
 
 class Pango(Djamago):
     def __init__(self):
-        super().__init__("pango")
+        super().__init__("pango")  # chatbot name
 
 
-@Pango.topic
+Pango.topic(main.Main)
+# Pango.topic(djamago.Djamago)
+
+
+p = Pango()
+while True:
+    print(p.respond(input("> ")).response)
+
+```
+
+### expressions.py
+
+```python
+from djamago import Expression
+
+question = lambda re: fr"(?:(?:please|question.?) {re}\??)|(?:may )?I ask you {re}\??"
+
+
+Expression.register("whois", [
+    (100, r"(?:who is) (.*)"),
+    (30, r"(?:do you know) (.*)"),
+])
+Expression.register("name", [
+    (50, r"[\w\- ]+(?: [\w\- ]+)*")
+])
+Expression.register("whatis", [
+    (100, r"(?:what is) (.*)"),
+    (50, r"(?:tell me.? ?(?:djamago)? what is) (.*)"),
+])
+Expression.register("greetings", [
+    (100, r"hello"),
+    (100, r"good (?:morning|evening|night|after-?noon)"),
+    (70, r"greetings"),
+    (20, r"good day"),
+])
+Expression.register("callyou", [
+    (100, question(r"how do you call yourself")),
+    (100, fr"(?:tell me.? ?(?:djamago)? what is) (.*)"),
+    (100, question(r"what is your name")),
+    (100, question(r"how can I call you")),
+])
+
+```
+
+### topics
+
+Here we leave the `__init__.py` empty
+
+#### topics/main.py
+
+```python
+
+from djamago import Topic, Expression, Callback, ReGex
+from pyoload import *
+
+
 @annotate
 class Main(Topic):
-    @Callback(
-        Expression("greetings")
-    )
+    @Callback(Expression("greetings"))
     def morning(node: "Node", id: Values((0, 1, 2)), vars):
         if id == 0:
             node.response = "Hy"
@@ -64,12 +143,23 @@ class Main(Topic):
             return node
         return node
 
-    @Callback(
-        Expression('whois(".*")'),
-    )
+    @Callback(Expression('whois(name)'),)
     def whois(node, id, var):
-        node.response = "I do not know him/her, you tell me"
+        if var.get("name").lower() == "djamago":
+            node.response = "Djamago?, it's me!"
+        else:
+            node.response = "I do not know %s, you tell me" % var.get('name')
         node.topics = ("main",)
+        return node
+
+    @Callback(Expression('callyou'),)
+    def callyou(node, id, var):
+        node.response = {
+            "Ow, can call me djamago",
+            "Call me djamago",
+            "I am called djamago"
+        }.pop()
+        node.topics = ("main", "djamago")
         return node
 
     @Callback(
@@ -84,40 +174,10 @@ class Main(Topic):
         node.topics = ("main",)
         return node
 
+```
 
-@Pango.topic
-class Greet(Topic):
-    @Callback(
-        ReGex(
-            [
-                (0, r".*"),
-            ]
-        )
-    )
-    def dummy(node, id, match):
-        node.response = "Did you know?..."
-        node.topics = ("main",)
-        return node
+#### topics/djamago.py
 
-Expression.register("whois", [
-    (100, r"(?:who is) (.*)"),
-    (30, r"(?:do you know) (.*)"),
-]);
-Expression.register("name", [
-    (50, r"[\w\- ]+(?: [\w\- ]+)*")
-]);
-Expression.register("whatis", [
-    (100, r"(?:what is) (.*)"),
-    (50, r"(?:tell me what is) (.*)"),
-]);
-Expression.register("greetings", [
-    (100, r"hello"),
-    (100, r"good (?:morning|evening|night|after-?noon)"),
-    (20, r"good day"),
-]);
-
-p = Pango()
-while True:
-    print(p.respond(input("> ")).response)
-
+```python
+# Nothing here yet
 ```
