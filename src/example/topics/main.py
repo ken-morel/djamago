@@ -1,5 +1,6 @@
 from djamago import Topic, Expression, Callback, ReGex
 from pyoload import *
+import random
 
 
 @annotate
@@ -11,12 +12,13 @@ class Main(Topic):
             node.topics = ("main",)
         elif id == 1:
             node.response = node.query + ", How are you?"
-            node.topics = ("greet",)
+            node.topics = ("main",)
             return node
-        elif id == 2:
+        else:
             node.response = "How strange greetings!"
             node.topics = ("main",)
             return node
+
         return node
 
     @Callback(Expression('whois(name)'),)
@@ -30,12 +32,15 @@ class Main(Topic):
 
     @Callback(Expression('callyou'),)
     def callyou(node, id, var):
-        node.response = {
+        node.response = random.choice([
             "Ow, can call me djamago",
             "Call me djamago",
-            "I am called djamago"
-        }.pop()
-        node.topics = ("main", "djamago")
+            "I am called djamago",
+            "My name is Djamago",
+            "Djamago am I",
+            "You can call me djamago",
+        ])
+        node.topics = ("main",)
         return node
 
     @Callback(

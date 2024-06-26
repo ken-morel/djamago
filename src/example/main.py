@@ -16,4 +16,11 @@ Pango.topic(main.Main)
 
 p = Pango()
 while True:
-    print(p.respond(input("> ")).response)
+    try:
+        query = input("> ").lower()
+    except KeyboardInterrupt:
+        print("Exciting gracefully...")
+        break
+    else:
+        print(p.respond(query).response)
+        continue

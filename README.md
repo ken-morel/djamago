@@ -181,3 +181,22 @@ class Main(Topic):
 ```python
 # Nothing here yet
 ```
+
+
+## Result
+
+```bash
+$ main.py
+> hello
+Hy
+> good morning
+good morning, How are you?
+> good day
+How strange greetings!
+> good after-noon
+good after-noon, How are you?
+> what is your name
+Djamago am I
+> please how can I call you?
+Call me djamago
+```

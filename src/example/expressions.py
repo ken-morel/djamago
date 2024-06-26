@@ -1,6 +1,10 @@
 from djamago import Expression
 
-question = lambda re: fr"(?:(?:please|question.?) {re}\??)|(?:may )?I ask you {re}\??"
+question = lambda re: (
+    fr"{re}|"
+    fr"(?:(?:please|question.?)? ?{re}\??)|"
+    fr"(?:may )?i ask (?:you )?{re}\??"
+)
 
 
 Expression.register("whois", [
@@ -24,5 +28,5 @@ Expression.register("callyou", [
     (100, question(r"how do you call yourself")),
     (100, fr"(?:tell me.? ?(?:djamago)? what is) (.*)"),
     (100, question(r"what is your name")),
-    (100, question(r"how can I call you")),
+    (100, question(r"how can i call you")),
 ])
