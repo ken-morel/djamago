@@ -43,7 +43,7 @@ deps = ("pyoload",)
 setup(
     name="djamago",
     version=__version__,
-    packages=find_packages(exclude=["tests", "tests.*"]),
+    packages=find_packages(exclude=["tests", "tests.*", "pyoload"]),
     project_urls={
         "Documentation": "https://djamago.readthedocs.io/",
         "Funding": "https://ko-fi.com/kenmorel",
