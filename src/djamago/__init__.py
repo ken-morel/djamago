@@ -177,6 +177,7 @@ class Expression(Pattern):
         name = ""
         has_args = True
         i = 0
+        print(repr(string))
         while i < len(string):
             c = string[i]
             if c.isalnum() or c == ":":
@@ -259,7 +260,8 @@ class Expression(Pattern):
                 args.append(Expression.parse(call))
                 while i < len(string) and string[i] in ", ":
                     i += 1
-        i -= 1
+            else:
+                i += 1
         return (name, score, tuple(args))
 
     @classmethod
@@ -295,7 +297,7 @@ class Expression(Pattern):
             if not mat:
                 continue
             args = mat.groups()
-            args = args[: len(params)]
+            args = args[:len(params)]
             if len(params) != len(args):
                 continue
             match_score = 0
@@ -575,7 +577,11 @@ class QA(Topic):
         """
         intersection = set(a) & set(b)
         union = set(a) | set(b)
-        return len(intersection) / len(union) * 100
+        le = len(union)
+        if le == 0:
+            return 0.0
+        else:
+            return len(intersection) / le * 100
 
     @annotate
     def cosine_similarity(a: Token, b: Token) -> float:
@@ -587,7 +593,11 @@ class QA(Topic):
         dot_product = sum(av * bv for av, bv in zip(a, b))
         magnitude_a = math.sqrt(sum(av**2 for av in a))
         magnitude_b = math.sqrt(sum(bv**2 for bv in b))
-        return dot_product / (magnitude_a * magnitude_b) * 100
+        mag = (magnitude_a * magnitude_b)
+        if mag == 0:
+            return 0.0
+        else:
+            return dot_product / mag * 100
 
     @annotate
     def difflib_similarity(a: Token, b: Token) -> float:
@@ -602,7 +612,7 @@ class QA(Topic):
                 " ".join(a),
                 " ".join(b),
             ).ratio()
-            * 100
+            * 100.0
         )
 
     @annotate
