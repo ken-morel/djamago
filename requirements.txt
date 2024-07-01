@@ -1,1 +1,1 @@
-pyoload
+pyoload==2.0.1

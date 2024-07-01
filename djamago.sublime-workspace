@@ -4,12 +4,16 @@
 		"selected_items":
 		[
 			[
-				"Ke",
-				"KeyError"
+				"S",
+				"StopIteration"
 			],
 			[
 				"Ex",
-				"Expression"
+				"Exception"
+			],
+			[
+				"Ke",
+				"KeyError"
 			],
 			[
 				"pat",
@@ -510,20 +514,136 @@
 			[
 				"w3-display",
 				"w3-display-topright"
-			],
-			[
-				"num",
-				"num_attempts_unremarked"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"contents": "Microsoft Windows [Version 6.3.9600]                                                                                                 \n(c) 2013 Microsoft Corporation. All rights reserved.                                                                                 \n                                                                                                                                     \nC:\\djamago\\src>",
+			"contents": "Microsoft Windows [Version 6.3.9600]                                                                                                 \n(c) 2013 Microsoft Corporation. All rights reserved.                                                                                 \n                                                                                                                                     \nC:\\djamago\\src>test-cov                                                                                                              \n                                                                                                                                     \nC:\\djamago\\src>pytest --cov --cov-report term-missing:skip-covered                                                                   \n======================================================= test session starts ======================================================== \nplatform win32 -- Python 3.11.9, pytest-8.2.1, pluggy-1.5.0                                                                          \nrootdir: C:\\djamago\\src                                                                                                              \nplugins: anyio-4.4.0, cov-5.0.0                                                                                                      \ncollected 1 item                                                                                                                     \n                                                                                                                                     \ntests\\test_parse.py F                                                                                                         [100%] \n                                                                                                                                     \n============================================================= FAILURES ============================================================= \n____________________________________________________________ test_parse ____________________________________________________________ \n                                                                                                                                     \n    def test_parse():                                                                                                                \n        try:                                                                                                                         \n            Pattern()                                                                                                                \n        except Exception:                                                                                                            \n            pass                                                                                                                     \n        else:                                                                                                                        \n            raise Exception()                                                                                                        \n>       Regex(\"ama\").check(\"ama\")                                                                                                    \nE       NameError: name 'Regex' is not defined                                                                                       \n                                                                                                                                     \ntests\\test_parse.py:11: NameError                                                                                                    \n========================================================= warnings summary ========================================================= \n..\\..\\Users\\CHEF SEC\\AppData\\Roaming\\Python\\Python311-32\\site-packages\\_pytest\\cacheprovider.py:468                                  \n  C:\\Users\\CHEF SEC\\AppData\\Roaming\\Python\\Python311-32\\site-packages\\_pytest\\cacheprovider.py:468: PytestCacheWarning: could not cre​‌​\nate cache path C:\\djamago\\src\\.pytest_cache\\v\\cache\\nodeids: [WinError 5] Access is denied: 'C:\\\\djamago\\\\src\\\\pytest-cache-files-sf9​‌​\nubmoo' -> 'C:\\\\djamago\\\\src\\\\.pytest_cache'                                                                                          \n    config.cache.set(\"cache/nodeids\", sorted(self.cached_nodeids))                                                                   \n                                                                                                                                     \n..\\..\\Users\\CHEF SEC\\AppData\\Roaming\\Python\\Python311-32\\site-packages\\_pytest\\cacheprovider.py:420                                  \n  C:\\Users\\CHEF SEC\\AppData\\Roaming\\Python\\Python311-32\\site-packages\\_pytest\\cacheprovider.py:420: PytestCacheWarning: could not cre​‌​\nate cache path C:\\djamago\\src\\.pytest_cache\\v\\cache\\lastfailed: [WinError 5] Access is denied: 'C:\\\\djamago\\\\src\\\\pytest-cache-files-​‌​\ni5h_3ev6' -> 'C:\\\\djamago\\\\src\\\\.pytest_cache'                                                                                       \n    config.cache.set(\"cache/lastfailed\", self.lastfailed)                                                                            \n                                                                                                                                     \n..\\..\\Users\\CHEF SEC\\AppData\\Roaming\\Python\\Python311-32\\site-packages\\_pytest\\stepwise.py:57                                        \n  C:\\Users\\CHEF SEC\\AppData\\Roaming\\Python\\Python311-32\\site-packages\\_pytest\\stepwise.py:57: PytestCacheWarning: could not create ca​‌​\nche path C:\\djamago\\src\\.pytest_cache\\v\\cache\\stepwise: [WinError 5] Access is denied: 'C:\\\\djamago\\\\src\\\\pytest-cache-files-j1fc6jbh​‌​\n' -> 'C:\\\\djamago\\\\src\\\\.pytest_cache'                                                                                               \n    session.config.cache.set(STEPWISE_CACHE_DIR, [])                                                                                 \n                                                                                                                                     \n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html                                                              \n                                                                                                                                     \n---------- coverage: platform win32, python 3.11.9-final-0 -----------                                                               \nName                                                                                      Stmts   Miss  Cover   Missing              \n-----------------------------------------------------------------------------------------------------------------------              \nC:\\Users\\CHEF SEC\\AppData\\Roaming\\Python\\Python311-32\\site-packages\\pyoload\\__init__.py     416    234    44%   39-40, 109, 112, 158-​‌​\n164, 219, 242-259, 297-314, 322-323, 331-332, 340-341, 349-350, 358-359, 368-369, 375-377, 383-384, 409-410, 418-421, 424-430, 457, 4​‌​\n60-462, 465-466, 469-471, 496-522, 543, 553-556, 561, 592, 595, 598, 601, 613-680, 691-719, 745, 749, 760, 762-764, 768-772, 778-784,​‌​\n 792, 796-809, 825, 845-846, 888, 897-909, 932, 948-965                                                                              \n-----------------------------------------------------------------------------------------------------------------------              \nTOTAL                                                                                       416    234    44%                        \n                                                                                                                                     \n===================================================== short test summary info ====================================================== \nFAILED tests/test_parse.py::test_parse - NameError: name 'Regex' is not defined                                                      \n================================================== 1 failed, 3 warnings in 4.00s =================================================== \n                                                                                                                                     \nC:\\djamago\\src>test-cov                                                                                                              \n                                                                                                                                     \nC:\\djamago\\src>pytest --cov --cov-report term-missing:skip-covered                                                                   \n======================================================= test session starts ======================================================== \nplatform win32 -- Python 3.11.9, pytest-8.2.1, pluggy-1.5.0                                                                          \nrootdir: C:\\djamago\\src                                                                                                              \nplugins: anyio-4.4.0, cov-5.0.0                                                                                                      \ncollected 1 item                                                                                                                     \n                                                                                                                                     \ntests\\test_parse.py F                                                                                                         [100%] \n                                                                                                                                     \n============================================================= FAILURES ============================================================= \n____________________________________________________________ test_parse ____________________________________________________________ \n                                                                                                                                     \n    def test_parse():                                                                                                                \n        try:                                                                                                                         \n            Pattern()                                                                                                                \n        except Exception:                                                                                                            \n            pass                                                                                                                     \n        else:                                                                                                                        \n            raise Exception()                                                                                                        \n>       RegEx(\"ama\").check(\"ama\")                                                                                                    \n                                                                                                                                     \ntests\\test_parse.py:11:                                                                                                              \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _  \n                                                                                                                                     \npargs = (<djamago.RegEx object at 0x03CF51F0>, 'ama'), kw = {}                                                                       \nsign = <Signature (self: djamago.RegEx, node: djamago.Node) -> tuple[int | float, int, re.Match]>                                    \nargs = <BoundArguments (self=<djamago.RegEx object at 0x03CF51F0>, node='ama')>                                                      \nerrors = [AnnotationError(\"Value: 'ama' does not match annotation: <class 'djamago.Node'> for argument 'node' of function djamago.Reg​‌​\nEx.check\")]                                                                                                                          \nk = 'node', v = 'ama', param = <Parameter \"node: djamago.Node\">                                                                      \n                                                                                                                                     \n    @wraps(func)                                                                                                                     \n    def wrapper(*pargs, **kw):                                                                                                       \n        if str in map(type, func.__annotations__.values()):                                                                          \n            resove_annotations(func)                                                                                                 \n        if annotations != func.__annotations__:                                                                                      \n            annotations.clear()                                                                                                      \n            annotations.update(func.__annotations__)                                                                                 \n            func.__pyod_signature__ = signature(func)                                                                                \n        sign = func.__pyod_signature__                                                                                               \n        try:                                                                                                                         \n            args = sign.bind(*pargs, **kw)                                                                                           \n        except Exception:                                                                                                            \n            if oload:                                                                                                                \n                raise InternalAnnotationError()                                                                                      \n            else:                                                                                                                    \n                raise                                                                                                                \n        errors = []                                                                                                                  \n        for k, v in args.arguments.items():                                                                                          \n            param = sign.parameters.get(k)                                                                                           \n            if param.annotation is _empty:                                                                                           \n                continue                                                                                                             \n            if isinstance(param.annotation, Cast):                                                                                   \n                args.arguments[k] = param.annotation(v)                                                                              \n                continue                                                                                                             \n            if not type_match(v, param.annotation)[0]:                                                                               \n                if oload:                                                                                                            \n                    raise InternalAnnotationError()                                                                                  \n                errors.append(                                                                                                       \n                    AnnotationError(                                                                                                 \n                        f\"Value: {v!r} does not match annotation:\"                                                                   \n                        f\" {param.annotation!r} for \"                                                                                \n                        f\"argument {k!r} of function {get_name(func)}\",                                                              \n                    ),                                                                                                               \n                )                                                                                                                    \n        if len(errors) > 0:                                                                                                          \n>           raise AnnotationErrors(errors)                                                                                           \nE           pyoload.AnnotationErrors: [AnnotationError(\"Value: 'ama' does not match annotation: <class 'djamago.Node'> for argument '​‌​\nnode' of function djamago.RegEx.check\")]                                                                                             \n                                                                                                                                     \nC:\\Users\\CHEF SEC\\AppData\\Roaming\\Python\\Python311-32\\site-packages\\pyoload\\__init__.py:792: AnnotationErrors                        \n========================================================= warnings summary ========================================================= \n..\\..\\Users\\CHEF SEC\\AppData\\Roaming\\Python\\Python311-32\\site-packages\\_pytest\\cacheprovider.py:468                                  \n  C:\\Users\\CHEF SEC\\AppData\\Roaming\\Python\\Python311-32\\site-packages\\_pytest\\cacheprovider.py:468: PytestCacheWarning: could not cre​‌​\nate cache path C:\\djamago\\src\\.pytest_cache\\v\\cache\\nodeids: [WinError 145] The directory is not empty: 'C:\\\\djamago\\\\src\\\\pytest-cac​‌​\nhe-files-fzdw6qdf'                                                                                                                   \n    config.cache.set(\"cache/nodeids\", sorted(self.cached_nodeids))                                                                   \n                                                                                                                                     \n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html                                                              \n                                                                                                                                     \n---------- coverage: platform win32, python 3.11.9-final-0 -----------                                                               \nName                                                                                      Stmts   Miss  Cover   Missing              \n-----------------------------------------------------------------------------------------------------------------------              \nC:\\Users\\CHEF SEC\\AppData\\Roaming\\Python\\Python311-32\\site-packages\\pyoload\\__init__.py     416    193    54%   39-40, 109, 112, 158-​‌​\n164, 219, 242-259, 297-314, 322-323, 331-332, 340-341, 349-350, 358-359, 368-369, 375-377, 383-384, 409-410, 418-421, 424-430, 457, 4​‌​\n60-462, 465-466, 469-471, 496-522, 543, 553-556, 561, 592, 595, 598, 601, 618, 621, 623, 625-630, 632-641, 648-680, 692, 704-719, 745​‌​\n, 749, 768-772, 779-780, 797-803, 825, 845-846, 888, 905, 932, 949, 953-965                                                          \n-----------------------------------------------------------------------------------------------------------------------              \nTOTAL                                                                                       416    193    54%                        \n                                                                                                                                     \n===================================================== short test summary info ====================================================== \nFAILED tests/test_parse.py::test_parse - pyoload.AnnotationErrors: [AnnotationError(\"Value: 'ama' does not match annotation: <class '​‌​\ndjamago.Node'> for argument 'node' o...                                                                                              \n=================================================== 1 failed, 1 warning in 0.55s =================================================== \n                                                                                                                                     \nC:\\djamago\\src>test-cov                                                                                                              \n                                                                                                                                     \nC:\\djamago\\src>pytest --cov --cov-report term-missing:skip-covered                                                                   \n======================================================= test session starts ======================================================== \nplatform win32 -- Python 3.11.9, pytest-8.2.1, pluggy-1.5.0                                                                          \nrootdir: C:\\djamago\\src                                                                                                              \nplugins: anyio-4.4.0, cov-5.0.0                                                                                                      \ncollected 1 item                                                                                                                     \n                                                                                                                                     \ntests\\test_parse.py                                                                                                                  \n                                                                                                                                     \n---------- coverage: platform win32, python 3.11.9-final-0 -----------                                                               \nName                                                                                      Stmts   Miss  Cover   Missing              \n-----------------------------------------------------------------------------------------------------------------------              \nC:\\Users\\CHEF SEC\\AppData\\Roaming\\Python\\Python311-32\\site-packages\\pyoload\\__init__.py     416    188    55%   39-40, 109, 112, 158-​‌​\n164, 219, 242-259, 297-314, 322-323, 331-332, 340-341, 349-350, 358-359, 368-369, 375-377, 383-384, 409-410, 418-421, 424-430, 457, 4​‌​\n60-462, 465-466, 469-471, 496-522, 543, 553-556, 561, 592, 595, 598, 601, 618, 623, 625-630, 632-641, 649-663, 669, 677, 680, 691-719​‌​\n, 745, 749, 760, 762-764, 768-772, 779-780, 784, 792, 800, 803, 825, 845-846, 888, 905, 932, 949, 953-965                            \n-----------------------------------------------------------------------------------------------------------------------              \nTOTAL                                                                                       416    188    55%                        \n                                                                                                                                     \n                                                                                                                                     \n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! KeyboardInterrupt !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! \nC:\\djamago\\src\\djamago\\__init__.py:178: KeyboardInterrupt                                                                            \n(to show a full traceback on KeyboardInterrupt use --full-trace)                                                                     \n================================================ no tests ran in 125.43s (0:02:05) ================================================= \nTerminate batch job (Y/N)? ^CY                                                                                                       \n                                                                                                                                     \nC:\\djamago\\src>",
 			"settings":
 			{
-				"buffer_size": 417,
+				"buffer_size": 25267,
+				"line_ending": "Windows",
+				"name": " ",
+				"scratch": true
+			},
+			"undo_stack":
+			[
+				[
+					52,
+					2,
+					"terminus_render",
+					null,
+					"yAAAAIdLAAAAAAAAh0sAAAAAAACFAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIIdLAAAAAAAADEwAAAAAAAAAAAAAAUsAAAAAAABISwAAAAAAAIUAAAAtLSBEb2NzOiBodHRwczovL2RvY3MucHl0ZXN0Lm9yZy9lbi9zdGFibGUvaG93LXRvL2NhcHR1cmUtd2FybmluZ3MuaHRtbCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgSEsAAAAAAACGSwAAAAAAAAAAAAB7SgAAAAAAAHtKAAAAAAAAhQAAACAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB7SgAAAAAAAABLAAAAAAAAAAAAAPVJAAAAAAAAN0oAAAAAAACFAAAAICAgIGNvbmZpZy5jYWNoZS5zZXQoImNhY2hlL25vZGVpZHMiLCBzb3J0ZWQoc2VsZi5jYWNoZWRfbm9kZWlkcykpICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDdKAAAAAAAAekoAAAAAAAAAAAAAb0kAAAAAAACBSQAAAAAAAIUAAABoZS1maWxlcy1memR3NnFkZicgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAggUkAAAAAAAD0SQAAAAAAAAAAAADmSAAAAAAAAG5JAAAAAAAAjgAAAGF0ZSBjYWNoZSBwYXRoIEM6XGRqYW1hZ29cc3JjXC5weXRlc3RfY2FjaGVcdlxjYWNoZVxub2RlaWRzOiBbV2luRXJyb3IgMTQ1XSBUaGUgZGlyZWN0b3J5IGlzIG5vdCBlbXB0eTogJ0M6XFxkamFtYWdvXFxzcmNcXHB5dGVzdC1jYWPigIvigIzigItdSAAAAAAAAOVIAAAAAAAAjgAAACAgQzpcVXNlcnNcQ0hFRiBTRUNcQXBwRGF0YVxSb2FtaW5nXFB5dGhvblxQeXRob24zMTEtMzJcc2l0ZS1wYWNrYWdlc1xfcHl0ZXN0XGNhY2hlcHJvdmlkZXIucHk6NDY4OiBQeXRlc3RDYWNoZVdhcm5pbmc6IGNvdWxkIG5vdCBjcmXigIvigIzigIvXRwAAAAAAADpIAAAAAAAAhQAAAC4uXC4uXFVzZXJzXENIRUYgU0VDXEFwcERhdGFcUm9hbWluZ1xQeXRob25cUHl0aG9uMzExLTMyXHNpdGUtcGFja2FnZXNcX3B5dGVzdFxjYWNoZXByb3ZpZGVyLnB5OjQ2OCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA6SAAAAAAAAFxIAAAAAAAAAAAAAFFHAAAAAAAA1UcAAAAAAACFAAAAPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09IHdhcm5pbmdzIHN1bW1hcnkgPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09INVHAAAAAAAA1kcAAAAAAAAAAAAAy0YAAAAAAAA4RwAAAAAAAIUAAABDOlxVc2Vyc1xDSEVGIFNFQ1xBcHBEYXRhXFJvYW1pbmdcUHl0aG9uXFB5dGhvbjMxMS0zMlxzaXRlLXBhY2thZ2VzXHB5b2xvYWRcX19pbml0X18ucHk6NzkyOiBBbm5vdGF0aW9uRXJyb3JzICAgICAgICAgICAgICAgICAgICAgICAgOEcAAAAAAABQRwAAAAAAAAAAAABFRgAAAAAAAEVGAAAAAAAAhQAAACAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBFRgAAAAAAAMpGAAAAAAAAAAAAAL9FAAAAAAAA50UAAAAAAACFAAAAbm9kZScgb2YgZnVuY3Rpb24gZGphbWFnby5SZWdFeC5jaGVjayIpXSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIOdFAAAAAAAAREYAAAAAAAAAAAAANkUAAAAAAAC+RQAAAAAAAI4AAABFICAgICAgICAgICBweW9sb2FkLkFubm90YXRpb25FcnJvcnM6IFtBbm5vdGF0aW9uRXJyb3IoIlZhbHVlOiAnYW1hJyBkb2VzIG5vdCBtYXRjaCBhbm5vdGF0aW9uOiA8Y2xhc3MgJ2RqYW1hZ28uTm9kZSc+IGZvciBhcmd1bWVudCAn4oCL4oCM4oCLsEQAAAAAAADaRAAAAAAAAIUAAAA+ICAgICAgICAgICByYWlzZSBBbm5vdGF0aW9uRXJyb3JzKGVycm9ycykgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg2kQAAAAAAAA1RQAAAAAAAAAAAAAqRAAAAAAAAEVEAAAAAAAAhQAAACAgICAgICAgaWYgbGVuKGVycm9ycykgPiAwOiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBFRAAAAAAAAK9EAAAAAAAAAAAAAKRDAAAAAAAAtUMAAAAAAACFAAAAICAgICAgICAgICAgICAgICkgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgILVDAAAAAAAAKUQAAAAAAAAAAAAADUwAAAAAAABTTAAAAAAAAIUAAAAtLS0tLS0tLS0tIGNvdmVyYWdlOiBwbGF0Zm9ybSB3aW4zMiwgcHl0aG9uIDMuMTEuOS1maW5hbC0wIC0tLS0tLS0tLS0tICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgU0wAAAAAAACSTAAAAAAAAAAAAACTTAAAAAAAAApNAAAAAAAAhQAAAE5hbWUgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFN0bXRzICAgTWlzcyAgQ292ZXIgICBNaXNzaW5nICAgICAgICAgICAgICAKTQAAAAAAABhNAAAAAAAAAAAAABlNAAAAAAAAkE0AAAAAAACFAAAALS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0gICAgICAgICAgICAgIJBNAAAAAAAAnk0AAAAAAAAAAAAAn00AAAAAAAAnTgAAAAAAAI4AAABDOlxVc2Vyc1xDSEVGIFNFQ1xBcHBEYXRhXFJvYW1pbmdcUHl0aG9uXFB5dGhvbjMxMS0zMlxzaXRlLXBhY2thZ2VzXHB5b2xvYWRcX19pbml0X18ucHkgICAgIDQxNiAgICAxOTMgICAgNTQlICAgMzktNDAsIDEwOSwgMTEyLCAxNTgt4oCL4oCM4oCLKE4AAAAAAACwTgAAAAAAAI4AAAAxNjQsIDIxOSwgMjQyLTI1OSwgMjk3LTMxNCwgMzIyLTMyMywgMzMxLTMzMiwgMzQwLTM0MSwgMzQ5LTM1MCwgMzU4LTM1OSwgMzY4LTM2OSwgMzc1LTM3NywgMzgzLTM4NCwgNDA5LTQxMCwgNDE4LTQyMSwgNDI0LTQzMCwgNDU3LCA04oCL4oCM4oCLsU4AAAAAAAA5TwAAAAAAAI4AAAA2MC00NjIsIDQ2NS00NjYsIDQ2OS00NzEsIDQ5Ni01MjIsIDU0MywgNTUzLTU1NiwgNTYxLCA1OTIsIDU5NSwgNTk4LCA2MDEsIDYxOCwgNjIxLCA2MjMsIDYyNS02MzAsIDYzMi02NDEsIDY0OC02ODAsIDY5MiwgNzA0LTcxOSwgNzQ14oCL4oCM4oCLOk8AAAAAAACFTwAAAAAAAIUAAAAsIDc0OSwgNzY4LTc3MiwgNzc5LTc4MCwgNzk3LTgwMywgODI1LCA4NDUtODQ2LCA4ODgsIDkwNSwgOTMyLCA5NDksIDk1My05NjUgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAghU8AAAAAAAC/TwAAAAAAAAAAAADATwAAAAAAADdQAAAAAAAAhQAAAC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tICAgICAgICAgICAgICA3UAAAAAAAAEVQAAAAAAAAAAAAAEZQAAAAAAAAs1AAAAAAAACFAAAAVE9UQUwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA0MTYgICAgMTkzICAgIDU0JSAgICAgICAgICAgICAgICAgICAgICAgILNQAAAAAAAAy1AAAAAAAAAAAAAAzFAAAAAAAADMUAAAAAAAAIUAAAAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgzFAAAAAAAABRUQAAAAAAAAAAAABSUQAAAAAAANZRAAAAAAAAhQAAAD09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09IHNob3J0IHRlc3Qgc3VtbWFyeSBpbmZvID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PSDWUQAAAAAAANdRAAAAAAAAAAAAANhRAAAAAAAAYFIAAAAAAACOAAAARkFJTEVEIHRlc3RzL3Rlc3RfcGFyc2UucHk6OnRlc3RfcGFyc2UgLSBweW9sb2FkLkFubm90YXRpb25FcnJvcnM6IFtBbm5vdGF0aW9uRXJyb3IoIlZhbHVlOiAnYW1hJyBkb2VzIG5vdCBtYXRjaCBhbm5vdGF0aW9uOiA8Y2xhc3MgJ+KAi+KAjOKAi2FSAAAAAAAAiFIAAAAAAACFAAAAZGphbWFnby5Ob2RlJz4gZm9yIGFyZ3VtZW50ICdub2RlJyBvLi4uICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIIhSAAAAAAAA5lIAAAAAAAAAAAAA51IAAAAAAABrUwAAAAAAAIUAAAA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0gMSBmYWlsZWQsIDEgd2FybmluZyBpbiAwLjU1cyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0ga1MAAAAAAABsUwAAAAAAAAAAAABtUwAAAAAAAG1TAAAAAAAAhQAAACAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBtUwAAAAAAAPJTAAAAAAAAAAAAAPNTAAAAAAAAClQAAAAAAACFAAAAQzpcZGphbWFnb1xzcmM+dGVzdC1jb3YgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIApUAAAAAAAAeFQAAAAAAAAAAAAAeVQAAAAAAAB5VAAAAAAAAIUAAAAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgeVQAAAAAAAD+VAAAAAAAAAAAAAD/VAAAAAAAAEFVAAAAAAAAhQAAAEM6XGRqYW1hZ29cc3JjPnB5dGVzdCAtLWNvdiAtLWNvdi1yZXBvcnQgdGVybS1taXNzaW5nOnNraXAtY292ZXJlZCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBBVQAAAAAAAIRVAAAAAAAAAAAAAIVVAAAAAAAACVYAAAAAAACFAAAAPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PSB0ZXN0IHNlc3Npb24gc3RhcnRzID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09IAlWAAAAAAAAClYAAAAAAAAAAAAAC1YAAAAAAABGVgAAAAAAAIUAAABwbGF0Zm9ybSB3aW4zMiAtLSBQeXRob24gMy4xMS45LCBweXRlc3QtOC4yLjEsIHBsdWdneS0xLjUuMCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgRlYAAAAAAACQVgAAAAAAAAAAAACRVgAAAAAAAKhWAAAAAAAAhQAAAHJvb3RkaXI6IEM6XGRqYW1hZ29cc3JjICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICCoVgAAAAAAABZXAAAAAAAAAAAAABdXAAAAAAAANlcAAAAAAACFAAAAcGx1Z2luczogYW55aW8tNC40LjAsIGNvdi01LjAuMCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDZXAAAAAAAAnFcAAAAAAAAAAAAAnVcAAAAAAACtVwAAAAAAAIUAAABjb2xsZWN0ZWQgMSBpdGVtICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgrVcAAAAAAAAiWAAAAAAAAAAAAAAjWAAAAAAAACNYAAAAAAAAhQAAACAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAjWAAAAAAAAKhYAAAAAAAAAAAAAKlYAAAAAAAAvFgAAAAAAAAUAAAAdGVzdHNcdGVzdF9wYXJzZS5weSC8WAAAAAAAAC5ZAAAAAAAAAAAAAC5ZAAAAAAAAL1kAAAAAAAAAAAAAL1kAAAAAAAAvWQAAAAAAAAAAAAAvWQAAAAAAALRZAAAAAAAAAAAAALRZAAAAAAAAtVkAAAAAAAAAAAAAtVkAAAAAAAD7WQAAAAAAAAAAAAD7WQAAAAAAADpaAAAAAAAAAAAAADpaAAAAAAAAO1oAAAAAAAAAAAAAO1oAAAAAAACyWgAAAAAAAAAAAACyWgAAAAAAAMBaAAAAAAAAAAAAAMBaAAAAAAAAwVoAAAAAAAAAAAAAwVoAAAAAAAA4WwAAAAAAAAAAAAA4WwAAAAAAAEZbAAAAAAAAAAAAAEZbAAAAAAAAR1sAAAAAAAAAAAAAR1sAAAAAAADPWwAAAAAAAAAAAADPWwAAAAAAANBbAAAAAAAAAAAAANBbAAAAAAAAWFwAAAAAAAAAAAAAWFwAAAAAAABZXAAAAAAAAAAAAABZXAAAAAAAAOFcAAAAAAAAAAAAAOFcAAAAAAAA4lwAAAAAAAAAAAAA4lwAAAAAAABLXQAAAAAAAAAAAABLXQAAAAAAAGddAAAAAAAAAAAAAGddAAAAAAAAaF0AAAAAAAAAAAAAaF0AAAAAAADfXQAAAAAAAAAAAADfXQAAAAAAAO1dAAAAAAAAAAAAAO1dAAAAAAAA7l0AAAAAAAAAAAAA7l0AAAAAAABbXgAAAAAAAAAAAABbXgAAAAAAAHNeAAAAAAAAAAAAAHNeAAAAAAAAdF4AAAAAAAAAAAAAdF4AAAAAAAB0XgAAAAAAAAAAAAB0XgAAAAAAAPleAAAAAAAAAAAAAPleAAAAAAAA+l4AAAAAAAAAAAAA+l4AAAAAAAD6XgAAAAAAAAAAAAD6XgAAAAAAAH9fAAAAAAAAAAAAAH9fAAAAAAAAgF8AAAAAAAAAAAAAgF8AAAAAAAAEYAAAAAAAAAAAAAAEYAAAAAAAAAVgAAAAAAAAAAAAAAVgAAAAAAAABmAAAAAAAAAAAAAABmAAAAAAAAA/YAAAAAAAAAAAAAA/YAAAAAAAAItgAAAAAAAAAAAAAItgAAAAAAAAjGAAAAAAAAAAAAAAjGAAAAAAAADMYAAAAAAAAAAAAADMYAAAAAAAABFhAAAAAAAAAAAAABFhAAAAAAAAEmEAAAAAAAAAAAAAEmEAAAAAAAASYQAAAAAAAAAAAAASYQAAAAAAAJdhAAAAAAAAAAAAABJhAAAAAAAAEmEAAAAAAACFAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIA1MAAAAAAAAU0wAAAAAAACFAAAALS0tLS0tLS0tLSBjb3ZlcmFnZTogcGxhdGZvcm0gd2luMzIsIHB5dGhvbiAzLjExLjktZmluYWwtMCAtLS0tLS0tLS0tLSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFNMAAAAAAAAkkwAAAAAAAAAAAAAk0wAAAAAAAAKTQAAAAAAAIUAAABOYW1lICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBTdG10cyAgIE1pc3MgIENvdmVyICAgTWlzc2luZyAgICAgICAgICAgICAgCk0AAAAAAAAYTQAAAAAAAAAAAAAZTQAAAAAAAJBNAAAAAAAAhQAAAC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tICAgICAgICAgICAgICCQTQAAAAAAAJ5NAAAAAAAAAAAAAJ9NAAAAAAAAJ04AAAAAAACOAAAAQzpcVXNlcnNcQ0hFRiBTRUNcQXBwRGF0YVxSb2FtaW5nXFB5dGhvblxQeXRob24zMTEtMzJcc2l0ZS1wYWNrYWdlc1xweW9sb2FkXF9faW5pdF9fLnB5ICAgICA0MTYgICAgMTkzICAgIDU0JSAgIDM5LTQwLCAxMDksIDExMiwgMTU4LeKAi+KAjOKAiyhOAAAAAAAAsE4AAAAAAACOAAAAMTY0LCAyMTksIDI0Mi0yNTksIDI5Ny0zMTQsIDMyMi0zMjMsIDMzMS0zMzIsIDM0MC0zNDEsIDM0OS0zNTAsIDM1OC0zNTksIDM2OC0zNjksIDM3NS0zNzcsIDM4My0zODQsIDQwOS00MTAsIDQxOC00MjEsIDQyNC00MzAsIDQ1NywgNOKAi+KAjOKAi7FOAAAAAAAAOU8AAAAAAACOAAAANjAtNDYyLCA0NjUtNDY2LCA0NjktNDcxLCA0OTYtNTIyLCA1NDMsIDU1My01NTYsIDU2MSwgNTkyLCA1OTUsIDU5OCwgNjAxLCA2MTgsIDYyMSwgNjIzLCA2MjUtNjMwLCA2MzItNjQxLCA2NDgtNjgwLCA2OTIsIDcwNC03MTksIDc0NeKAi+KAjOKAizpPAAAAAAAAhU8AAAAAAACFAAAALCA3NDksIDc2OC03NzIsIDc3OS03ODAsIDc5Ny04MDMsIDgyNSwgODQ1LTg0NiwgODg4LCA5MDUsIDkzMiwgOTQ5LCA5NTMtOTY1ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIIVPAAAAAAAAv08AAAAAAAAAAAAAwE8AAAAAAAA3UAAAAAAAAIUAAAAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSAgICAgICAgICAgICAgN1AAAAAAAABFUAAAAAAAAAAAAABGUAAAAAAAALNQAAAAAAAAhQAAAFRPVEFMICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgNDE2ICAgIDE5MyAgICA1NCUgICAgICAgICAgICAgICAgICAgICAgICCzUAAAAAAAAMtQAAAAAAAAAAAAAMxQAAAAAAAAzFAAAAAAAACFAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIMxQAAAAAAAAUVEAAAAAAAAAAAAAUlEAAAAAAADWUQAAAAAAAIUAAAA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PSBzaG9ydCB0ZXN0IHN1bW1hcnkgaW5mbyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0g1lEAAAAAAADXUQAAAAAAAAAAAADYUQAAAAAAAGBSAAAAAAAAjgAAAEZBSUxFRCB0ZXN0cy90ZXN0X3BhcnNlLnB5Ojp0ZXN0X3BhcnNlIC0gcHlvbG9hZC5Bbm5vdGF0aW9uRXJyb3JzOiBbQW5ub3RhdGlvbkVycm9yKCJWYWx1ZTogJ2FtYScgZG9lcyBub3QgbWF0Y2ggYW5ub3RhdGlvbjogPGNsYXNzICfigIvigIzigIthUgAAAAAAAIhSAAAAAAAAhQAAAGRqYW1hZ28uTm9kZSc+IGZvciBhcmd1bWVudCAnbm9kZScgby4uLiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICCIUgAAAAAAAOZSAAAAAAAAAAAAAOdSAAAAAAAAa1MAAAAAAACFAAAAPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09IDEgZmFpbGVkLCAxIHdhcm5pbmcgaW4gMC41NXMgPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09IGtTAAAAAAAAbFMAAAAAAAAAAAAAbVMAAAAAAABtUwAAAAAAAIUAAAAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgbVMAAAAAAADyUwAAAAAAAAAAAADzUwAAAAAAAApUAAAAAAAAhQAAAEM6XGRqYW1hZ29cc3JjPnRlc3QtY292ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKVAAAAAAAAHhUAAAAAAAAAAAAAHlUAAAAAAAAeVQAAAAAAACFAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHlUAAAAAAAA/lQAAAAAAAAAAAAA/1QAAAAAAABBVQAAAAAAAIUAAABDOlxkamFtYWdvXHNyYz5weXRlc3QgLS1jb3YgLS1jb3YtcmVwb3J0IHRlcm0tbWlzc2luZzpza2lwLWNvdmVyZWQgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQVUAAAAAAACEVQAAAAAAAAAAAACFVQAAAAAAAAlWAAAAAAAAhQAAAD09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0gdGVzdCBzZXNzaW9uIHN0YXJ0cyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PSAJVgAAAAAAAApWAAAAAAAAAAAAAAtWAAAAAAAARlYAAAAAAACFAAAAcGxhdGZvcm0gd2luMzIgLS0gUHl0aG9uIDMuMTEuOSwgcHl0ZXN0LTguMi4xLCBwbHVnZ3ktMS41LjAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIEZWAAAAAAAAkFYAAAAAAAAAAAAAkVYAAAAAAACoVgAAAAAAAIUAAAByb290ZGlyOiBDOlxkamFtYWdvXHNyYyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgqFYAAAAAAAAWVwAAAAAAAAAAAAAXVwAAAAAAADZXAAAAAAAAhQAAAHBsdWdpbnM6IGFueWlvLTQuNC4wLCBjb3YtNS4wLjAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA2VwAAAAAAAJxXAAAAAAAAAAAAAJ1XAAAAAAAArVcAAAAAAACFAAAAY29sbGVjdGVkIDEgaXRlbSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIK1XAAAAAAAAIlgAAAAAAAAAAAAAI1gAAAAAAAAjWAAAAAAAAIUAAAAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgI1gAAAAAAACoWAAAAAAAAAAAAACpWAAAAAAAALxYAAAAAAAAhQAAAHRlc3RzXHRlc3RfcGFyc2UucHkgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICC8WAAAAAAAAC5ZAAAAAAAAAAAAAC9ZAAAAAAAAL1kAAAAAAACFAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIC9ZAAAAAAAAtFkAAAAAAAAAAAAAtVkAAAAAAAD7WQAAAAAAAIUAAAAtLS0tLS0tLS0tIGNvdmVyYWdlOiBwbGF0Zm9ybSB3aW4zMiwgcHl0aG9uIDMuMTEuOS1maW5hbC0wIC0tLS0tLS0tLS0tICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg+1kAAAAAAAA6WgAAAAAAAAAAAAA7WgAAAAAAALJaAAAAAAAAhQAAAE5hbWUgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFN0bXRzICAgTWlzcyAgQ292ZXIgICBNaXNzaW5nICAgICAgICAgICAgICCyWgAAAAAAAMBaAAAAAAAAAAAAAMFaAAAAAAAAOFsAAAAAAACFAAAALS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0gICAgICAgICAgICAgIDhbAAAAAAAARlsAAAAAAAAAAAAAR1sAAAAAAADPWwAAAAAAAI4AAABDOlxVc2Vyc1xDSEVGIFNFQ1xBcHBEYXRhXFJvYW1pbmdcUHl0aG9uXFB5dGhvbjMxMS0zMlxzaXRlLXBhY2thZ2VzXHB5b2xvYWRcX19pbml0X18ucHkgICAgIDQxNiAgICAxODggICAgNTUlICAgMzktNDAsIDEwOSwgMTEyLCAxNTgt4oCL4oCM4oCL0FsAAAAAAABYXAAAAAAAAI4AAAAxNjQsIDIxOSwgMjQyLTI1OSwgMjk3LTMxNCwgMzIyLTMyMywgMzMxLTMzMiwgMzQwLTM0MSwgMzQ5LTM1MCwgMzU4LTM1OSwgMzY4LTM2OSwgMzc1LTM3NywgMzgzLTM4NCwgNDA5LTQxMCwgNDE4LTQyMSwgNDI0LTQzMCwgNDU3LCA04oCL4oCM4oCLWVwAAAAAAADhXAAAAAAAAI4AAAA2MC00NjIsIDQ2NS00NjYsIDQ2OS00NzEsIDQ5Ni01MjIsIDU0MywgNTUzLTU1NiwgNTYxLCA1OTIsIDU5NSwgNTk4LCA2MDEsIDYxOCwgNjIzLCA2MjUtNjMwLCA2MzItNjQxLCA2NDktNjYzLCA2NjksIDY3NywgNjgwLCA2OTEtNzE54oCL4oCM4oCL4lwAAAAAAABLXQAAAAAAAIUAAAAsIDc0NSwgNzQ5LCA3NjAsIDc2Mi03NjQsIDc2OC03NzIsIDc3OS03ODAsIDc4NCwgNzkyLCA4MDAsIDgwMywgODI1LCA4NDUtODQ2LCA4ODgsIDkwNSwgOTMyLCA5NDksIDk1My05NjUgICAgICAgICAgICAgICAgICAgICAgICAgICAgS10AAAAAAABnXQAAAAAAAAAAAABoXQAAAAAAAN9dAAAAAAAAhQAAAC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tICAgICAgICAgICAgICDfXQAAAAAAAO1dAAAAAAAAAAAAAO5dAAAAAAAAW14AAAAAAACFAAAAVE9UQUwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA0MTYgICAgMTg4ICAgIDU1JSAgICAgICAgICAgICAgICAgICAgICAgIFteAAAAAAAAc14AAAAAAAAAAAAAdF4AAAAAAAB0XgAAAAAAAIUAAAAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdF4AAAAAAAD5XgAAAAAAAAAAAAD6XgAAAAAAAPpeAAAAAAAAhQAAACAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICD6XgAAAAAAAH9fAAAAAAAAAAAAAIBfAAAAAAAABGAAAAAAAACFAAAAISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEgS2V5Ym9hcmRJbnRlcnJ1cHQgISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhIARgAAAAAAAABWAAAAAAAAAAAAAABmAAAAAAAAA/YAAAAAAAAIUAAABDOlxkamFtYWdvXHNyY1xkamFtYWdvXF9faW5pdF9fLnB5OjE3ODogS2V5Ym9hcmRJbnRlcnJ1cHQgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgP2AAAAAAAACLYAAAAAAAAAAAAACMYAAAAAAAAMxgAAAAAAAAhQAAACh0byBzaG93IGEgZnVsbCB0cmFjZWJhY2sgb24gS2V5Ym9hcmRJbnRlcnJ1cHQgdXNlIC0tZnVsbC10cmFjZSkgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICDMYAAAAAAAABFhAAAAAAAAAAAAABJhAAAAAAAAlmEAAAAAAAAAAAAAlmEAAAAAAACXYQAAAAAAAAAAAACXYQAAAAAAAJhhAAAAAAAAAAAAAJhhAAAAAAAAmGEAAAAAAAAAAAAAmGEAAAAAAAAdYgAAAAAAAAAAAACYYQAAAAAAAJhhAAAAAAAAhQAAACAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA",
+					"BAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAvVgAAAAAAAC9WAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					53,
+					1,
+					"terminus_keypress",
+					{
+						"ctrl": true,
+						"key": "c"
+					},
+					"AQAAAJhhAAAAAAAAs2EAAAAAAAAAAAAA",
+					"BAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAmGEAAAAAAACYYQAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					54,
+					2,
+					"terminus_render",
+					null,
+					"BgAAAJhhAAAAAAAAsmEAAAAAAAAbAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgsmEAAAAAAAAdYgAAAAAAAAAAAACzYQAAAAAAALNhAAAAAAAAagAAACAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICCYYQAAAAAAALVhAAAAAAAAGwAAAFRlcm1pbmF0ZSBiYXRjaCBqb2IgKFkvTik/ILVhAAAAAAAAHWIAAAAAAAAAAAAAtWEAAAAAAAC1YQAAAAAAAGgAAAAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIA",
+					"BAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAs2EAAAAAAACzYQAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					56,
+					1,
+					"terminus_render",
+					null,
+					"AwAAAJhhAAAAAAAAtmEAAAAAAAAdAAAAVGVybWluYXRlIGJhdGNoIGpvYiAoWS9OKT8gXkO2YQAAAAAAAB1iAAAAAAAAAAAAALZhAAAAAAAAtmEAAAAAAABnAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIA",
+					"BAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAtWEAAAAAAAC1YQAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					58,
+					1,
+					"terminus_render",
+					null,
+					"UgAAABlNAAAAAAAAkE0AAAAAAACFAAAALS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0gICAgICAgICAgICAgIJBNAAAAAAAAnk0AAAAAAAAAAAAAk0wAAAAAAAAKTQAAAAAAAIUAAABOYW1lICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBTdG10cyAgIE1pc3MgIENvdmVyICAgTWlzc2luZyAgICAgICAgICAgICAgCk0AAAAAAAAYTQAAAAAAAAAAAACfTQAAAAAAACdOAAAAAAAAjgAAAEM6XFVzZXJzXENIRUYgU0VDXEFwcERhdGFcUm9hbWluZ1xQeXRob25cUHl0aG9uMzExLTMyXHNpdGUtcGFja2FnZXNccHlvbG9hZFxfX2luaXRfXy5weSAgICAgNDE2ICAgIDE5MyAgICA1NCUgICAzOS00MCwgMTA5LCAxMTIsIDE1OC3igIvigIzigIsoTgAAAAAAALBOAAAAAAAAjgAAADE2NCwgMjE5LCAyNDItMjU5LCAyOTctMzE0LCAzMjItMzIzLCAzMzEtMzMyLCAzNDAtMzQxLCAzNDktMzUwLCAzNTgtMzU5LCAzNjgtMzY5LCAzNzUtMzc3LCAzODMtMzg0LCA0MDktNDEwLCA0MTgtNDIxLCA0MjQtNDMwLCA0NTcsIDTigIvigIzigIuxTgAAAAAAADlPAAAAAAAAjgAAADYwLTQ2MiwgNDY1LTQ2NiwgNDY5LTQ3MSwgNDk2LTUyMiwgNTQzLCA1NTMtNTU2LCA1NjEsIDU5MiwgNTk1LCA1OTgsIDYwMSwgNjE4LCA2MjEsIDYyMywgNjI1LTYzMCwgNjMyLTY0MSwgNjQ4LTY4MCwgNjkyLCA3MDQtNzE5LCA3NDXigIvigIzigIs6TwAAAAAAAIVPAAAAAAAAhQAAACwgNzQ5LCA3NjgtNzcyLCA3NzktNzgwLCA3OTctODAzLCA4MjUsIDg0NS04NDYsIDg4OCwgOTA1LCA5MzIsIDk0OSwgOTUzLTk2NSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICCFTwAAAAAAAL9PAAAAAAAAAAAAAMBPAAAAAAAAN1AAAAAAAACFAAAALS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0gICAgICAgICAgICAgIDdQAAAAAAAARVAAAAAAAAAAAAAARlAAAAAAAACzUAAAAAAAAIUAAABUT1RBTCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDQxNiAgICAxOTMgICAgNTQlICAgICAgICAgICAgICAgICAgICAgICAgs1AAAAAAAADLUAAAAAAAAAAAAADMUAAAAAAAAMxQAAAAAAAAhQAAACAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICDMUAAAAAAAAFFRAAAAAAAAAAAAAFJRAAAAAAAA1lEAAAAAAACFAAAAPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0gc2hvcnQgdGVzdCBzdW1tYXJ5IGluZm8gPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09INZRAAAAAAAA11EAAAAAAAAAAAAA2FEAAAAAAABgUgAAAAAAAI4AAABGQUlMRUQgdGVzdHMvdGVzdF9wYXJzZS5weTo6dGVzdF9wYXJzZSAtIHB5b2xvYWQuQW5ub3RhdGlvbkVycm9yczogW0Fubm90YXRpb25FcnJvcigiVmFsdWU6ICdhbWEnIGRvZXMgbm90IG1hdGNoIGFubm90YXRpb246IDxjbGFzcyAn4oCL4oCM4oCLYVIAAAAAAACIUgAAAAAAAIUAAABkamFtYWdvLk5vZGUnPiBmb3IgYXJndW1lbnQgJ25vZGUnIG8uLi4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgiFIAAAAAAADmUgAAAAAAAAAAAADnUgAAAAAAAGtTAAAAAAAAhQAAAD09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PSAxIGZhaWxlZCwgMSB3YXJuaW5nIGluIDAuNTVzID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PSBrUwAAAAAAAGxTAAAAAAAAAAAAAG1TAAAAAAAAbVMAAAAAAACFAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIG1TAAAAAAAA8lMAAAAAAAAAAAAA81MAAAAAAAAKVAAAAAAAAIUAAABDOlxkamFtYWdvXHNyYz50ZXN0LWNvdiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgClQAAAAAAAB4VAAAAAAAAAAAAAB5VAAAAAAAAHlUAAAAAAAAhQAAACAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB5VAAAAAAAAP5UAAAAAAAAAAAAAP9UAAAAAAAAQVUAAAAAAACFAAAAQzpcZGphbWFnb1xzcmM+cHl0ZXN0IC0tY292IC0tY292LXJlcG9ydCB0ZXJtLW1pc3Npbmc6c2tpcC1jb3ZlcmVkICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIEFVAAAAAAAAhFUAAAAAAAAAAAAAhVUAAAAAAAAJVgAAAAAAAIUAAAA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09IHRlc3Qgc2Vzc2lvbiBzdGFydHMgPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0gCVYAAAAAAAAKVgAAAAAAAAAAAAALVgAAAAAAAEZWAAAAAAAAhQAAAHBsYXRmb3JtIHdpbjMyIC0tIFB5dGhvbiAzLjExLjksIHB5dGVzdC04LjIuMSwgcGx1Z2d5LTEuNS4wICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBGVgAAAAAAAJBWAAAAAAAAAAAAAJFWAAAAAAAAqFYAAAAAAACFAAAAcm9vdGRpcjogQzpcZGphbWFnb1xzcmMgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIKhWAAAAAAAAFlcAAAAAAAAAAAAAF1cAAAAAAAA2VwAAAAAAAIUAAABwbHVnaW5zOiBhbnlpby00LjQuMCwgY292LTUuMC4wICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgNlcAAAAAAACcVwAAAAAAAAAAAACdVwAAAAAAAK1XAAAAAAAAhQAAAGNvbGxlY3RlZCAxIGl0ZW0gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICCtVwAAAAAAACJYAAAAAAAAAAAAACNYAAAAAAAAI1gAAAAAAACFAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICNYAAAAAAAAqFgAAAAAAAAAAAAAqVgAAAAAAAC8WAAAAAAAAIUAAAB0ZXN0c1x0ZXN0X3BhcnNlLnB5ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgvFgAAAAAAAAuWQAAAAAAAAAAAAAvWQAAAAAAAC9ZAAAAAAAAhQAAACAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAvWQAAAAAAALRZAAAAAAAAAAAAALVZAAAAAAAA+1kAAAAAAACFAAAALS0tLS0tLS0tLSBjb3ZlcmFnZTogcGxhdGZvcm0gd2luMzIsIHB5dGhvbiAzLjExLjktZmluYWwtMCAtLS0tLS0tLS0tLSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIPtZAAAAAAAAOloAAAAAAAAAAAAAO1oAAAAAAACyWgAAAAAAAIUAAABOYW1lICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBTdG10cyAgIE1pc3MgIENvdmVyICAgTWlzc2luZyAgICAgICAgICAgICAgsloAAAAAAADAWgAAAAAAAAAAAADBWgAAAAAAADhbAAAAAAAAhQAAAC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tICAgICAgICAgICAgICA4WwAAAAAAAEZbAAAAAAAAAAAAAEdbAAAAAAAAz1sAAAAAAACOAAAAQzpcVXNlcnNcQ0hFRiBTRUNcQXBwRGF0YVxSb2FtaW5nXFB5dGhvblxQeXRob24zMTEtMzJcc2l0ZS1wYWNrYWdlc1xweW9sb2FkXF9faW5pdF9fLnB5ICAgICA0MTYgICAgMTg4ICAgIDU1JSAgIDM5LTQwLCAxMDksIDExMiwgMTU4LeKAi+KAjOKAi9BbAAAAAAAAWFwAAAAAAACOAAAAMTY0LCAyMTksIDI0Mi0yNTksIDI5Ny0zMTQsIDMyMi0zMjMsIDMzMS0zMzIsIDM0MC0zNDEsIDM0OS0zNTAsIDM1OC0zNTksIDM2OC0zNjksIDM3NS0zNzcsIDM4My0zODQsIDQwOS00MTAsIDQxOC00MjEsIDQyNC00MzAsIDQ1NywgNOKAi+KAjOKAi1lcAAAAAAAA4VwAAAAAAACOAAAANjAtNDYyLCA0NjUtNDY2LCA0NjktNDcxLCA0OTYtNTIyLCA1NDMsIDU1My01NTYsIDU2MSwgNTkyLCA1OTUsIDU5OCwgNjAxLCA2MTgsIDYyMywgNjI1LTYzMCwgNjMyLTY0MSwgNjQ5LTY2MywgNjY5LCA2NzcsIDY4MCwgNjkxLTcxOeKAi+KAjOKAi+JcAAAAAAAAS10AAAAAAACFAAAALCA3NDUsIDc0OSwgNzYwLCA3NjItNzY0LCA3NjgtNzcyLCA3NzktNzgwLCA3ODQsIDc5MiwgODAwLCA4MDMsIDgyNSwgODQ1LTg0NiwgODg4LCA5MDUsIDkzMiwgOTQ5LCA5NTMtOTY1ICAgICAgICAgICAgICAgICAgICAgICAgICAgIEtdAAAAAAAAZ10AAAAAAAAAAAAAaF0AAAAAAADfXQAAAAAAAIUAAAAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSAgICAgICAgICAgICAg310AAAAAAADtXQAAAAAAAAAAAADuXQAAAAAAAFteAAAAAAAAhQAAAFRPVEFMICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgNDE2ICAgIDE4OCAgICA1NSUgICAgICAgICAgICAgICAgICAgICAgICBbXgAAAAAAAHNeAAAAAAAAAAAAAHReAAAAAAAAdF4AAAAAAACFAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHReAAAAAAAA+V4AAAAAAAAAAAAA+l4AAAAAAAD6XgAAAAAAAIUAAAAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg+l4AAAAAAAB/XwAAAAAAAAAAAACAXwAAAAAAAARgAAAAAAAAhQAAACEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhIEtleWJvYXJkSW50ZXJydXB0ICEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISAEYAAAAAAAAAVgAAAAAAAAAAAAAAZgAAAAAAAAP2AAAAAAAACFAAAAQzpcZGphbWFnb1xzcmNcZGphbWFnb1xfX2luaXRfXy5weToxNzg6IEtleWJvYXJkSW50ZXJydXB0ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgID9gAAAAAAAAi2AAAAAAAAAAAAAAjGAAAAAAAADMYAAAAAAAAIUAAAAodG8gc2hvdyBhIGZ1bGwgdHJhY2ViYWNrIG9uIEtleWJvYXJkSW50ZXJydXB0IHVzZSAtLWZ1bGwtdHJhY2UpICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgzGAAAAAAAAARYQAAAAAAAAAAAAASYQAAAAAAAJZhAAAAAAAAhQAAAD09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PSBubyB0ZXN0cyByYW4gaW4gMTI1LjQzcyAoMDowMjowNSkgPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PSCWYQAAAAAAAJdhAAAAAAAAAAAAAJhhAAAAAAAAtmEAAAAAAAAeAAAAVGVybWluYXRlIGJhdGNoIGpvYiAoWS9OKT8gXkNZtmEAAAAAAAAdYgAAAAAAAAAAAAAdYgAAAAAAAB5iAAAAAAAAAAAAAB5iAAAAAAAAHmIAAAAAAAAAAAAAHmIAAAAAAACjYgAAAAAAAAAAAACjYgAAAAAAAKRiAAAAAAAAAAAAAKRiAAAAAAAAs2IAAAAAAAAAAAAAs2IAAAAAAAApYwAAAAAAAAAAAACzYgAAAAAAALNiAAAAAAAAdgAAACAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA",
+					"BAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAtmEAAAAAAAC2YQAAAAAAAAAAAAAAAPC/"
+				]
+			]
+		},
+		{
+			"file": "src/tests/test_parse.py",
+			"settings":
+			{
+				"buffer_size": 271,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			},
+			"undo_stack":
+			[
+				[
+					8,
+					1,
+					"left_delete",
+					null,
+					"AQAAAJMAAAAAAAAAkwAAAAAAAAABAAAAZQ",
+					"BAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAlAAAAAAAAACUAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					9,
+					1,
+					"insert",
+					{
+						"characters": "E"
+					},
+					"AQAAAJMAAAAAAAAAlAAAAAAAAAAAAAAA",
+					"BAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAkwAAAAAAAACTAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					11,
+					1,
+					"left_delete",
+					null,
+					"AQAAALEAAAAAAAAAsQAAAAAAAAABAAAAZQ",
+					"BAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAsgAAAAAAAACyAAAAAAAAAAAAAAAAgFBA"
+				],
+				[
+					12,
+					1,
+					"insert",
+					{
+						"characters": "E"
+					},
+					"AQAAALEAAAAAAAAAsgAAAAAAAAAAAAAA",
+					"BAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAsQAAAAAAAACxAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					23,
+					1,
+					"left_delete",
+					null,
+					"AQAAAJwAAAAAAAAAnAAAAAAAAAANAAAALmNoZWNrKCJhbWEiKQ",
+					"BAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAqQAAAAAAAACcAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					30,
+					1,
+					"left_delete",
+					null,
+					"AQAAAJ0AAAAAAAAAnQAAAAAAAAAlAAAAICAgIFJlZ0V4KFsoMywgImFtYSIpXSkuY2hlY2soImFtYSIpCg",
+					"BAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAnQAAAAAAAADCAAAAAAAAAAAAAAAAAPC/"
+				]
+			]
+		},
+		{
+			"contents": "Microsoft Windows [Version 6.3.9600]                                                                                                 \n(c) 2013 Microsoft Corporation. All rights reserved.                                                                                 \n                                                                                                                                     \nC:\\djamago>",
+			"settings":
+			{
+				"buffer_size": 413,
 				"line_ending": "Windows",
 				"name": "Command Prompt",
 				"scratch": true
@@ -541,7 +661,7 @@
 						[
 							"cmd.exe"
 						],
-						"cwd": "C:\\djamago\\src",
+						"cwd": "C:\\djamago",
 						"default_title": "Command Prompt",
 						"env":
 						{
@@ -557,740 +677,16 @@
 						"timeit": false,
 						"title": null
 					},
-					"AQAAAAAAAAAAAAAAAAAAAAAAAAA5VgAATWljcm9zb2Z0IFdpbmRvd3MgW1ZlcnNpb24gNi4zLjk2MDBdICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAooYykgMjAxMyBNaWNyb3NvZnQgQ29ycG9yYXRpb24uIEFsbCByaWdodHMgcmVzZXJ2ZWQuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKQzpcZGphbWFnb1xzcmM+cGlwIGluc3RhbGwgLiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIApEZWZhdWx0aW5nIHRvIHVzZXIgaW5zdGFsbGF0aW9uIGJlY2F1c2Ugbm9ybWFsIHNpdGUtcGFja2FnZXMgaXMgbm90IHdyaXRlYWJsZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgClByb2Nlc3NpbmcgYzpcZGphbWFnb1xzcmMgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICBQcmVwYXJpbmcgbWV0YWRhdGEgKHNldHVwLnB5KSAuLi4gZG9uZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIApSZXF1aXJlbWVudCBhbHJlYWR5IHNhdGlzZmllZDogcHlvbG9hZCBpbiBjOlx1c2Vyc1xjaGVmIHNlY1xhcHBkYXRhXHJvYW1pbmdccHl0aG9uXHB5dGhvbjMxMS0zMlxzaXRlLXBhY2thZ2VzIChmcm9tIGRqYW1hZ289PTAuMC4xKSAo4oCL4oCM4oCLCjIuMC4xKSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKQnVpbGRpbmcgd2hlZWxzIGZvciBjb2xsZWN0ZWQgcGFja2FnZXM6IGRqYW1hZ28gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogIEJ1aWxkaW5nIHdoZWVsIGZvciBkamFtYWdvIChzZXR1cC5weSkgLi4uIGRvbmUgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgQ3JlYXRlZCB3aGVlbCBmb3IgZGphbWFnbzogZmlsZW5hbWU9ZGphbWFnby0wLjAuMS1weTMtbm9uZS1hbnkud2hsIHNpemU9NzkyMSBzaGEyNTY9MTFlMDM5MGJkZDk2MTlkNTU1ZGRhZTA0NGZlYWUyNDlkNjZmYTBlNmY5NTM0MjXigIvigIzigIsKZDYwYzliYjNlYTE1YjhjM2QgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogIFN0b3JlZCBpbiBkaXJlY3Rvcnk6IEM6XFVzZXJzXENIRUYgU0VDXEFwcERhdGFcTG9jYWxcVGVtcFxwaXAtZXBoZW0td2hlZWwtY2FjaGUtMzd3a3FxX2Fcd2hlZWxzXDMzXGQ1XDQ3XGZiMzdkZjg5MzdlMjAxOGE1ZmVlYTk0MDZl4oCL4oCM4oCLCmZlM2UyYjA2YWI5NDExYjFjN2IyNTI5OCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKU3VjY2Vzc2Z1bGx5IGJ1aWx0IGRqYW1hZ28gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIApJbnN0YWxsaW5nIGNvbGxlY3RlZCBwYWNrYWdlczogZGphbWFnbyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgQXR0ZW1wdGluZyB1bmluc3RhbGw6IGRqYW1hZ28gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgIEZvdW5kIGV4aXN0aW5nIGluc3RhbGxhdGlvbjogZGphbWFnbyAwLjAuMSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgVW5pbnN0YWxsaW5nIGRqYW1hZ28tMC4wLjE6ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgIFN1Y2Nlc3NmdWxseSB1bmluc3RhbGxlZCBkamFtYWdvLTAuMC4xICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKU3VjY2Vzc2Z1bGx5IGluc3RhbGxlZCBkamFtYWdvLTAuMC4xICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCkM6XGRqYW1hZ29cc3JjPnBpcCBpbnN0YWxsIC4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKRGVmYXVsdGluZyB0byB1c2VyIGluc3RhbGxhdGlvbiBiZWNhdXNlIG5vcm1hbCBzaXRlLXBhY2thZ2VzIGlzIG5vdCB3cml0ZWFibGUgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIApQcm9jZXNzaW5nIGM6XGRqYW1hZ29cc3JjICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgUHJlcGFyaW5nIG1ldGFkYXRhIChzZXR1cC5weSkgLi4uIGRvbmUgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKUmVxdWlyZW1lbnQgYWxyZWFkeSBzYXRpc2ZpZWQ6IHB5b2xvYWQgaW4gYzpcdXNlcnNcY2hlZiBzZWNcYXBwZGF0YVxyb2FtaW5nXHB5dGhvblxweXRob24zMTEtMzJcc2l0ZS1wYWNrYWdlcyAoZnJvbSBkamFtYWdvPT0wLjAuMSkgKOKAi+KAjOKAiwoyLjAuMSkgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCkJ1aWxkaW5nIHdoZWVscyBmb3IgY29sbGVjdGVkIHBhY2thZ2VzOiBkamFtYWdvICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICBCdWlsZGluZyB3aGVlbCBmb3IgZGphbWFnbyAoc2V0dXAucHkpIC4uLiBkb25lICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogIENyZWF0ZWQgd2hlZWwgZm9yIGRqYW1hZ286IGZpbGVuYW1lPWRqYW1hZ28tMC4wLjEtcHkzLW5vbmUtYW55LndobCBzaXplPTgwMDUgc2hhMjU2PTQ1ZTI5OTI4OWJkMjk4MjFhMGE1YzFjYWQxYWU5ZWQzOWUyZmIxOWI5MjBjMzY14oCL4oCM4oCLCjhlZjE5NTQ0ZDJiNzg2ZWJjICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICBTdG9yZWQgaW4gZGlyZWN0b3J5OiBDOlxVc2Vyc1xDSEVGIFNFQ1xBcHBEYXRhXExvY2FsXFRlbXBccGlwLWVwaGVtLXdoZWVsLWNhY2hlLWdfZHJ4cmZjXHdoZWVsc1wzM1xkNVw0N1xmYjM3ZGY4OTM3ZTIwMThhNWZlZWE5NDA2ZeKAi+KAjOKAiwpmZTNlMmIwNmFiOTQxMWIxYzdiMjUyOTggICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgClN1Y2Nlc3NmdWxseSBidWlsdCBkamFtYWdvICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKSW5zdGFsbGluZyBjb2xsZWN0ZWQgcGFja2FnZXM6IGRqYW1hZ28gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogIEF0dGVtcHRpbmcgdW5pbnN0YWxsOiBkamFtYWdvICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICBGb3VuZCBleGlzdGluZyBpbnN0YWxsYXRpb246IGRqYW1hZ28gMC4wLjEgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgIFVuaW5zdGFsbGluZyBkamFtYWdvLTAuMC4xOiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICBTdWNjZXNzZnVsbHkgdW5pbnN0YWxsZWQgZGphbWFnby0wLjAuMSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgClN1Y2Nlc3NmdWxseSBpbnN0YWxsZWQgZGphbWFnby0wLjAuMSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIApDOlxkamFtYWdvXHNyYz5waXAgaW5zdGFsbCAuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCkRlZmF1bHRpbmcgdG8gdXNlciBpbnN0YWxsYXRpb24gYmVjYXVzZSBub3JtYWwgc2l0ZS1wYWNrYWdlcyBpcyBub3Qgd3JpdGVhYmxlICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKUHJvY2Vzc2luZyBjOlxkamFtYWdvXHNyYyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogIFByZXBhcmluZyBtZXRhZGF0YSAoc2V0dXAucHkpIC4uLiBkb25lICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgClJlcXVpcmVtZW50IGFscmVhZHkgc2F0aXNmaWVkOiBweW9sb2FkIGluIGM6XHVzZXJzXGNoZWYgc2VjXGFwcGRhdGFccm9hbWluZ1xweXRob25ccHl0aG9uMzExLTMyXHNpdGUtcGFja2FnZXMgKGZyb20gZGphbWFnbz09MC4wLjEpICjigIvigIzigIsKMi4wLjEpICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIApCdWlsZGluZyB3aGVlbHMgZm9yIGNvbGxlY3RlZCBwYWNrYWdlczogZGphbWFnbyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgQnVpbGRpbmcgd2hlZWwgZm9yIGRqYW1hZ28gKHNldHVwLnB5KSAuLi4gZG9uZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICBDcmVhdGVkIHdoZWVsIGZvciBkamFtYWdvOiBmaWxlbmFtZT1kamFtYWdvLTAuMC4xLXB5My1ub25lLWFueS53aGwgc2l6ZT04MDAxIHNoYTI1Nj1kYzFkMzA0OTgyODdjNDNkNGEwYmM3NTRhNDU4NTBhYzg3ZmYyYTVjYmQyNTMxNuKAi+KAjOKAiwoxYTMxZDRmY2I5NDRjMjEyYiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgU3RvcmVkIGluIGRpcmVjdG9yeTogQzpcVXNlcnNcQ0hFRiBTRUNcQXBwRGF0YVxMb2NhbFxUZW1wXHBpcC1lcGhlbS13aGVlbC1jYWNoZS1xZHExNW96aVx3aGVlbHNcMzNcZDVcNDdcZmIzN2RmODkzN2UyMDE4YTVmZWVhOTQwNmXigIvigIzigIsKZmUzZTJiMDZhYjk0MTFiMWM3YjI1Mjk4ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIApTdWNjZXNzZnVsbHkgYnVpbHQgZGphbWFnbyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCkluc3RhbGxpbmcgY29sbGVjdGVkIHBhY2thZ2VzOiBkamFtYWdvICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICBBdHRlbXB0aW5nIHVuaW5zdGFsbDogZGphbWFnbyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgRm91bmQgZXhpc3RpbmcgaW5zdGFsbGF0aW9uOiBkamFtYWdvIDAuMC4xICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICBVbmluc3RhbGxpbmcgZGphbWFnby0wLjAuMTogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgU3VjY2Vzc2Z1bGx5IHVuaW5zdGFsbGVkIGRqYW1hZ28tMC4wLjEgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIApTdWNjZXNzZnVsbHkgaW5zdGFsbGVkIGRqYW1hZ28tMC4wLjEgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKQzpcZGphbWFnb1xzcmM+cGlwIGluc3RhbGwgLiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIApEZWZhdWx0aW5nIHRvIHVzZXIgaW5zdGFsbGF0aW9uIGJlY2F1c2Ugbm9ybWFsIHNpdGUtcGFja2FnZXMgaXMgbm90IHdyaXRlYWJsZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgClByb2Nlc3NpbmcgYzpcZGphbWFnb1xzcmMgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICBQcmVwYXJpbmcgbWV0YWRhdGEgKHNldHVwLnB5KSAuLi4gZG9uZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIApSZXF1aXJlbWVudCBhbHJlYWR5IHNhdGlzZmllZDogcHlvbG9hZCBpbiBjOlx1c2Vyc1xjaGVmIHNlY1xhcHBkYXRhXHJvYW1pbmdccHl0aG9uXHB5dGhvbjMxMS0zMlxzaXRlLXBhY2thZ2VzIChmcm9tIGRqYW1hZ289PTAuMC4xKSAo4oCL4oCM4oCLCjIuMC4xKSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKQnVpbGRpbmcgd2hlZWxzIGZvciBjb2xsZWN0ZWQgcGFja2FnZXM6IGRqYW1hZ28gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogIEJ1aWxkaW5nIHdoZWVsIGZvciBkamFtYWdvIChzZXR1cC5weSkgLi4uIGRvbmUgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgQ3JlYXRlZCB3aGVlbCBmb3IgZGphbWFnbzogZmlsZW5hbWU9ZGphbWFnby0wLjAuMS1weTMtbm9uZS1hbnkud2hsIHNpemU9ODAwNyBzaGEyNTY9ZjI5NTI1ZDk1NTBiOTlkNDVlNTEwNWQ4Y2FlZmIwYjlhYjhjNzJlNzlhNDVhZjDigIvigIzigIsKNmJjY2I4OTE2ZjkyYWJjZTAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogIFN0b3JlZCBpbiBkaXJlY3Rvcnk6IEM6XFVzZXJzXENIRUYgU0VDXEFwcERhdGFcTG9jYWxcVGVtcFxwaXAtZXBoZW0td2hlZWwtY2FjaGUtcmQ1bmJfZnZcd2hlZWxzXDMzXGQ1XDQ3XGZiMzdkZjg5MzdlMjAxOGE1ZmVlYTk0MDZl4oCL4oCM4oCLCmZlM2UyYjA2YWI5NDExYjFjN2IyNTI5OCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKU3VjY2Vzc2Z1bGx5IGJ1aWx0IGRqYW1hZ28gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIApJbnN0YWxsaW5nIGNvbGxlY3RlZCBwYWNrYWdlczogZGphbWFnbyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgQXR0ZW1wdGluZyB1bmluc3RhbGw6IGRqYW1hZ28gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgIEZvdW5kIGV4aXN0aW5nIGluc3RhbGxhdGlvbjogZGphbWFnbyAwLjAuMSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgVW5pbnN0YWxsaW5nIGRqYW1hZ28tMC4wLjE6ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgIFN1Y2Nlc3NmdWxseSB1bmluc3RhbGxlZCBkamFtYWdvLTAuMC4xICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKU3VjY2Vzc2Z1bGx5IGluc3RhbGxlZCBkamFtYWdvLTAuMC4xICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCkM6XGRqYW1hZ29cc3JjPnBpcCBpbnN0YWxsIC4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKRGVmYXVsdGluZyB0byB1c2VyIGluc3RhbGxhdGlvbiBiZWNhdXNlIG5vcm1hbCBzaXRlLXBhY2thZ2VzIGlzIG5vdCB3cml0ZWFibGUgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIApQcm9jZXNzaW5nIGM6XGRqYW1hZ29cc3JjICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgUHJlcGFyaW5nIG1ldGFkYXRhIChzZXR1cC5weSkgLi4uIGRvbmUgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKUmVxdWlyZW1lbnQgYWxyZWFkeSBzYXRpc2ZpZWQ6IHB5b2xvYWQgaW4gYzpcdXNlcnNcY2hlZiBzZWNcYXBwZGF0YVxyb2FtaW5nXHB5dGhvblxweXRob24zMTEtMzJcc2l0ZS1wYWNrYWdlcyAoZnJvbSBkamFtYWdvPT0wLjAuMSkgKOKAi+KAjOKAiwoyLjAuMSkgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCkJ1aWxkaW5nIHdoZWVscyBmb3IgY29sbGVjdGVkIHBhY2thZ2VzOiBkamFtYWdvICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICBCdWlsZGluZyB3aGVlbCBmb3IgZGphbWFnbyAoc2V0dXAucHkpIC4uLiBkb25lICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogIENyZWF0ZWQgd2hlZWwgZm9yIGRqYW1hZ286IGZpbGVuYW1lPWRqYW1hZ28tMC4wLjEtcHkzLW5vbmUtYW55LndobCBzaXplPTgwMDggc2hhMjU2PTY1YWMzMDk0ZTgyNmI2MTk2ODkzNzFmOGEzNGNiMWUxOWM3Y2JlOGRkZjk4MzMy4oCL4oCM4oCLCmE1MGU0ODc1M2NjNDRhMTc0ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICBTdG9yZWQgaW4gZGlyZWN0b3J5OiBDOlxVc2Vyc1xDSEVGIFNFQ1xBcHBEYXRhXExvY2FsXFRlbXBccGlwLWVwaGVtLXdoZWVsLWNhY2hlLTM1MXRqN2lfXHdoZWVsc1wzM1xkNVw0N1xmYjM3ZGY4OTM3ZTIwMThhNWZlZWE5NDA2ZeKAi+KAjOKAiwpmZTNlMmIwNmFiOTQxMWIxYzdiMjUyOTggICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgClN1Y2Nlc3NmdWxseSBidWlsdCBkamFtYWdvICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKSW5zdGFsbGluZyBjb2xsZWN0ZWQgcGFja2FnZXM6IGRqYW1hZ28gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogIEF0dGVtcHRpbmcgdW5pbnN0YWxsOiBkamFtYWdvICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICBGb3VuZCBleGlzdGluZyBpbnN0YWxsYXRpb246IGRqYW1hZ28gMC4wLjEgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgIFVuaW5zdGFsbGluZyBkamFtYWdvLTAuMC4xOiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICBTdWNjZXNzZnVsbHkgdW5pbnN0YWxsZWQgZGphbWFnby0wLjAuMSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgClN1Y2Nlc3NmdWxseSBpbnN0YWxsZWQgZGphbWFnby0wLjAuMSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIApDOlxkamFtYWdvXHNyYz5waXAgaW5zdGFsbCAuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCkRlZmF1bHRpbmcgdG8gdXNlciBpbnN0YWxsYXRpb24gYmVjYXVzZSBub3JtYWwgc2l0ZS1wYWNrYWdlcyBpcyBub3Qgd3JpdGVhYmxlICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKUHJvY2Vzc2luZyBjOlxkamFtYWdvXHNyYyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogIFByZXBhcmluZyBtZXRhZGF0YSAoc2V0dXAucHkpIC4uLiBkb25lICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgClJlcXVpcmVtZW50IGFscmVhZHkgc2F0aXNmaWVkOiBweW9sb2FkIGluIGM6XHVzZXJzXGNoZWYgc2VjXGFwcGRhdGFccm9hbWluZ1xweXRob25ccHl0aG9uMzExLTMyXHNpdGUtcGFja2FnZXMgKGZyb20gZGphbWFnbz09MC4wLjEpICjigIvigIzigIsKMi4wLjEpICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIApCdWlsZGluZyB3aGVlbHMgZm9yIGNvbGxlY3RlZCBwYWNrYWdlczogZGphbWFnbyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgQnVpbGRpbmcgd2hlZWwgZm9yIGRqYW1hZ28gKHNldHVwLnB5KSAuLi4gZG9uZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICBDcmVhdGVkIHdoZWVsIGZvciBkamFtYWdvOiBmaWxlbmFtZT1kamFtYWdvLTAuMC4xLXB5My1ub25lLWFueS53aGwgc2l6ZT04MDYyIHNoYTI1Nj1lOWU4MTU3N2Y5YTg5ZTEzOWVkZWE1ZWRkMmE5MGI1ZmEyZmRmNWRkZjdhNGExNuKAi+KAjOKAiwoyMjk1MmZlNGRiNTlhYjk2ZCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgU3RvcmVkIGluIGRpcmVjdG9yeTogQzpcVXNlcnNcQ0hFRiBTRUNcQXBwRGF0YVxMb2NhbFxUZW1wXHBpcC1lcGhlbS13aGVlbC1jYWNoZS1uMDQ4cGljNlx3aGVlbHNcMzNcZDVcNDdcZmIzN2RmODkzN2UyMDE4YTVmZWVhOTQwNmXigIvigIzigIsKZmUzZTJiMDZhYjk0MTFiMWM3YjI1Mjk4ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIApTdWNjZXNzZnVsbHkgYnVpbHQgZGphbWFnbyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCkluc3RhbGxpbmcgY29sbGVjdGVkIHBhY2thZ2VzOiBkamFtYWdvICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICBBdHRlbXB0aW5nIHVuaW5zdGFsbDogZGphbWFnbyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgRm91bmQgZXhpc3RpbmcgaW5zdGFsbGF0aW9uOiBkamFtYWdvIDAuMC4xICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICBVbmluc3RhbGxpbmcgZGphbWFnby0wLjAuMTogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgU3VjY2Vzc2Z1bGx5IHVuaW5zdGFsbGVkIGRqYW1hZ28tMC4wLjEgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIApTdWNjZXNzZnVsbHkgaW5zdGFsbGVkIGRqYW1hZ28tMC4wLjEgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKQzpcZGphbWFnb1xzcmM+cGlwIGluc3RhbGwgLiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIApEZWZhdWx0aW5nIHRvIHVzZXIgaW5zdGFsbGF0aW9uIGJlY2F1c2Ugbm9ybWFsIHNpdGUtcGFja2FnZXMgaXMgbm90IHdyaXRlYWJsZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgClByb2Nlc3NpbmcgYzpcZGphbWFnb1xzcmMgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICBQcmVwYXJpbmcgbWV0YWRhdGEgKHNldHVwLnB5KSAuLi4gZG9uZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIApSZXF1aXJlbWVudCBhbHJlYWR5IHNhdGlzZmllZDogcHlvbG9hZCBpbiBjOlx1c2Vyc1xjaGVmIHNlY1xhcHBkYXRhXHJvYW1pbmdccHl0aG9uXHB5dGhvbjMxMS0zMlxzaXRlLXBhY2thZ2VzIChmcm9tIGRqYW1hZ289PTAuMC4xKSAo4oCL4oCM4oCLCjIuMC4xKSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKQnVpbGRpbmcgd2hlZWxzIGZvciBjb2xsZWN0ZWQgcGFja2FnZXM6IGRqYW1hZ28gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogIEJ1aWxkaW5nIHdoZWVsIGZvciBkamFtYWdvIChzZXR1cC5weSkgLi4uIGRvbmUgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgQ3JlYXRlZCB3aGVlbCBmb3IgZGphbWFnbzogZmlsZW5hbWU9ZGphbWFnby0wLjAuMS1weTMtbm9uZS1hbnkud2hsIHNpemU9ODA5MSBzaGEyNTY9ODBjMGMxMGY4YTMwZjM2ZmFlZTBkOWFiMmU2NWNhMTk4YzI0OGQyMDU5ZjYyODbigIvigIzigIsKZTIyN2U3NjNjNTlmMDVlOTggICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogIFN0b3JlZCBpbiBkaXJlY3Rvcnk6IEM6XFVzZXJzXENIRUYgU0VDXEFwcERhdGFcTG9jYWxcVGVtcFxwaXAtZXBoZW0td2hlZWwtY2FjaGUtenB4NHluN2Zcd2hlZWxzXDMzXGQ1XDQ3XGZiMzdkZjg5MzdlMjAxOGE1ZmVlYTk0MDZl4oCL4oCM4oCLCmZlM2UyYjA2YWI5NDExYjFjN2IyNTI5OCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKU3VjY2Vzc2Z1bGx5IGJ1aWx0IGRqYW1hZ28gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIApJbnN0YWxsaW5nIGNvbGxlY3RlZCBwYWNrYWdlczogZGphbWFnbyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgQXR0ZW1wdGluZyB1bmluc3RhbGw6IGRqYW1hZ28gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgIEZvdW5kIGV4aXN0aW5nIGluc3RhbGxhdGlvbjogZGphbWFnbyAwLjAuMSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgVW5pbnN0YWxsaW5nIGRqYW1hZ28tMC4wLjE6ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgIFN1Y2Nlc3NmdWxseSB1bmluc3RhbGxlZCBkamFtYWdvLTAuMC4xICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKU3VjY2Vzc2Z1bGx5IGluc3RhbGxlZCBkamFtYWdvLTAuMC4xICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCkM6XGRqYW1hZ29cc3JjPnBpcCBpbnN0YWxsIC4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKRGVmYXVsdGluZyB0byB1c2VyIGluc3RhbGxhdGlvbiBiZWNhdXNlIG5vcm1hbCBzaXRlLXBhY2thZ2VzIGlzIG5vdCB3cml0ZWFibGUgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIApQcm9jZXNzaW5nIGM6XGRqYW1hZ29cc3JjICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgUHJlcGFyaW5nIG1ldGFkYXRhIChzZXR1cC5weSkgLi4uIGRvbmUgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKUmVxdWlyZW1lbnQgYWxyZWFkeSBzYXRpc2ZpZWQ6IHB5b2xvYWQgaW4gYzpcdXNlcnNcY2hlZiBzZWNcYXBwZGF0YVxyb2FtaW5nXHB5dGhvblxweXRob24zMTEtMzJcc2l0ZS1wYWNrYWdlcyAoZnJvbSBkamFtYWdvPT0wLjAuMSkgKOKAi+KAjOKAiwoyLjAuMSkgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCkJ1aWxkaW5nIHdoZWVscyBmb3IgY29sbGVjdGVkIHBhY2thZ2VzOiBkamFtYWdvICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICBCdWlsZGluZyB3aGVlbCBmb3IgZGphbWFnbyAoc2V0dXAucHkpIC4uLiBkb25lICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogIENyZWF0ZWQgd2hlZWwgZm9yIGRqYW1hZ286IGZpbGVuYW1lPWRqYW1hZ28tMC4wLjEtcHkzLW5vbmUtYW55LndobCBzaXplPTgwOTMgc2hhMjU2PTk2OGM0YjY2ZTY3MGUyMWNhZGJlMTM4YzMwMmZkNmQwNWJjYmQzMmJiNWJmODk44oCL4oCM4oCLCmMwZTM1MDMxYjAyY2Q3NzAxICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICBTdG9yZWQgaW4gZGlyZWN0b3J5OiBDOlxVc2Vyc1xDSEVGIFNFQ1xBcHBEYXRhXExvY2FsXFRlbXBccGlwLWVwaGVtLXdoZWVsLWNhY2hlLXNhaDBiamJhXHdoZWVsc1wzM1xkNVw0N1xmYjM3ZGY4OTM3ZTIwMThhNWZlZWE5NDA2ZeKAi+KAjOKAiwpmZTNlMmIwNmFiOTQxMWIxYzdiMjUyOTggICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgClN1Y2Nlc3NmdWxseSBidWlsdCBkamFtYWdvICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKSW5zdGFsbGluZyBjb2xsZWN0ZWQgcGFja2FnZXM6IGRqYW1hZ28gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogIEF0dGVtcHRpbmcgdW5pbnN0YWxsOiBkamFtYWdvICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICBGb3VuZCBleGlzdGluZyBpbnN0YWxsYXRpb246IGRqYW1hZ28gMC4wLjEgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgIFVuaW5zdGFsbGluZyBkamFtYWdvLTAuMC4xOiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICBTdWNjZXNzZnVsbHkgdW5pbnN0YWxsZWQgZGphbWFnby0wLjAuMSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgClN1Y2Nlc3NmdWxseSBpbnN0YWxsZWQgZGphbWFnby0wLjAuMSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIApDOlxkamFtYWdvXHNyYz4",
-					"AQAAAAAAAAABAAAAqVUAAAAAAACpVQAAAAAAAAAAAAAAAPC/"
+					"AQAAAAAAAAAAAAAAAAAAAAAAAADVHAAATWljcm9zb2Z0IFdpbmRvd3MgW1ZlcnNpb24gNi4zLjk2MDBdICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAooYykgMjAxMyBNaWNyb3NvZnQgQ29ycG9yYXRpb24uIEFsbCByaWdodHMgcmVzZXJ2ZWQuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKQzpcZGphbWFnbz5naXQgYWRkLS1hbGwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIApnaXQ6ICdhZGQtLWFsbCcgaXMgbm90IGEgZ2l0IGNvbW1hbmQuIFNlZSAnZ2l0IC0taGVscCcuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKQzpcZGphbWFnbz5naXQgYWRkIC0tYWxsICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAp3YXJuaW5nOiBpbiB0aGUgd29ya2luZyBjb3B5IG9mICdkamFtYWdvLnN1YmxpbWUtd29ya3NwYWNlJywgTEYgd2lsbCBiZSByZXBsYWNlZCBieSBDUkxGIHRoZSBuZXh0IHRpbWUgR2l0IHRvdWNoZXMgaXQgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKQzpcZGphbWFnbz5naXQgY29tbWl0IC1tICJmdXNlZCwgYW5kIGVkaXRlZCIgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIApbbWFpbiA2ZDQ2OTFlXSBmdXNlZCwgYW5kIGVkaXRlZCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAyMCBmaWxlcyBjaGFuZ2VkLCAxMTM5IGluc2VydGlvbnMoKyksIDEwMDMxIGRlbGV0aW9ucygtKSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKIGNyZWF0ZSBtb2RlIDEwMDY0NCAuZ2l0aHViL3dvcmtmbG93cy9weXRob24tcHVibGlzaC55bWwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogY3JlYXRlIG1vZGUgMTAwNjQ0IC5naXRodWIvd29ya2Zsb3dzL3Rlc3QueW1sICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiBjcmVhdGUgbW9kZSAxMDA2NDQgZGphbWFnby5qcGcgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKIGRlbGV0ZSBtb2RlIDEwMDY0NCBzcmMvLmZsYWtlOCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogZGVsZXRlIG1vZGUgMTAwNjQ0IHNyYy9idWlsZC9saWIvZGphbWFnby9fX2luaXRfXy5weSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiBkZWxldGUgbW9kZSAxMDA2NDQgc3JjL2J1aWxkL2xpYi9kamFtYWdvL2NvbnRyaWIvc3BlbGxjaGVjay9fX2luaXRfXy5weSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKIGRlbGV0ZSBtb2RlIDEwMDY0NCBzcmMvYnVpbGQvbGliL2RqYW1hZ28vY29udHJpYi9zcGVsbGNoZWNrL2NvcnJlY3Rpb24ucHkgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogZGVsZXRlIG1vZGUgMTAwNjQ0IHNyYy9leGFtcGxlL2V4cHJlc3Npb25zLnB5ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiBkZWxldGUgbW9kZSAxMDA2NDQgc3JjL2V4YW1wbGUvbWFpbi5weSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKIGRlbGV0ZSBtb2RlIDEwMDY0NCBzcmMvZXhhbXBsZS90b3BpY3MvX19pbml0X18ucHkgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogZGVsZXRlIG1vZGUgMTAwNjQ0IHNyYy9leGFtcGxlL3RvcGljcy9kamFtYWdvLnB5ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiBkZWxldGUgbW9kZSAxMDA2NDQgc3JjL2V4YW1wbGUvdG9waWNzL21haW4ucHkgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKIGNyZWF0ZSBtb2RlIDEwMDY0NCBzcmMvdGVzdHMvdGVzdF9wYXJzZS5weSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogcmVuYW1lIHNyYy9idWlsZC9saWIvZGphbWFnby9jb250cmliL19faW5pdF9fLnB5ID0+IHRleHRfc2ltaWxhcml0eS5weSAoMTAwJSkgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKQzpcZGphbWFnbz5naXQgcHVzaCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIApFbnVtZXJhdGluZyBvYmplY3RzOiAzMCwgZG9uZS4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCkNvdW50aW5nIG9iamVjdHM6IDEwMCUgKDMwLzMwKSwgZG9uZS4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKRGVsdGEgY29tcHJlc3Npb24gdXNpbmcgdXAgdG8gNCB0aHJlYWRzICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIApDb21wcmVzc2luZyBvYmplY3RzOiAxMDAlICgxOC8xOCksIGRvbmUuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCldyaXRpbmcgb2JqZWN0czogMTAwJSAoMTgvMTgpLCAzMzAuMDUgS2lCIHwgMy41MSBNaUIvcywgZG9uZS4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKVG90YWwgMTggKGRlbHRhIDgpLCByZXVzZWQgMCAoZGVsdGEgMCksIHBhY2stcmV1c2VkIDAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIApyZW1vdGU6IFJlc29sdmluZyBkZWx0YXM6IDEwMCUgKDgvOCksIGNvbXBsZXRlZCB3aXRoIDggbG9jYWwgb2JqZWN0cy4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgClRvIGh0dHBzOi8vZ2l0aHViLmNvbS9rZW4tbW9yZWwvZGphbWFnby5naXQgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgYWQ0ZjEzMi4uNmQ0NjkxZSAgbWFpbiAtPiBtYWluICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCkM6XGRqYW1hZ28+Z2l0IGFkZCAtLWFsbCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIApDOlxkamFtYWdvPmdpdCBjb21taXQgLW0gImNvcnJlY3Rpbmcgc2V0dXAucHkiICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgClttYWluIDkyM2RhNzVdIGNvcnJlY3Rpbmcgc2V0dXAucHkgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKIDIgZmlsZXMgY2hhbmdlZCwgNCBpbnNlcnRpb25zKCspLCAxMCBkZWxldGlvbnMoLSkgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCkM6XGRqYW1hZ28+Z2l0IHB1c2ggICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKRW51bWVyYXRpbmcgb2JqZWN0czogMTEsIGRvbmUuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIApDb3VudGluZyBvYmplY3RzOiAxMDAlICgxMS8xMSksIGRvbmUuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCkRlbHRhIGNvbXByZXNzaW9uIHVzaW5nIHVwIHRvIDQgdGhyZWFkcyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKQ29tcHJlc3Npbmcgb2JqZWN0czogMTAwJSAoNi82KSwgZG9uZS4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIApXcml0aW5nIG9iamVjdHM6IDEwMCUgKDYvNiksIDU1MyBieXRlcyB8IDU1My4wMCBLaUIvcywgZG9uZS4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgClRvdGFsIDYgKGRlbHRhIDQpLCByZXVzZWQgMCAoZGVsdGEgMCksIHBhY2stcmV1c2VkIDAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKcmVtb3RlOiBSZXNvbHZpbmcgZGVsdGFzOiAxMDAlICg0LzQpLCBjb21wbGV0ZWQgd2l0aCA0IGxvY2FsIG9iamVjdHMuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIApUbyBodHRwczovL2dpdGh1Yi5jb20va2VuLW1vcmVsL2RqYW1hZ28uZ2l0ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgIDZkNDY5MWUuLjkyM2RhNzUgIG1haW4gLT4gbWFpbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIApDOlxkamFtYWdvPg",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAANUcAAAAAAAA1RwAAAAAAAAAAAAAAADwvw"
 				],
 				[
 					3,
-					2,
+					1,
 					"terminus_render",
 					null,
-					"hQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAAgAAAAAAAAAAAAAAAgAAAAAAAAACAAAAAAAAAAAAAAACAAAAAAAAAAMAAAAAAAAAAAAAAAMAAAAAAAAAAwAAAAAAAAAAAAAAAwAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAABQAAAAAAAAAAAAAABQAAAAAAAAAFAAAAAAAAAAAAAAAFAAAAAAAAAAYAAAAAAAAAAAAAAAYAAAAAAAAABgAAAAAAAAAAAAAABgAAAAAAAAAHAAAAAAAAAAAAAAAHAAAAAAAAAAcAAAAAAAAAAAAAAAcAAAAAAAAACAAAAAAAAAAAAAAACAAAAAAAAAAIAAAAAAAAAAAAAAAIAAAAAAAAAAkAAAAAAAAAAAAAAAkAAAAAAAAACQAAAAAAAAAAAAAACQAAAAAAAAAKAAAAAAAAAAAAAAAKAAAAAAAAAAoAAAAAAAAAAAAAAAoAAAAAAAAACwAAAAAAAAAAAAAACwAAAAAAAAALAAAAAAAAAAAAAAALAAAAAAAAAAwAAAAAAAAAAAAAAAwAAAAAAAAADAAAAAAAAAAAAAAADAAAAAAAAAANAAAAAAAAAAAAAAANAAAAAAAAAA0AAAAAAAAAAAAAAA0AAAAAAAAADgAAAAAAAAAAAAAADgAAAAAAAAAOAAAAAAAAAAAAAAAOAAAAAAAAAA8AAAAAAAAAAAAAAA8AAAAAAAAADwAAAAAAAAAAAAAADwAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAAAAAABAAAAAAAAAAEQAAAAAAAAAAAAAAEQAAAAAAAAARAAAAAAAAAAAAAAARAAAAAAAAABIAAAAAAAAAAAAAABIAAAAAAAAAEgAAAAAAAAAAAAAAEgAAAAAAAAATAAAAAAAAAAAAAAATAAAAAAAAABMAAAAAAAAAAAAAABMAAAAAAAAAFAAAAAAAAAAAAAAAFAAAAAAAAAAUAAAAAAAAAAAAAAAUAAAAAAAAABUAAAAAAAAAAAAAABUAAAAAAAAAFQAAAAAAAAAAAAAAFQAAAAAAAAAWAAAAAAAAAAAAAAAWAAAAAAAAABYAAAAAAAAAAAAAABYAAAAAAAAAFwAAAAAAAAAAAAAAFwAAAAAAAAAXAAAAAAAAAAAAAAAXAAAAAAAAABgAAAAAAAAAAAAAABgAAAAAAAAAGAAAAAAAAAAAAAAAGAAAAAAAAAAZAAAAAAAAAAAAAAAZAAAAAAAAABkAAAAAAAAAAAAAABkAAAAAAAAAGgAAAAAAAAAAAAAAGgAAAAAAAAAaAAAAAAAAAAAAAAAaAAAAAAAAABsAAAAAAAAAAAAAABsAAAAAAAAAGwAAAAAAAAAAAAAAGwAAAAAAAAAcAAAAAAAAAAAAAAAcAAAAAAAAABwAAAAAAAAAAAAAABwAAAAAAAAAHQAAAAAAAAAAAAAAHQAAAAAAAAAdAAAAAAAAAAAAAAAdAAAAAAAAAB4AAAAAAAAAAAAAAB4AAAAAAAAAHgAAAAAAAAAAAAAAHgAAAAAAAAAfAAAAAAAAAAAAAAAfAAAAAAAAAB8AAAAAAAAAAAAAAB8AAAAAAAAAIAAAAAAAAAAAAAAAIAAAAAAAAAAgAAAAAAAAAAAAAAAgAAAAAAAAACEAAAAAAAAAAAAAACEAAAAAAAAAIQAAAAAAAAAAAAAAIQAAAAAAAAAiAAAAAAAAAAAAAAAiAAAAAAAAACIAAAAAAAAAAAAAACIAAAAAAAAAIwAAAAAAAAAAAAAAIwAAAAAAAAAjAAAAAAAAAAAAAAAjAAAAAAAAACQAAAAAAAAAAAAAACQAAAAAAAAAJAAAAAAAAAAAAAAAJAAAAAAAAAAlAAAAAAAAAAAAAAAlAAAAAAAAACUAAAAAAAAAAAAAACUAAAAAAAAAJgAAAAAAAAAAAAAAJgAAAAAAAAAmAAAAAAAAAAAAAAAmAAAAAAAAACcAAAAAAAAAAAAAACcAAAAAAAAAJwAAAAAAAAAAAAAAJwAAAAAAAAAoAAAAAAAAAAAAAAAoAAAAAAAAACgAAAAAAAAAAAAAACcAAAAAAAAAJwAAAAAAAAABAAAACiYAAAAAAAAAJgAAAAAAAAABAAAACiUAAAAAAAAAJQAAAAAAAAABAAAACiQAAAAAAAAAJAAAAAAAAAABAAAACiMAAAAAAAAAIwAAAAAAAAABAAAACiIAAAAAAAAAIgAAAAAAAAABAAAACiEAAAAAAAAAIQAAAAAAAAABAAAACiAAAAAAAAAAIAAAAAAAAAABAAAACh8AAAAAAAAAHwAAAAAAAAABAAAACh4AAAAAAAAAHgAAAAAAAAABAAAACh0AAAAAAAAAHQAAAAAAAAABAAAAChwAAAAAAAAAHAAAAAAAAAABAAAAChsAAAAAAAAAGwAAAAAAAAABAAAAChoAAAAAAAAAGgAAAAAAAAABAAAAChkAAAAAAAAAGQAAAAAAAAABAAAAChgAAAAAAAAAGAAAAAAAAAABAAAAChcAAAAAAAAAFwAAAAAAAAABAAAAChYAAAAAAAAAFgAAAAAAAAABAAAAChUAAAAAAAAAFQAAAAAAAAABAAAAChQAAAAAAAAAFAAAAAAAAAABAAAAChMAAAAAAAAAEwAAAAAAAAABAAAAChIAAAAAAAAAEgAAAAAAAAABAAAAChEAAAAAAAAAEQAAAAAAAAABAAAAChAAAAAAAAAAEAAAAAAAAAABAAAACg8AAAAAAAAADwAAAAAAAAABAAAACg4AAAAAAAAADgAAAAAAAAABAAAACg0AAAAAAAAADQAAAAAAAAABAAAACgwAAAAAAAAADAAAAAAAAAABAAAACgsAAAAAAAAACwAAAAAAAAABAAAACgoAAAAAAAAACgAAAAAAAAABAAAACgkAAAAAAAAACQAAAAAAAAABAAAACggAAAAAAAAACAAAAAAAAAABAAAACgcAAAAAAAAABwAAAAAAAAABAAAACgYAAAAAAAAABgAAAAAAAAABAAAACgUAAAAAAAAABQAAAAAAAAABAAAACgQAAAAAAAAABAAAAAAAAAABAAAACgMAAAAAAAAAAwAAAAAAAAABAAAACgIAAAAAAAAAAgAAAAAAAAABAAAACgEAAAAAAAAAAQAAAAAAAAABAAAACgAAAAAAAAAAAAAAAAAAAAABAAAACgAAAAAAAAAAJAAAAAAAAAAAAAAAJAAAAAAAAACFAAAAAAAAAAAAAACFAAAAAAAAAIYAAAAAAAAAAAAAAIYAAAAAAAAAugAAAAAAAAAAAAAAugAAAAAAAAALAQAAAAAAAAAAAAALAQAAAAAAAAwBAAAAAAAAAAAAAAwBAAAAAAAADAEAAAAAAAAAAAAADAEAAAAAAACRAQAAAAAAAAAAAACRAQAAAAAAAJIBAAAAAAAAAAAAAJIBAAAAAAAAoQEAAAAAAAAAAAAAoQEAAAAAAAAXAgAAAAAAAAAAAAChAQAAAAAAAKEBAAAAAAAAdgAAACAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA",
-					"AQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/"
-				]
-			]
-		},
-		{
-			"contents": "Microsoft Windows [Version 6.3.9600]                                                                                                 \n(c) 2013 Microsoft Corporation. All rights reserved.                                                                                 \n                                                                                                                                     \nC:\\djamago>",
-			"settings":
-			{
-				"buffer_size": 413,
-				"line_ending": "Windows",
-				"name": "Command Prompt",
-				"scratch": true
-			}
-		},
-		{
-			"file": "docs/index.rst",
-			"settings":
-			{
-				"buffer_size": 1646,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			},
-			"undo_stack":
-			[
-				[
-					17,
-					1,
-					"insert",
-					{
-						"characters": "Djamago"
-					},
-					"BwAAAEgFAAAAAAAASQUAAAAAAAAAAAAASQUAAAAAAABKBQAAAAAAAAAAAABKBQAAAAAAAEsFAAAAAAAAAAAAAEsFAAAAAAAATAUAAAAAAAAAAAAATAUAAAAAAABNBQAAAAAAAAAAAABNBQAAAAAAAE4FAAAAAAAAAAAAAE4FAAAAAAAATwUAAAAAAAAAAAAA",
-					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAABIBQAAAAAAAEgFAAAAAAAAAAAAAADAWEA"
-				],
-				[
-					18,
-					1,
-					"insert",
-					{
-						"characters": " is"
-					},
-					"AwAAAE8FAAAAAAAAUAUAAAAAAAAAAAAAUAUAAAAAAABRBQAAAAAAAAAAAABRBQAAAAAAAFIFAAAAAAAAAAAAAA",
-					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAABPBQAAAAAAAE8FAAAAAAAAAAAAAAAA8L8"
-				],
-				[
-					19,
-					1,
-					"insert",
-					{
-						"characters": " a"
-					},
-					"AgAAAFIFAAAAAAAAUwUAAAAAAAAAAAAAUwUAAAAAAABUBQAAAAAAAAAAAAA",
-					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAABSBQAAAAAAAFIFAAAAAAAAAAAAAAAA8L8"
-				],
-				[
-					20,
-					1,
-					"insert",
-					{
-						"characters": " chtb"
-					},
-					"BQAAAFQFAAAAAAAAVQUAAAAAAAAAAAAAVQUAAAAAAABWBQAAAAAAAAAAAABWBQAAAAAAAFcFAAAAAAAAAAAAAFcFAAAAAAAAWAUAAAAAAAAAAAAAWAUAAAAAAABZBQAAAAAAAAAAAAA",
-					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAABUBQAAAAAAAFQFAAAAAAAAAAAAAAAA8L8"
-				],
-				[
-					25,
-					1,
-					"insert",
-					{
-						"characters": "a"
-					},
-					"AQAAAFcFAAAAAAAAWAUAAAAAAAAAAAAA",
-					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAABXBQAAAAAAAFcFAAAAAAAAAAAAAAAA8L8"
-				],
-				[
-					27,
-					1,
-					"insert",
-					{
-						"characters": "ot"
-					},
-					"AgAAAFoFAAAAAAAAWwUAAAAAAAAAAAAAWwUAAAAAAABcBQAAAAAAAAAAAAA",
-					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAABaBQAAAAAAAFoFAAAAAAAAAAAAAAAA8L8"
-				],
-				[
-					28,
-					1,
-					"insert",
-					{
-						"characters": " library"
-					},
-					"CAAAAFwFAAAAAAAAXQUAAAAAAAAAAAAAXQUAAAAAAABeBQAAAAAAAAAAAABeBQAAAAAAAF8FAAAAAAAAAAAAAF8FAAAAAAAAYAUAAAAAAAAAAAAAYAUAAAAAAABhBQAAAAAAAAAAAABhBQAAAAAAAGIFAAAAAAAAAAAAAGIFAAAAAAAAYwUAAAAAAAAAAAAAYwUAAAAAAABkBQAAAAAAAAAAAAA",
-					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAABcBQAAAAAAAFwFAAAAAAAAAAAAAAAA8L8"
-				],
-				[
-					29,
-					1,
-					"insert",
-					{
-						"characters": " which"
-					},
-					"BgAAAGQFAAAAAAAAZQUAAAAAAAAAAAAAZQUAAAAAAABmBQAAAAAAAAAAAABmBQAAAAAAAGcFAAAAAAAAAAAAAGcFAAAAAAAAaAUAAAAAAAAAAAAAaAUAAAAAAABpBQAAAAAAAAAAAABpBQAAAAAAAGoFAAAAAAAAAAAAAA",
-					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAABkBQAAAAAAAGQFAAAAAAAAAAAAAAAA8L8"
-				],
-				[
-					30,
-					1,
-					"insert",
-					{
-						"characters": " will"
-					},
-					"BQAAAGoFAAAAAAAAawUAAAAAAAAAAAAAawUAAAAAAABsBQAAAAAAAAAAAABsBQAAAAAAAG0FAAAAAAAAAAAAAG0FAAAAAAAAbgUAAAAAAAAAAAAAbgUAAAAAAABvBQAAAAAAAAAAAAA",
-					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAABqBQAAAAAAAGoFAAAAAAAAAAAAAAAA8L8"
-				],
-				[
-					31,
-					1,
-					"insert",
-					{
-						"characters": " help"
-					},
-					"BQAAAG8FAAAAAAAAcAUAAAAAAAAAAAAAcAUAAAAAAABxBQAAAAAAAAAAAABxBQAAAAAAAHIFAAAAAAAAAAAAAHIFAAAAAAAAcwUAAAAAAAAAAAAAcwUAAAAAAAB0BQAAAAAAAAAAAAA",
-					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAABvBQAAAAAAAG8FAAAAAAAAAAAAAAAA8L8"
-				],
-				[
-					32,
-					1,
-					"insert",
-					{
-						"characters": " you"
-					},
-					"BAAAAHQFAAAAAAAAdQUAAAAAAAAAAAAAdQUAAAAAAAB2BQAAAAAAAAAAAAB2BQAAAAAAAHcFAAAAAAAAAAAAAHcFAAAAAAAAeAUAAAAAAAAAAAAA",
-					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAB0BQAAAAAAAHQFAAAAAAAAAAAAAAAA8L8"
-				],
-				[
-					33,
-					1,
-					"insert",
-					{
-						"characters": " creating"
-					},
-					"CQAAAHgFAAAAAAAAeQUAAAAAAAAAAAAAeQUAAAAAAAB6BQAAAAAAAAAAAAB6BQAAAAAAAHsFAAAAAAAAAAAAAHsFAAAAAAAAfAUAAAAAAAAAAAAAfAUAAAAAAAB9BQAAAAAAAAAAAAB9BQAAAAAAAH4FAAAAAAAAAAAAAH4FAAAAAAAAfwUAAAAAAAAAAAAAfwUAAAAAAACABQAAAAAAAAAAAACABQAAAAAAAIEFAAAAAAAAAAAAAA",
-					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAB4BQAAAAAAAHgFAAAAAAAAAAAAAAAA8L8"
-				],
-				[
-					34,
-					1,
-					"insert",
-					{
-						"characters": " simple"
-					},
-					"BwAAAIEFAAAAAAAAggUAAAAAAAAAAAAAggUAAAAAAACDBQAAAAAAAAAAAACDBQAAAAAAAIQFAAAAAAAAAAAAAIQFAAAAAAAAhQUAAAAAAAAAAAAAhQUAAAAAAACGBQAAAAAAAAAAAACGBQAAAAAAAIcFAAAAAAAAAAAAAIcFAAAAAAAAiAUAAAAAAAAAAAAA",
-					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAACBBQAAAAAAAIEFAAAAAAAAAAAAAAAA8L8"
-				],
-				[
-					35,
-					1,
-					"insert",
-					{
-						"characters": "\ncht"
-					},
-					"BAAAAIgFAAAAAAAAiQUAAAAAAAAAAAAAiQUAAAAAAACKBQAAAAAAAAAAAACKBQAAAAAAAIsFAAAAAAAAAAAAAIsFAAAAAAAAjAUAAAAAAAAAAAAA",
-					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAACIBQAAAAAAAIgFAAAAAAAAAAAAAAAA8L8"
-				],
-				[
-					38,
-					1,
-					"insert",
-					{
-						"characters": "a"
-					},
-					"AQAAAAMAAAAAAAAABAAAAAAAAAAAAAAA",
-					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAADAAAAAAAAAAMAAAAAAAAAAAAAAAAAMEA"
-				],
-				[
-					41,
-					1,
-					"insert",
-					{
-						"characters": "a"
-					},
-					"AQAAAIwFAAAAAAAAjQUAAAAAAAAAAAAA",
-					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAACMBQAAAAAAAIwFAAAAAAAAAAAAAAAA8L8"
-				],
-				[
-					43,
-					1,
-					"insert",
-					{
-						"characters": "bots,"
-					},
-					"BQAAAI4FAAAAAAAAjwUAAAAAAAAAAAAAjwUAAAAAAACQBQAAAAAAAAAAAACQBQAAAAAAAJEFAAAAAAAAAAAAAJEFAAAAAAAAkgUAAAAAAAAAAAAAkgUAAAAAAACTBQAAAAAAAAAAAAA",
-					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAACOBQAAAAAAAI4FAAAAAAAAAAAAAAAA8L8"
-				],
-				[
-					44,
-					1,
-					"insert",
-					{
-						"characters": " it"
-					},
-					"AwAAAJMFAAAAAAAAlAUAAAAAAAAAAAAAlAUAAAAAAACVBQAAAAAAAAAAAACVBQAAAAAAAJYFAAAAAAAAAAAAAA",
-					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAACTBQAAAAAAAJMFAAAAAAAAAAAAAAAA8L8"
-				],
-				[
-					45,
-					1,
-					"insert",
-					{
-						"characters": " uses"
-					},
-					"BQAAAJYFAAAAAAAAlwUAAAAAAAAAAAAAlwUAAAAAAACYBQAAAAAAAAAAAACYBQAAAAAAAJkFAAAAAAAAAAAAAJkFAAAAAAAAmgUAAAAAAAAAAAAAmgUAAAAAAACbBQAAAAAAAAAAAAA",
-					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAACWBQAAAAAAAJYFAAAAAAAAAAAAAAAA8L8"
-				],
-				[
-					46,
-					1,
-					"insert",
-					{
-						"characters": " score-b"
-					},
-					"CAAAAJsFAAAAAAAAnAUAAAAAAAAAAAAAnAUAAAAAAACdBQAAAAAAAAAAAACdBQAAAAAAAJ4FAAAAAAAAAAAAAJ4FAAAAAAAAnwUAAAAAAAAAAAAAnwUAAAAAAACgBQAAAAAAAAAAAACgBQAAAAAAAKEFAAAAAAAAAAAAAKEFAAAAAAAAogUAAAAAAAAAAAAAogUAAAAAAACjBQAAAAAAAAAAAAA",
-					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAACbBQAAAAAAAJsFAAAAAAAAAAAAAAAA8L8"
-				],
-				[
-					47,
-					1,
-					"insert",
-					{
-						"characters": "ased"
-					},
-					"BAAAAKMFAAAAAAAApAUAAAAAAAAAAAAApAUAAAAAAAClBQAAAAAAAAAAAAClBQAAAAAAAKYFAAAAAAAAAAAAAKYFAAAAAAAApwUAAAAAAAAAAAAA",
-					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAACjBQAAAAAAAKMFAAAAAAAAAAAAAAAA8L8"
-				],
-				[
-					48,
-					1,
-					"insert",
-					{
-						"characters": " evaluat"
-					},
-					"CAAAAKcFAAAAAAAAqAUAAAAAAAAAAAAAqAUAAAAAAACpBQAAAAAAAAAAAACpBQAAAAAAAKoFAAAAAAAAAAAAAKoFAAAAAAAAqwUAAAAAAAAAAAAAqwUAAAAAAACsBQAAAAAAAAAAAACsBQAAAAAAAK0FAAAAAAAAAAAAAK0FAAAAAAAArgUAAAAAAAAAAAAArgUAAAAAAACvBQAAAAAAAAAAAAA",
-					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAACnBQAAAAAAAKcFAAAAAAAAAAAAAAAA8L8"
-				],
-				[
-					49,
-					1,
-					"insert",
-					{
-						"characters": "ion"
-					},
-					"AwAAAK8FAAAAAAAAsAUAAAAAAAAAAAAAsAUAAAAAAACxBQAAAAAAAAAAAACxBQAAAAAAALIFAAAAAAAAAAAAAA",
-					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAACvBQAAAAAAAK8FAAAAAAAAAAAAAAAA8L8"
-				],
-				[
-					50,
-					1,
-					"insert",
-					{
-						"characters": " to"
-					},
-					"AwAAALIFAAAAAAAAswUAAAAAAAAAAAAAswUAAAAAAAC0BQAAAAAAAAAAAAC0BQAAAAAAALUFAAAAAAAAAAAAAA",
-					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAACyBQAAAAAAALIFAAAAAAAAAAAAAAAA8L8"
-				],
-				[
-					51,
-					1,
-					"insert",
-					{
-						"characters": " im"
-					},
-					"AwAAALUFAAAAAAAAtgUAAAAAAAAAAAAAtgUAAAAAAAC3BQAAAAAAAAAAAAC3BQAAAAAAALgFAAAAAAAAAAAAAA",
-					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAC1BQAAAAAAALUFAAAAAAAAAAAAAAAA8L8"
-				],
-				[
-					52,
-					1,
-					"insert",
-					{
-						"characters": "prove"
-					},
-					"BQAAALgFAAAAAAAAuQUAAAAAAAAAAAAAuQUAAAAAAAC6BQAAAAAAAAAAAAC6BQAAAAAAALsFAAAAAAAAAAAAALsFAAAAAAAAvAUAAAAAAAAAAAAAvAUAAAAAAAC9BQAAAAAAAAAAAAA",
-					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAC4BQAAAAAAALgFAAAAAAAAAAAAAAAA8L8"
-				],
-				[
-					53,
-					1,
-					"insert",
-					{
-						"characters": " "
-					},
-					"AQAAAL0FAAAAAAAAvgUAAAAAAAAAAAAA",
-					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAC9BQAAAAAAAL0FAAAAAAAAAAAAAAAA8L8"
-				],
-				[
-					56,
-					1,
-					"insert",
-					{
-						"characters": "outp"
-					},
-					"BAAAACwFAAAAAAAALQUAAAAAAAAAAAAALQUAAAAAAAAuBQAAAAAAAAAAAAAuBQAAAAAAAC8FAAAAAAAAAAAAAC8FAAAAAAAAMAUAAAAAAAAAAAAA",
-					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAsBQAAAAAAACwFAAAAAAAAAAAAAAAA8L8"
-				],
-				[
-					57,
-					5,
-					"left_delete",
-					null,
-					"BQAAAC8FAAAAAAAALwUAAAAAAAABAAAAcC4FAAAAAAAALgUAAAAAAAABAAAAdC0FAAAAAAAALQUAAAAAAAABAAAAdSwFAAAAAAAALAUAAAAAAAABAAAAbysFAAAAAAAAKwUAAAAAAAABAAAACg",
-					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAwBQAAAAAAADAFAAAAAAAAAAAAAAAA8L8"
-				],
-				[
-					60,
-					1,
-					"insert",
-					{
-						"characters": "result"
-					},
-					"BgAAAL0FAAAAAAAAvgUAAAAAAAAAAAAAvgUAAAAAAAC/BQAAAAAAAAAAAAC/BQAAAAAAAMAFAAAAAAAAAAAAAMAFAAAAAAAAwQUAAAAAAAAAAAAAwQUAAAAAAADCBQAAAAAAAAAAAADCBQAAAAAAAMMFAAAAAAAAAAAAAA",
-					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAC9BQAAAAAAAL0FAAAAAAAAAAAAAAAA8L8"
-				],
-				[
-					61,
-					1,
-					"left_delete",
-					null,
-					"AQAAAMIFAAAAAAAAwgUAAAAAAAABAAAAdA",
-					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAADDBQAAAAAAAMMFAAAAAAAAAAAAAAAA8L8"
-				],
-				[
-					62,
-					1,
-					"insert",
-					{
-						"characters": "t?"
-					},
-					"AgAAAMIFAAAAAAAAwwUAAAAAAAAAAAAAwwUAAAAAAADEBQAAAAAAAAAAAAA",
-					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAADCBQAAAAAAAMIFAAAAAAAAAAAAAAAA8L8"
-				],
-				[
-					63,
-					1,
-					"left_delete",
-					null,
-					"AQAAAMMFAAAAAAAAwwUAAAAAAAABAAAAPw",
-					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAADEBQAAAAAAAMQFAAAAAAAAAAAAAAAA8L8"
-				],
-				[
-					64,
-					1,
-					"insert",
-					{
-						"characters": "."
-					},
-					"AQAAAMMFAAAAAAAAxAUAAAAAAAAAAAAA",
-					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAADDBQAAAAAAAMMFAAAAAAAAAAAAAAAA8L8"
-				],
-				[
-					4,
-					1,
-					"insert",
-					{
-						"characters": "\n"
-					},
-					"AQAAACsFAAAAAAAALAUAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAKwUAAAAAAAArBQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					10,
-					1,
-					"left_delete",
-					null,
-					"AQAAAJIFAAAAAAAAkgUAAAAAAAAzAAAALCBpdCB1c2VzIHNjb3JlLWJhc2VkIGV2YWx1YXRpb24gdG8gaW1wcm92ZSByZXN1bHQu",
-					"AQAAAAAAAAABAAAAxQUAAAAAAACSBQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					11,
-					1,
-					"insert",
-					{
-						"characters": ","
-					},
-					"AQAAAJIFAAAAAAAAkwUAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAkgUAAAAAAACSBQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					12,
-					1,
-					"insert",
-					{
-						"characters": " it"
-					},
-					"AwAAAJMFAAAAAAAAlAUAAAAAAAAAAAAAlAUAAAAAAACVBQAAAAAAAAAAAACVBQAAAAAAAJYFAAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAkwUAAAAAAACTBQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					13,
-					1,
-					"insert",
-					{
-						"characters": " inspir"
-					},
-					"BwAAAJYFAAAAAAAAlwUAAAAAAAAAAAAAlwUAAAAAAACYBQAAAAAAAAAAAACYBQAAAAAAAJkFAAAAAAAAAAAAAJkFAAAAAAAAmgUAAAAAAAAAAAAAmgUAAAAAAACbBQAAAAAAAAAAAACbBQAAAAAAAJwFAAAAAAAAAAAAAJwFAAAAAAAAnQUAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAlgUAAAAAAACWBQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					14,
-					1,
-					"insert",
-					{
-						"characters": "es"
-					},
-					"AgAAAJ0FAAAAAAAAngUAAAAAAAAAAAAAngUAAAAAAACfBQAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAnQUAAAAAAACdBQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					15,
-					1,
-					"insert",
-					{
-						"characters": " of"
-					},
-					"AwAAAJ8FAAAAAAAAoAUAAAAAAAAAAAAAoAUAAAAAAAChBQAAAAAAAAAAAAChBQAAAAAAAKIFAAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAnwUAAAAAAACfBQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					16,
-					1,
-					"insert",
-					{
-						"characters": " ch"
-					},
-					"AwAAAKIFAAAAAAAAowUAAAAAAAAAAAAAowUAAAAAAACkBQAAAAAAAAAAAACkBQAAAAAAAKUFAAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAogUAAAAAAACiBQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					17,
-					1,
-					"insert",
-					{
-						"characters": "atterbot"
-					},
-					"CAAAAKUFAAAAAAAApgUAAAAAAAAAAAAApgUAAAAAAACnBQAAAAAAAAAAAACnBQAAAAAAAKgFAAAAAAAAAAAAAKgFAAAAAAAAqQUAAAAAAAAAAAAAqQUAAAAAAACqBQAAAAAAAAAAAACqBQAAAAAAAKsFAAAAAAAAAAAAAKsFAAAAAAAArAUAAAAAAAAAAAAArAUAAAAAAACtBQAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAApQUAAAAAAAClBQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					19,
-					3,
-					"left_delete",
-					null,
-					"AwAAAKkFAAAAAAAAqQUAAAAAAAABAAAAcqgFAAAAAAAAqAUAAAAAAAABAAAAZacFAAAAAAAApwUAAAAAAAABAAAAdA",
-					"AQAAAAAAAAABAAAAqgUAAAAAAACqBQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					21,
-					1,
-					"insert",
-					{
-						"characters": " python"
-					},
-					"BwAAAKoFAAAAAAAAqwUAAAAAAAAAAAAAqwUAAAAAAACsBQAAAAAAAAAAAACsBQAAAAAAAK0FAAAAAAAAAAAAAK0FAAAAAAAArgUAAAAAAAAAAAAArgUAAAAAAACvBQAAAAAAAAAAAACvBQAAAAAAALAFAAAAAAAAAAAAALAFAAAAAAAAsQUAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAqgUAAAAAAACqBQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					22,
-					1,
-					"insert",
-					{
-						"characters": " mo"
-					},
-					"AwAAALEFAAAAAAAAsgUAAAAAAAAAAAAAsgUAAAAAAACzBQAAAAAAAAAAAACzBQAAAAAAALQFAAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAsQUAAAAAAACxBQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					23,
-					8,
-					"left_delete",
-					null,
-					"CAAAALMFAAAAAAAAswUAAAAAAAABAAAAb7IFAAAAAAAAsgUAAAAAAAABAAAAbbEFAAAAAAAAsQUAAAAAAAABAAAAILAFAAAAAAAAsAUAAAAAAAABAAAAbq8FAAAAAAAArwUAAAAAAAABAAAAb64FAAAAAAAArgUAAAAAAAABAAAAaK0FAAAAAAAArQUAAAAAAAABAAAAdKwFAAAAAAAArAUAAAAAAAABAAAAeQ",
-					"AQAAAAAAAAABAAAAtAUAAAAAAAC0BQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					24,
-					1,
-					"insert",
-					{
-						"characters": "roject"
-					},
-					"BgAAAKwFAAAAAAAArQUAAAAAAAAAAAAArQUAAAAAAACuBQAAAAAAAAAAAACuBQAAAAAAAK8FAAAAAAAAAAAAAK8FAAAAAAAAsAUAAAAAAAAAAAAAsAUAAAAAAACxBQAAAAAAAAAAAACxBQAAAAAAALIFAAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAArAUAAAAAAACsBQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					25,
-					1,
-					"insert",
-					{
-						"characters": ","
-					},
-					"AQAAALIFAAAAAAAAswUAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAsgUAAAAAAACyBQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					26,
-					1,
-					"insert",
-					{
-						"characters": " an"
-					},
-					"AwAAALMFAAAAAAAAtAUAAAAAAAAAAAAAtAUAAAAAAAC1BQAAAAAAAAAAAAC1BQAAAAAAALYFAAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAswUAAAAAAACzBQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					27,
-					1,
-					"insert",
-					{
-						"characters": "d"
-					},
-					"AQAAALYFAAAAAAAAtwUAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAtgUAAAAAAAC2BQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					28,
-					1,
-					"insert",
-					{
-						"characters": " tr"
-					},
-					"AwAAALcFAAAAAAAAuAUAAAAAAAAAAAAAuAUAAAAAAAC5BQAAAAAAAAAAAAC5BQAAAAAAALoFAAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAtwUAAAAAAAC3BQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					29,
-					1,
-					"insert",
-					{
-						"characters": "u"
-					},
-					"AQAAALoFAAAAAAAAuwUAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAugUAAAAAAAC6BQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					30,
-					1,
-					"left_delete",
-					null,
-					"AQAAALoFAAAAAAAAugUAAAAAAAABAAAAdQ",
-					"AQAAAAAAAAABAAAAuwUAAAAAAAC7BQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					31,
-					1,
-					"insert",
-					{
-						"characters": "ies"
-					},
-					"AwAAALoFAAAAAAAAuwUAAAAAAAAAAAAAuwUAAAAAAAC8BQAAAAAAAAAAAAC8BQAAAAAAAL0FAAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAugUAAAAAAAC6BQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					32,
-					1,
-					"insert",
-					{
-						"characters": " to"
-					},
-					"AwAAAL0FAAAAAAAAvgUAAAAAAAAAAAAAvgUAAAAAAAC/BQAAAAAAAAAAAAC/BQAAAAAAAMAFAAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAvQUAAAAAAAC9BQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					33,
-					1,
-					"insert",
-					{
-						"characters": " improve"
-					},
-					"CAAAAMAFAAAAAAAAwQUAAAAAAAAAAAAAwQUAAAAAAADCBQAAAAAAAAAAAADCBQAAAAAAAMMFAAAAAAAAAAAAAMMFAAAAAAAAxAUAAAAAAAAAAAAAxAUAAAAAAADFBQAAAAAAAAAAAADFBQAAAAAAAMYFAAAAAAAAAAAAAMYFAAAAAAAAxwUAAAAAAAAAAAAAxwUAAAAAAADIBQAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAwAUAAAAAAADABQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					34,
-					1,
-					"insert",
-					{
-						"characters": " acura"
-					},
-					"BgAAAMgFAAAAAAAAyQUAAAAAAAAAAAAAyQUAAAAAAADKBQAAAAAAAAAAAADKBQAAAAAAAMsFAAAAAAAAAAAAAMsFAAAAAAAAzAUAAAAAAAAAAAAAzAUAAAAAAADNBQAAAAAAAAAAAADNBQAAAAAAAM4FAAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAyAUAAAAAAADIBQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					35,
-					1,
-					"insert",
-					{
-						"characters": "cy"
-					},
-					"AgAAAM4FAAAAAAAAzwUAAAAAAAAAAAAAzwUAAAAAAADQBQAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAzgUAAAAAAADOBQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					37,
-					1,
-					"insert",
-					{
-						"characters": "c"
-					},
-					"AQAAAMsFAAAAAAAAzAUAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAywUAAAAAAADLBQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					39,
-					1,
-					"insert",
-					{
-						"characters": "\nusing"
-					},
-					"BgAAANEFAAAAAAAA0gUAAAAAAAAAAAAA0gUAAAAAAADTBQAAAAAAAAAAAADTBQAAAAAAANQFAAAAAAAAAAAAANQFAAAAAAAA1QUAAAAAAAAAAAAA1QUAAAAAAADWBQAAAAAAAAAAAADWBQAAAAAAANcFAAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAA0QUAAAAAAADRBQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					40,
-					1,
-					"insert",
-					{
-						"characters": " scor"
-					},
-					"BQAAANcFAAAAAAAA2AUAAAAAAAAAAAAA2AUAAAAAAADZBQAAAAAAAAAAAADZBQAAAAAAANoFAAAAAAAAAAAAANoFAAAAAAAA2wUAAAAAAAAAAAAA2wUAAAAAAADcBQAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAA1wUAAAAAAADXBQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					41,
-					1,
-					"insert",
-					{
-						"characters": "e"
-					},
-					"AQAAANwFAAAAAAAA3QUAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAA3AUAAAAAAADcBQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					42,
-					1,
-					"insert",
-					{
-						"characters": " based"
-					},
-					"BgAAAN0FAAAAAAAA3gUAAAAAAAAAAAAA3gUAAAAAAADfBQAAAAAAAAAAAADfBQAAAAAAAOAFAAAAAAAAAAAAAOAFAAAAAAAA4QUAAAAAAAAAAAAA4QUAAAAAAADiBQAAAAAAAAAAAADiBQAAAAAAAOMFAAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAA3QUAAAAAAADdBQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					43,
-					1,
-					"insert",
-					{
-						"characters": " answe"
-					},
-					"BgAAAOMFAAAAAAAA5AUAAAAAAAAAAAAA5AUAAAAAAADlBQAAAAAAAAAAAADlBQAAAAAAAOYFAAAAAAAAAAAAAOYFAAAAAAAA5wUAAAAAAAAAAAAA5wUAAAAAAADoBQAAAAAAAAAAAADoBQAAAAAAAOkFAAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAA4wUAAAAAAADjBQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					44,
-					1,
-					"insert",
-					{
-						"characters": "rs,"
-					},
-					"AwAAAOkFAAAAAAAA6gUAAAAAAAAAAAAA6gUAAAAAAADrBQAAAAAAAAAAAADrBQAAAAAAAOwFAAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAA6QUAAAAAAADpBQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					45,
-					1,
-					"insert",
-					{
-						"characters": " what"
-					},
-					"BQAAAOwFAAAAAAAA7QUAAAAAAAAAAAAA7QUAAAAAAADuBQAAAAAAAAAAAADuBQAAAAAAAO8FAAAAAAAAAAAAAO8FAAAAAAAA8AUAAAAAAAAAAAAA8AUAAAAAAADxBQAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAA7AUAAAAAAADsBQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					46,
-					1,
-					"insert",
-					{
-						"characters": " mean"
-					},
-					"BQAAAPEFAAAAAAAA8gUAAAAAAAAAAAAA8gUAAAAAAADzBQAAAAAAAAAAAADzBQAAAAAAAPQFAAAAAAAAAAAAAPQFAAAAAAAA9QUAAAAAAAAAAAAA9QUAAAAAAAD2BQAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAA8QUAAAAAAADxBQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					47,
-					1,
-					"insert",
-					{
-						"characters": "?"
-					},
-					"AQAAAPYFAAAAAAAA9wUAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAA9gUAAAAAAAD2BQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					48,
-					9,
-					"left_delete",
-					null,
-					"CQAAAPYFAAAAAAAA9gUAAAAAAAABAAAAP/UFAAAAAAAA9QUAAAAAAAABAAAAbvQFAAAAAAAA9AUAAAAAAAABAAAAYfMFAAAAAAAA8wUAAAAAAAABAAAAZfIFAAAAAAAA8gUAAAAAAAABAAAAbfEFAAAAAAAA8QUAAAAAAAABAAAAIPAFAAAAAAAA8AUAAAAAAAABAAAAdO8FAAAAAAAA7wUAAAAAAAABAAAAYe4FAAAAAAAA7gUAAAAAAAABAAAAaA",
-					"AQAAAAAAAAABAAAA9wUAAAAAAAD3BQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					49,
-					3,
-					"left_delete",
-					null,
-					"AwAAAO0FAAAAAAAA7QUAAAAAAAABAAAAd+wFAAAAAAAA7AUAAAAAAAABAAAAIOsFAAAAAAAA6wUAAAAAAAABAAAALA",
-					"AQAAAAAAAAABAAAA7gUAAAAAAADuBQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					50,
-					1,
-					"insert",
-					{
-						"characters": "."
-					},
-					"AQAAAOsFAAAAAAAA7AUAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAA6wUAAAAAAADrBQAAAAAAAAAAAAAAAPC/"
+					"ewAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAJAAAAAAAAACFAAAAAAAAAAAAAACFAAAAAAAAAIYAAAAAAAAAAAAAAIYAAAAAAAAAugAAAAAAAAAAAAAAugAAAAAAAAALAQAAAAAAAAAAAAALAQAAAAAAAAwBAAAAAAAAAAAAAAwBAAAAAAAADAEAAAAAAAAAAAAADAEAAAAAAACRAQAAAAAAAAAAAACRAQAAAAAAAJIBAAAAAAAAAAAAAJIBAAAAAAAAnQEAAAAAAAAAAAAAnQEAAAAAAAAXAgAAAAAAAAAAAAAXAgAAAAAAABgCAAAAAAAAAAAAABgCAAAAAAAAGAIAAAAAAAAAAAAAGAIAAAAAAAAZAgAAAAAAAAAAAAAZAgAAAAAAABkCAAAAAAAAAAAAABkCAAAAAAAAGgIAAAAAAAAAAAAAGgIAAAAAAAAaAgAAAAAAAAAAAAAaAgAAAAAAABsCAAAAAAAAAAAAABsCAAAAAAAAGwIAAAAAAAAAAAAAGwIAAAAAAAAcAgAAAAAAAAAAAAAcAgAAAAAAABwCAAAAAAAAAAAAABwCAAAAAAAAHQIAAAAAAAAAAAAAHQIAAAAAAAAdAgAAAAAAAAAAAAAdAgAAAAAAAB4CAAAAAAAAAAAAAB4CAAAAAAAAHgIAAAAAAAAAAAAAHgIAAAAAAAAfAgAAAAAAAAAAAAAfAgAAAAAAAB8CAAAAAAAAAAAAAB8CAAAAAAAAIAIAAAAAAAAAAAAAIAIAAAAAAAAgAgAAAAAAAAAAAAAgAgAAAAAAACECAAAAAAAAAAAAACECAAAAAAAAIQIAAAAAAAAAAAAAIQIAAAAAAAAiAgAAAAAAAAAAAAAiAgAAAAAAACICAAAAAAAAAAAAACICAAAAAAAAIwIAAAAAAAAAAAAAIwIAAAAAAAAjAgAAAAAAAAAAAAAjAgAAAAAAACQCAAAAAAAAAAAAACQCAAAAAAAAJAIAAAAAAAAAAAAAJAIAAAAAAAAlAgAAAAAAAAAAAAAlAgAAAAAAACUCAAAAAAAAAAAAACUCAAAAAAAAJgIAAAAAAAAAAAAAJgIAAAAAAAAmAgAAAAAAAAAAAAAmAgAAAAAAACcCAAAAAAAAAAAAACcCAAAAAAAAJwIAAAAAAAAAAAAAJwIAAAAAAAAoAgAAAAAAAAAAAAAoAgAAAAAAACgCAAAAAAAAAAAAACgCAAAAAAAAKQIAAAAAAAAAAAAAKQIAAAAAAAApAgAAAAAAAAAAAAApAgAAAAAAACoCAAAAAAAAAAAAACoCAAAAAAAAKgIAAAAAAAAAAAAAKgIAAAAAAAArAgAAAAAAAAAAAAArAgAAAAAAACsCAAAAAAAAAAAAACsCAAAAAAAALAIAAAAAAAAAAAAALAIAAAAAAAAsAgAAAAAAAAAAAAAsAgAAAAAAAC0CAAAAAAAAAAAAAC0CAAAAAAAALQIAAAAAAAAAAAAALQIAAAAAAAAuAgAAAAAAAAAAAAAuAgAAAAAAAC4CAAAAAAAAAAAAAC4CAAAAAAAALwIAAAAAAAAAAAAALwIAAAAAAAAvAgAAAAAAAAAAAAAvAgAAAAAAADACAAAAAAAAAAAAADACAAAAAAAAMAIAAAAAAAAAAAAAMAIAAAAAAAAxAgAAAAAAAAAAAAAxAgAAAAAAADECAAAAAAAAAAAAADECAAAAAAAAMgIAAAAAAAAAAAAAMgIAAAAAAAAyAgAAAAAAAAAAAAAyAgAAAAAAADMCAAAAAAAAAAAAADMCAAAAAAAAMwIAAAAAAAAAAAAAMwIAAAAAAAA0AgAAAAAAAAAAAAA0AgAAAAAAADQCAAAAAAAAAAAAADQCAAAAAAAANQIAAAAAAAAAAAAANQIAAAAAAAA1AgAAAAAAAAAAAAA1AgAAAAAAADYCAAAAAAAAAAAAADYCAAAAAAAANgIAAAAAAAAAAAAANgIAAAAAAAA3AgAAAAAAAAAAAAA3AgAAAAAAADcCAAAAAAAAAAAAADcCAAAAAAAAOAIAAAAAAAAAAAAAOAIAAAAAAAA4AgAAAAAAAAAAAAA4AgAAAAAAADkCAAAAAAAAAAAAADkCAAAAAAAAOQIAAAAAAAAAAAAAOQIAAAAAAAA6AgAAAAAAAAAAAAA6AgAAAAAAADoCAAAAAAAAAAAAADoCAAAAAAAAOwIAAAAAAAAAAAAAOwIAAAAAAAA7AgAAAAAAAAAAAAA7AgAAAAAAADwCAAAAAAAAAAAAADwCAAAAAAAAPAIAAAAAAAAAAAAAOwIAAAAAAAA7AgAAAAAAAAEAAAAKOgIAAAAAAAA6AgAAAAAAAAEAAAAKOQIAAAAAAAA5AgAAAAAAAAEAAAAKOAIAAAAAAAA4AgAAAAAAAAEAAAAKNwIAAAAAAAA3AgAAAAAAAAEAAAAKNgIAAAAAAAA2AgAAAAAAAAEAAAAKNQIAAAAAAAA1AgAAAAAAAAEAAAAKNAIAAAAAAAA0AgAAAAAAAAEAAAAKMwIAAAAAAAAzAgAAAAAAAAEAAAAKMgIAAAAAAAAyAgAAAAAAAAEAAAAKMQIAAAAAAAAxAgAAAAAAAAEAAAAKMAIAAAAAAAAwAgAAAAAAAAEAAAAKLwIAAAAAAAAvAgAAAAAAAAEAAAAKLgIAAAAAAAAuAgAAAAAAAAEAAAAKLQIAAAAAAAAtAgAAAAAAAAEAAAAKLAIAAAAAAAAsAgAAAAAAAAEAAAAKKwIAAAAAAAArAgAAAAAAAAEAAAAKKgIAAAAAAAAqAgAAAAAAAAEAAAAKKQIAAAAAAAApAgAAAAAAAAEAAAAKKAIAAAAAAAAoAgAAAAAAAAEAAAAKJwIAAAAAAAAnAgAAAAAAAAEAAAAKJgIAAAAAAAAmAgAAAAAAAAEAAAAKJQIAAAAAAAAlAgAAAAAAAAEAAAAKJAIAAAAAAAAkAgAAAAAAAAEAAAAKIwIAAAAAAAAjAgAAAAAAAAEAAAAKIgIAAAAAAAAiAgAAAAAAAAEAAAAKIQIAAAAAAAAhAgAAAAAAAAEAAAAKIAIAAAAAAAAgAgAAAAAAAAEAAAAKHwIAAAAAAAAfAgAAAAAAAAEAAAAKHgIAAAAAAAAeAgAAAAAAAAEAAAAKHQIAAAAAAAAdAgAAAAAAAAEAAAAKHAIAAAAAAAAcAgAAAAAAAAEAAAAKGwIAAAAAAAAbAgAAAAAAAAEAAAAKGgIAAAAAAAAaAgAAAAAAAAEAAAAKGQIAAAAAAAAZAgAAAAAAAAEAAAAKGAIAAAAAAAAYAgAAAAAAAAEAAAAKFwIAAAAAAAAXAgAAAAAAAAEAAAAKnQEAAAAAAACdAQAAAAAAAHoAAAAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvw"
 				]
 			]
 		},
@@ -1298,7 +694,7 @@
 			"file": "README.md",
 			"settings":
 			{
-				"buffer_size": 2142,
+				"buffer_size": 2270,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			},
@@ -1310,7 +706,7 @@
 					"left_delete",
 					null,
 					"AQAAAB0IAAAAAAAAHQgAAAAAAACUDAAAQSBzYW1wbGUgYGRqYW1hZ29gIHByb2plY3QKCmhlcmUgdGhlIHN0cnVjdHVyZSBvZiB0aGUgc2FtcGxlCmBgYGNtZApleGFtcGxlCuKUgiAgIGV4cHJlc3Npb25zLnB5CuKUgiAgIG1haW4ucHkK4pSCCuKUlOKUgOKUgOKUgHRvcGljcwogICAgICAgIGRqYW1hZ28ucHkKICAgICAgICBtYWluLnB5CiAgICAgICAgX19pbml0X18ucHkKYGBgCgojIyMgbWFpbi5weQoKYGBgcHl0aG9uCmltcG9ydCBleHByZXNzaW9ucyAgIyBFeHByZXNzaW9ucwoKZnJvbSBkamFtYWdvIGltcG9ydCAqCiMgZnJvbSB0b3BpY3MgaW1wb3J0IGRqYW1hZ28gICMgdG9waWNzCmZyb20gdG9waWNzIGltcG9ydCBtYWluCgoKY2xhc3MgUGFuZ28oRGphbWFnbyk6CiAgICBkZWYgX19pbml0X18oc2VsZik6CiAgICAgICAgc3VwZXIoKS5fX2luaXRfXygicGFuZ28iKSAgIyBjaGF0Ym90IG5hbWUKCgpQYW5nby50b3BpYyhtYWluLk1haW4pCiMgUGFuZ28udG9waWMoZGphbWFnby5EamFtYWdvKQoKCnAgPSBQYW5nbygpCndoaWxlIFRydWU6CiAgICBwcmludChwLnJlc3BvbmQoaW5wdXQoIj4gIikpLnJlc3BvbnNlKQoKYGBgCgojIyMgZXhwcmVzc2lvbnMucHkKCmBgYHB5dGhvbgpmcm9tIGRqYW1hZ28gaW1wb3J0IEV4cHJlc3Npb24KCnF1ZXN0aW9uID0gbGFtYmRhIHJlOiBmciIoPzooPzpwbGVhc2V8cXVlc3Rpb24uPykge3JlfVw/Pyl8KD86bWF5ICk/SSBhc2sgeW91IHtyZX1cPz8iCgoKRXhwcmVzc2lvbi5yZWdpc3Rlcigid2hvaXMiLCBbCiAgICAoMTAwLCByIig/OndobyBpcykgKC4qKSIpLAogICAgKDMwLCByIig/OmRvIHlvdSBrbm93KSAoLiopIiksCl0pCkV4cHJlc3Npb24ucmVnaXN0ZXIoIm5hbWUiLCBbCiAgICAoNTAsIHIiW1x3XC0gXSsoPzogW1x3XC0gXSspKiIpCl0pCkV4cHJlc3Npb24ucmVnaXN0ZXIoIndoYXRpcyIsIFsKICAgICgxMDAsIHIiKD86d2hhdCBpcykgKC4qKSIpLAogICAgKDUwLCByIig/OnRlbGwgbWUuPyA/KD86ZGphbWFnbyk/IHdoYXQgaXMpICguKikiKSwKXSkKRXhwcmVzc2lvbi5yZWdpc3RlcigiZ3JlZXRpbmdzIiwgWwogICAgKDEwMCwgciJoZWxsbyIpLAogICAgKDEwMCwgciJnb29kICg/Om1vcm5pbmd8ZXZlbmluZ3xuaWdodHxhZnRlci0/bm9vbikiKSwKICAgICg3MCwgciJncmVldGluZ3MiKSwKICAgICgyMCwgciJnb29kIGRheSIpLApdKQpFeHByZXNzaW9uLnJlZ2lzdGVyKCJjYWxseW91IiwgWwogICAgKDEwMCwgcXVlc3Rpb24ociJob3cgZG8geW91IGNhbGwgeW91cnNlbGYiKSksCiAgICAoMTAwLCBmciIoPzp0ZWxsIG1lLj8gPyg/OmRqYW1hZ28pPyB3aGF0IGlzKSAoLiopIiksCiAgICAoMTAwLCBxdWVzdGlvbihyIndoYXQgaXMgeW91ciBuYW1lIikpLAogICAgKDEwMCwgcXVlc3Rpb24ociJob3cgY2FuIEkgY2FsbCB5b3UiKSksCl0pCgpgYGAKCiMjIyB0b3BpY3MKCkhlcmUgd2UgbGVhdmUgdGhlIGBfX2luaXRfXy5weWAgZW1wdHkKCiMjIyMgdG9waWNzL21haW4ucHkKCmBgYHB5dGhvbgoKZnJvbSBkamFtYWdvIGltcG9ydCBUb3BpYywgRXhwcmVzc2lvbiwgQ2FsbGJhY2ssIFJlR2V4CmZyb20gcHlvbG9hZCBpbXBvcnQgKgoKCkBhbm5vdGF0ZQpjbGFzcyBNYWluKFRvcGljKToKICAgIEBDYWxsYmFjayhFeHByZXNzaW9uKCJncmVldGluZ3MiKSkKICAgIGRlZiBtb3JuaW5nKG5vZGU6ICJOb2RlIiwgaWQ6IFZhbHVlcygoMCwgMSwgMikpLCB2YXJzKToKICAgICAgICBpZiBpZCA9PSAwOgogICAgICAgICAgICBub2RlLnJlc3BvbnNlID0gIkh5IgogICAgICAgICAgICBub2RlLnRvcGljcyA9ICgibWFpbiIsKQogICAgICAgIGVsaWYgaWQgPT0gMToKICAgICAgICAgICAgbm9kZS5yZXNwb25zZSA9IG5vZGUucXVlcnkgKyAiLCBIb3cgYXJlIHlvdT8iCiAgICAgICAgICAgIG5vZGUudG9waWNzID0gKCJncmVldCIsKQogICAgICAgICAgICByZXR1cm4gbm9kZQogICAgICAgIGVsaWYgaWQgPT0gMjoKICAgICAgICAgICAgbm9kZS5yZXNwb25zZSA9ICJIb3cgc3RyYW5nZSBncmVldGluZ3MhIgogICAgICAgICAgICBub2RlLnRvcGljcyA9ICgibWFpbiIsKQogICAgICAgICAgICByZXR1cm4gbm9kZQogICAgICAgIHJldHVybiBub2RlCgogICAgQENhbGxiYWNrKEV4cHJlc3Npb24oJ3dob2lzKG5hbWUpJyksKQogICAgZGVmIHdob2lzKG5vZGUsIGlkLCB2YXIpOgogICAgICAgIGlmIHZhci5nZXQoIm5hbWUiKS5sb3dlcigpID09ICJkamFtYWdvIjoKICAgICAgICAgICAgbm9kZS5yZXNwb25zZSA9ICJEamFtYWdvPywgaXQncyBtZSEiCiAgICAgICAgZWxzZToKICAgICAgICAgICAgbm9kZS5yZXNwb25zZSA9ICJJIGRvIG5vdCBrbm93ICVzLCB5b3UgdGVsbCBtZSIgJSB2YXIuZ2V0KCduYW1lJykKICAgICAgICBub2RlLnRvcGljcyA9ICgibWFpbiIsKQogICAgICAgIHJldHVybiBub2RlCgogICAgQENhbGxiYWNrKEV4cHJlc3Npb24oJ2NhbGx5b3UnKSwpCiAgICBkZWYgY2FsbHlvdShub2RlLCBpZCwgdmFyKToKICAgICAgICBub2RlLnJlc3BvbnNlID0gewogICAgICAgICAgICAiT3csIGNhbiBjYWxsIG1lIGRqYW1hZ28iLAogICAgICAgICAgICAiQ2FsbCBtZSBkamFtYWdvIiwKICAgICAgICAgICAgIkkgYW0gY2FsbGVkIGRqYW1hZ28iCiAgICAgICAgfS5wb3AoKQogICAgICAgIG5vZGUudG9waWNzID0gKCJtYWluIiwgImRqYW1hZ28iKQogICAgICAgIHJldHVybiBub2RlCgogICAgQENhbGxiYWNrKAogICAgICAgIFJlR2V4KAogICAgICAgICAgICBbCiAgICAgICAgICAgICAgICAoMCwgciIuKiIpLAogICAgICAgICAgICBdCiAgICAgICAgKQogICAgKQogICAgZGVmIGhlbGxvKG5vZGUsIGlkLCBtYXRjaCk6CiAgICAgICAgbm9kZS5yZXNwb25zZSA9ICJEaWQgbm90IHVuZGVyc3RhbmQiCiAgICAgICAgbm9kZS50b3BpY3MgPSAoIm1haW4iLCkKICAgICAgICByZXR1cm4gbm9kZQoKYGBgCgojIyMjIHRvcGljcy9kamFtYWdvLnB5CgpgYGBweXRob24KIyBOb3RoaW5nIGhlcmUgeWV0CmBgYAoKCiMjIFJlc3VsdAoKYGBgYmFzaAokIG1haW4ucHkKPiBoZWxsbwpIeQo+IGdvb2QgbW9ybmluZwpnb29kIG1vcm5pbmcsIEhvdyBhcmUgeW91Pwo+IGdvb2QgZGF5CkhvdyBzdHJhbmdlIGdyZWV0aW5ncyEKPiBnb29kIGFmdGVyLW5vb24KZ29vZCBhZnRlci1ub29uLCBIb3cgYXJlIHlvdT8KPiB3aGF0IGlzIHlvdXIgbmFtZQpEamFtYWdvIGFtIEkKPiBwbGVhc2UgaG93IGNhbiBJIGNhbGwgeW91PwpDYWxsIG1lIGRqYW1hZ28KYGBgCg",
-					"AQAAAAAAAAABAAAAHQgAAAAAAACjFAAAAAAAAAAAAAAAAAAA"
+					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAdCAAAAAAAAKMUAAAAAAAAAAAAAAAAAAA"
 				],
 				[
 					23,
@@ -1320,7 +716,7 @@
 						"characters": "\n\n"
 					},
 					"AgAAABoIAAAAAAAAGwgAAAAAAAAAAAAAGwgAAAAAAAAcCAAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAGggAAAAAAAAaCAAAAAAAAAAAAAAAwFhA"
+					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAaCAAAAAAAABoIAAAAAAAAAAAAAADAWEA"
 				],
 				[
 					29,
@@ -1328,7 +724,7 @@
 					"left_delete",
 					null,
 					"AQAAAN4HAAAAAAAA3gcAAAAAAAABAAAAIw",
-					"AQAAAAAAAAABAAAA3wcAAAAAAADfBwAAAAAAAAAAAAAAAPC/"
+					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAADfBwAAAAAAAN8HAAAAAAAAAAAAAAAA8L8"
 				],
 				[
 					33,
@@ -1336,7 +732,7 @@
 					"left_delete",
 					null,
 					"AgAAAOsHAAAAAAAA6wcAAAAAAAAWAAAAIyMjIERqYW1hZ28gaGllcmFyY2h5CuoHAAAAAAAA6gcAAAAAAAABAAAACg",
-					"AQAAAAAAAAABAAAA6wcAAAAAAAABCAAAAAAAAAAAAAAAAPC/"
+					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAADrBwAAAAAAAAEIAAAAAAAAAAAAAAAA8L8"
 				],
 				[
 					35,
@@ -1344,7 +740,7 @@
 					"left_delete",
 					null,
 					"AgAAAOoHAAAAAAAA6gcAAAAAAAABAAAACukHAAAAAAAA6QcAAAAAAAABAAAACg",
-					"AQAAAAAAAAABAAAA6wcAAAAAAADrBwAAAAAAAAAAAAAAAAAA"
+					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAADrBwAAAAAAAOsHAAAAAAAAAAAAAAAAAAA"
 				],
 				[
 					40,
@@ -1352,7 +748,7 @@
 					"left_delete",
 					null,
 					"AwAAAAQIAAAAAAAABAgAAAAAAAABAAAACgMIAAAAAAAAAwgAAAAAAAABAAAACgIIAAAAAAAAAggAAAAAAAABAAAACg",
-					"AQAAAAAAAAABAAAABQgAAAAAAAAFCAAAAAAAAAAAAAAAAAAA"
+					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAFCAAAAAAAAAUIAAAAAAAAAAAAAAAAAAA"
 				],
 				[
 					41,
@@ -1362,7 +758,7 @@
 						"characters": "##"
 					},
 					"AgAAAAIIAAAAAAAAAwgAAAAAAAAAAAAAAwgAAAAAAAAECAAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAAggAAAAAAAACCAAAAAAAAAAAAAAAAPC/"
+					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAACCAAAAAAAAAIIAAAAAAAAAAAAAAAA8L8"
 				],
 				[
 					42,
@@ -1372,7 +768,7 @@
 						"characters": " "
 					},
 					"AQAAAAQIAAAAAAAABQgAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAABAgAAAAAAAAECAAAAAAAAAAAAAAAAPC/"
+					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAECAAAAAAAAAQIAAAAAAAAAAAAAAAA8L8"
 				],
 				[
 					43,
@@ -1382,7 +778,7 @@
 						"characters": "R"
 					},
 					"AQAAAAUIAAAAAAAABggAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAABQgAAAAAAAAFCAAAAAAAAAAAAAAAAPC/"
+					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAFCAAAAAAAAAUIAAAAAAAAAAAAAAAA8L8"
 				],
 				[
 					44,
@@ -1390,7 +786,7 @@
 					"left_delete",
 					null,
 					"AQAAAAUIAAAAAAAABQgAAAAAAAABAAAAUg",
-					"AQAAAAAAAAABAAAABggAAAAAAAAGCAAAAAAAAAAAAAAAAPC/"
+					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAGCAAAAAAAAAYIAAAAAAAAAAAAAAAA8L8"
 				],
 				[
 					45,
@@ -1400,7 +796,7 @@
 						"characters": "Initiali"
 					},
 					"CAAAAAUIAAAAAAAABggAAAAAAAAAAAAABggAAAAAAAAHCAAAAAAAAAAAAAAHCAAAAAAAAAgIAAAAAAAAAAAAAAgIAAAAAAAACQgAAAAAAAAAAAAACQgAAAAAAAAKCAAAAAAAAAAAAAAKCAAAAAAAAAsIAAAAAAAAAAAAAAsIAAAAAAAADAgAAAAAAAAAAAAADAgAAAAAAAANCAAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAABQgAAAAAAAAFCAAAAAAAAAAAAAAAAPC/"
+					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAFCAAAAAAAAAUIAAAAAAAAAAAAAAAA8L8"
 				],
 				[
 					46,
@@ -1410,7 +806,7 @@
 						"characters": "zation"
 					},
 					"BgAAAA0IAAAAAAAADggAAAAAAAAAAAAADggAAAAAAAAPCAAAAAAAAAAAAAAPCAAAAAAAABAIAAAAAAAAAAAAABAIAAAAAAAAEQgAAAAAAAAAAAAAEQgAAAAAAAASCAAAAAAAAAAAAAASCAAAAAAAABMIAAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAADQgAAAAAAAANCAAAAAAAAAAAAAAAAPC/"
+					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAANCAAAAAAAAA0IAAAAAAAAAAAAAAAA8L8"
 				],
 				[
 					47,
@@ -1420,7 +816,7 @@
 						"characters": "\n\nDuring"
 					},
 					"CAAAABMIAAAAAAAAFAgAAAAAAAAAAAAAFAgAAAAAAAAVCAAAAAAAAAAAAAAVCAAAAAAAABYIAAAAAAAAAAAAABYIAAAAAAAAFwgAAAAAAAAAAAAAFwgAAAAAAAAYCAAAAAAAAAAAAAAYCAAAAAAAABkIAAAAAAAAAAAAABkIAAAAAAAAGggAAAAAAAAAAAAAGggAAAAAAAAbCAAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAEwgAAAAAAAATCAAAAAAAAAAAAAAAAPC/"
+					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAATCAAAAAAAABMIAAAAAAAAAAAAAAAA8L8"
 				],
 				[
 					48,
@@ -1430,7 +826,7 @@
 						"characters": " this"
 					},
 					"BQAAABsIAAAAAAAAHAgAAAAAAAAAAAAAHAgAAAAAAAAdCAAAAAAAAAAAAAAdCAAAAAAAAB4IAAAAAAAAAAAAAB4IAAAAAAAAHwgAAAAAAAAAAAAAHwgAAAAAAAAgCAAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAGwgAAAAAAAAbCAAAAAAAAAAAAAAAAPC/"
+					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAbCAAAAAAAABsIAAAAAAAAAAAAAAAA8L8"
 				],
 				[
 					49,
@@ -1440,7 +836,7 @@
 						"characters": " step"
 					},
 					"BQAAACAIAAAAAAAAIQgAAAAAAAAAAAAAIQgAAAAAAAAiCAAAAAAAAAAAAAAiCAAAAAAAACMIAAAAAAAAAAAAACMIAAAAAAAAJAgAAAAAAAAAAAAAJAgAAAAAAAAlCAAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAIAgAAAAAAAAgCAAAAAAAAAAAAAAAAPC/"
+					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAgCAAAAAAAACAIAAAAAAAAAAAAAAAA8L8"
 				],
 				[
 					50,
@@ -1450,7 +846,7 @@
 						"characters": "s,"
 					},
 					"AgAAACUIAAAAAAAAJggAAAAAAAAAAAAAJggAAAAAAAAnCAAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAJQgAAAAAAAAlCAAAAAAAAAAAAAAAAPC/"
+					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAlCAAAAAAAACUIAAAAAAAAAAAAAAAA8L8"
 				],
 				[
 					51,
@@ -1460,7 +856,7 @@
 						"characters": " ss"
 					},
 					"AwAAACcIAAAAAAAAKAgAAAAAAAAAAAAAKAgAAAAAAAApCAAAAAAAAAAAAAApCAAAAAAAACoIAAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAJwgAAAAAAAAnCAAAAAAAAAAAAAAAAPC/"
+					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAnCAAAAAAAACcIAAAAAAAAAAAAAAAA8L8"
 				],
 				[
 					52,
@@ -1468,7 +864,7 @@
 					"left_delete",
 					null,
 					"AgAAACkIAAAAAAAAKQgAAAAAAAABAAAAcygIAAAAAAAAKAgAAAAAAAABAAAAcw",
-					"AQAAAAAAAAABAAAAKggAAAAAAAAqCAAAAAAAAAAAAAAAAPC/"
+					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAqCAAAAAAAACoIAAAAAAAAAAAAAAAA8L8"
 				],
 				[
 					53,
@@ -1478,7 +874,7 @@
 						"characters": "the"
 					},
 					"AwAAACgIAAAAAAAAKQgAAAAAAAAAAAAAKQgAAAAAAAAqCAAAAAAAAAAAAAAqCAAAAAAAACsIAAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAKAgAAAAAAAAoCAAAAAAAAAAAAAAAAPC/"
+					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAoCAAAAAAAACgIAAAAAAAAAAAAAAAA8L8"
 				],
 				[
 					54,
@@ -1488,7 +884,7 @@
 						"characters": " several"
 					},
 					"CAAAACsIAAAAAAAALAgAAAAAAAAAAAAALAgAAAAAAAAtCAAAAAAAAAAAAAAtCAAAAAAAAC4IAAAAAAAAAAAAAC4IAAAAAAAALwgAAAAAAAAAAAAALwgAAAAAAAAwCAAAAAAAAAAAAAAwCAAAAAAAADEIAAAAAAAAAAAAADEIAAAAAAAAMggAAAAAAAAAAAAAMggAAAAAAAAzCAAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAKwgAAAAAAAArCAAAAAAAAAAAAAAAAPC/"
+					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAArCAAAAAAAACsIAAAAAAAAAAAAAAAA8L8"
 				],
 				[
 					55,
@@ -1498,7 +894,7 @@
 						"characters": " e"
 					},
 					"AgAAADMIAAAAAAAANAgAAAAAAAAAAAAANAgAAAAAAAA1CAAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAMwgAAAAAAAAzCAAAAAAAAAAAAAAAAPC/"
+					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAzCAAAAAAAADMIAAAAAAAAAAAAAAAA8L8"
 				],
 				[
 					56,
@@ -1508,7 +904,7 @@
 						"characters": "xpressions"
 					},
 					"CgAAADUIAAAAAAAANggAAAAAAAAAAAAANggAAAAAAAA3CAAAAAAAAAAAAAA3CAAAAAAAADgIAAAAAAAAAAAAADgIAAAAAAAAOQgAAAAAAAAAAAAAOQgAAAAAAAA6CAAAAAAAAAAAAAA6CAAAAAAAADsIAAAAAAAAAAAAADsIAAAAAAAAPAgAAAAAAAAAAAAAPAgAAAAAAAA9CAAAAAAAAAAAAAA9CAAAAAAAAD4IAAAAAAAAAAAAAD4IAAAAAAAAPwgAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAANQgAAAAAAAA1CAAAAAAAAAAAAAAAAPC/"
+					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAA1CAAAAAAAADUIAAAAAAAAAAAAAAAA8L8"
 				],
 				[
 					57,
@@ -1518,7 +914,7 @@
 						"characters": " and"
 					},
 					"BAAAAD8IAAAAAAAAQAgAAAAAAAAAAAAAQAgAAAAAAABBCAAAAAAAAAAAAABBCAAAAAAAAEIIAAAAAAAAAAAAAEIIAAAAAAAAQwgAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAPwgAAAAAAAA/CAAAAAAAAAAAAAAAAPC/"
+					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAA/CAAAAAAAAD8IAAAAAAAAAAAAAAAA8L8"
 				],
 				[
 					58,
@@ -1528,7 +924,7 @@
 						"characters": " dataset"
 					},
 					"CAAAAEMIAAAAAAAARAgAAAAAAAAAAAAARAgAAAAAAABFCAAAAAAAAAAAAABFCAAAAAAAAEYIAAAAAAAAAAAAAEYIAAAAAAAARwgAAAAAAAAAAAAARwgAAAAAAABICAAAAAAAAAAAAABICAAAAAAAAEkIAAAAAAAAAAAAAEkIAAAAAAAASggAAAAAAAAAAAAASggAAAAAAABLCAAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAQwgAAAAAAABDCAAAAAAAAAAAAAAAAPC/"
+					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAABDCAAAAAAAAEMIAAAAAAAAAAAAAAAA8L8"
 				],
 				[
 					59,
@@ -1538,7 +934,7 @@
 						"characters": " to"
 					},
 					"AwAAAEsIAAAAAAAATAgAAAAAAAAAAAAATAgAAAAAAABNCAAAAAAAAAAAAABNCAAAAAAAAE4IAAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAASwgAAAAAAABLCAAAAAAAAAAAAAAAAPC/"
+					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAABLCAAAAAAAAEsIAAAAAAAAAAAAAAAA8L8"
 				],
 				[
 					60,
@@ -1548,7 +944,7 @@
 						"characters": " be"
 					},
 					"AwAAAE4IAAAAAAAATwgAAAAAAAAAAAAATwgAAAAAAABQCAAAAAAAAAAAAABQCAAAAAAAAFEIAAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAATggAAAAAAABOCAAAAAAAAAAAAAAAAPC/"
+					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAABOCAAAAAAAAE4IAAAAAAAAAAAAAAAA8L8"
 				],
 				[
 					61,
@@ -1558,7 +954,7 @@
 						"characters": " used,"
 					},
 					"BgAAAFEIAAAAAAAAUggAAAAAAAAAAAAAUggAAAAAAABTCAAAAAAAAAAAAABTCAAAAAAAAFQIAAAAAAAAAAAAAFQIAAAAAAAAVQgAAAAAAAAAAAAAVQgAAAAAAABWCAAAAAAAAAAAAABWCAAAAAAAAFcIAAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAUQgAAAAAAABRCAAAAAAAAAAAAAAAAPC/"
+					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAABRCAAAAAAAAFEIAAAAAAAAAAAAAAAA8L8"
 				],
 				[
 					62,
@@ -1568,7 +964,7 @@
 						"characters": " "
 					},
 					"AQAAAFcIAAAAAAAAWAgAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAVwgAAAAAAABXCAAAAAAAAAAAAAAAAPC/"
+					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAABXCAAAAAAAAFcIAAAAAAAAAAAAAAAA8L8"
 				],
 				[
 					63,
@@ -1576,7 +972,7 @@
 					"left_delete",
 					null,
 					"AgAAAFcIAAAAAAAAVwgAAAAAAAABAAAAIFYIAAAAAAAAVggAAAAAAAABAAAALA",
-					"AQAAAAAAAAABAAAAWAgAAAAAAABYCAAAAAAAAAAAAAAAAPC/"
+					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAABYCAAAAAAAAFgIAAAAAAAAAAAAAAAA8L8"
 				],
 				[
 					64,
@@ -1586,7 +982,7 @@
 						"characters": " are"
 					},
 					"BAAAAFYIAAAAAAAAVwgAAAAAAAAAAAAAVwgAAAAAAABYCAAAAAAAAAAAAABYCAAAAAAAAFkIAAAAAAAAAAAAAFkIAAAAAAAAWggAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAVggAAAAAAABWCAAAAAAAAAAAAAAAAPC/"
+					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAABWCAAAAAAAAFYIAAAAAAAAAAAAAAAA8L8"
 				],
 				[
 					65,
@@ -1596,7 +992,7 @@
 						"characters": " lo"
 					},
 					"AwAAAFoIAAAAAAAAWwgAAAAAAAAAAAAAWwgAAAAAAABcCAAAAAAAAAAAAABcCAAAAAAAAF0IAAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAWggAAAAAAABaCAAAAAAAAAAAAAAAAPC/"
+					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAABaCAAAAAAAAFoIAAAAAAAAAAAAAAAA8L8"
 				],
 				[
 					67,
@@ -1604,7 +1000,658 @@
 					"ensure_newline_at_eof",
 					null,
 					"AQAAAF0IAAAAAAAAXggAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAXQgAAAAAAABdCAAAAAAAAAAAAAAAAPC/"
+					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAABdCAAAAAAAAF0IAAAAAAAAAAAAAAAA8L8"
+				],
+				[
+					5,
+					1,
+					"left_delete",
+					null,
+					"AQAAAF0IAAAAAAAAXQgAAAAAAAABAAAACg",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAF4IAAAAAAAAXggAAAAAAAAAAAAAAAAAAA"
+				],
+				[
+					6,
+					1,
+					"insert",
+					{
+						"characters": "ade"
+					},
+					"AwAAAF0IAAAAAAAAXggAAAAAAAAAAAAAXggAAAAAAABfCAAAAAAAAAAAAABfCAAAAAAAAGAIAAAAAAAAAAAAAA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAF0IAAAAAAAAXQgAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					7,
+					1,
+					"insert",
+					{
+						"characters": "d"
+					},
+					"AQAAAGAIAAAAAAAAYQgAAAAAAAAAAAAA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAGAIAAAAAAAAYAgAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					8,
+					1,
+					"insert",
+					{
+						"characters": " to"
+					},
+					"AwAAAGEIAAAAAAAAYggAAAAAAAAAAAAAYggAAAAAAABjCAAAAAAAAAAAAABjCAAAAAAAAGQIAAAAAAAAAAAAAA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAGEIAAAAAAAAYQgAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					9,
+					1,
+					"insert",
+					{
+						"characters": " djamago"
+					},
+					"CAAAAGQIAAAAAAAAZQgAAAAAAAAAAAAAZQgAAAAAAABmCAAAAAAAAAAAAABmCAAAAAAAAGcIAAAAAAAAAAAAAGcIAAAAAAAAaAgAAAAAAAAAAAAAaAgAAAAAAABpCAAAAAAAAAAAAABpCAAAAAAAAGoIAAAAAAAAAAAAAGoIAAAAAAAAawgAAAAAAAAAAAAAawgAAAAAAABsCAAAAAAAAAAAAAA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAGQIAAAAAAAAZAgAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					10,
+					1,
+					"insert",
+					{
+						"characters": " "
+					},
+					"AQAAAGwIAAAAAAAAbQgAAAAAAAAAAAAA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAGwIAAAAAAAAbAgAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					11,
+					9,
+					"left_delete",
+					null,
+					"CQAAAGwIAAAAAAAAbAgAAAAAAAABAAAAIGsIAAAAAAAAawgAAAAAAAABAAAAb2oIAAAAAAAAaggAAAAAAAABAAAAZ2kIAAAAAAAAaQgAAAAAAAABAAAAYWgIAAAAAAAAaAgAAAAAAAABAAAAbWcIAAAAAAAAZwgAAAAAAAABAAAAYWYIAAAAAAAAZggAAAAAAAABAAAAamUIAAAAAAAAZQgAAAAAAAABAAAAZGQIAAAAAAAAZAgAAAAAAAABAAAAIA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAG0IAAAAAAAAbQgAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					12,
+					1,
+					"insert",
+					{
+						"characters": "\ndjamago"
+					},
+					"CAAAAGQIAAAAAAAAZQgAAAAAAAAAAAAAZQgAAAAAAABmCAAAAAAAAAAAAABmCAAAAAAAAGcIAAAAAAAAAAAAAGcIAAAAAAAAaAgAAAAAAAAAAAAAaAgAAAAAAABpCAAAAAAAAAAAAABpCAAAAAAAAGoIAAAAAAAAAAAAAGoIAAAAAAAAawgAAAAAAAAAAAAAawgAAAAAAABsCAAAAAAAAAAAAAA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAGQIAAAAAAAAZAgAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					13,
+					1,
+					"insert",
+					{
+						"characters": ","
+					},
+					"AQAAAGwIAAAAAAAAbQgAAAAAAAAAAAAA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAGwIAAAAAAAAbAgAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					14,
+					1,
+					"insert",
+					{
+						"characters": " happens"
+					},
+					"CAAAAG0IAAAAAAAAbggAAAAAAAAAAAAAbggAAAAAAABvCAAAAAAAAAAAAABvCAAAAAAAAHAIAAAAAAAAAAAAAHAIAAAAAAAAcQgAAAAAAAAAAAAAcQgAAAAAAAByCAAAAAAAAAAAAAByCAAAAAAAAHMIAAAAAAAAAAAAAHMIAAAAAAAAdAgAAAAAAAAAAAAAdAgAAAAAAAB1CAAAAAAAAAAAAAA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAG0IAAAAAAAAbQgAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					15,
+					1,
+					"insert",
+					{
+						"characters": " such:"
+					},
+					"BgAAAHUIAAAAAAAAdggAAAAAAAAAAAAAdggAAAAAAAB3CAAAAAAAAAAAAAB3CAAAAAAAAHgIAAAAAAAAAAAAAHgIAAAAAAAAeQgAAAAAAAAAAAAAeQgAAAAAAAB6CAAAAAAAAAAAAAB6CAAAAAAAAHsIAAAAAAAAAAAAAA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAHUIAAAAAAAAdQgAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					16,
+					1,
+					"insert",
+					{
+						"characters": "\n\n"
+					},
+					"AgAAAHsIAAAAAAAAfAgAAAAAAAAAAAAAfAgAAAAAAAB9CAAAAAAAAAAAAAA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAHsIAAAAAAAAewgAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					17,
+					1,
+					"insert_snippet",
+					{
+						"contents": "`$0`"
+					},
+					"AQAAAH0IAAAAAAAAfwgAAAAAAAAAAAAA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAH0IAAAAAAAAfQgAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					19,
+					1,
+					"insert",
+					{
+						"characters": "````"
+					},
+					"BAAAAH8IAAAAAAAAgAgAAAAAAAAAAAAAgAgAAAAAAACBCAAAAAAAAAAAAACBCAAAAAAAAIIIAAAAAAAAAAAAAIIIAAAAAAAAgwgAAAAAAAAAAAAA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAH8IAAAAAAAAfwgAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					21,
+					1,
+					"insert",
+					{
+						"characters": "|"
+					},
+					"AQAAAHwIAAAAAAAAfQgAAAAAAAAAAAAA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAHwIAAAAAAAAfAgAAAAAAAAAAAAAAIBIQA"
+				],
+				[
+					22,
+					2,
+					"left_delete",
+					null,
+					"AgAAAHwIAAAAAAAAfAgAAAAAAAABAAAAfHsIAAAAAAAAewgAAAAAAAABAAAACg",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAH0IAAAAAAAAfQgAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					23,
+					1,
+					"insert",
+					{
+						"characters": " \\\\"
+					},
+					"AwAAAHsIAAAAAAAAfAgAAAAAAAAAAAAAfAgAAAAAAAB9CAAAAAAAAAAAAAB9CAAAAAAAAH4IAAAAAAAAAAAAAA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAHsIAAAAAAAAewgAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					24,
+					2,
+					"left_delete",
+					null,
+					"AgAAAH0IAAAAAAAAfQgAAAAAAAABAAAAXHwIAAAAAAAAfAgAAAAAAAABAAAAXA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAH4IAAAAAAAAfggAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					25,
+					1,
+					"insert_snippet",
+					{
+						"contents": "`$0`"
+					},
+					"AQAAAHwIAAAAAAAAfggAAAAAAAAAAAAA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAHwIAAAAAAAAfAgAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					28,
+					1,
+					"insert",
+					{
+						"characters": "Expr"
+					},
+					"BAAAAH0IAAAAAAAAfggAAAAAAAAAAAAAfggAAAAAAAB/CAAAAAAAAAAAAAB/CAAAAAAAAIAIAAAAAAAAAAAAAIAIAAAAAAAAgQgAAAAAAAAAAAAA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAH0IAAAAAAAAfQgAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					29,
+					1,
+					"insert",
+					{
+						"characters": "ession.r"
+					},
+					"CAAAAIEIAAAAAAAAgggAAAAAAAAAAAAAgggAAAAAAACDCAAAAAAAAAAAAACDCAAAAAAAAIQIAAAAAAAAAAAAAIQIAAAAAAAAhQgAAAAAAAAAAAAAhQgAAAAAAACGCAAAAAAAAAAAAACGCAAAAAAAAIcIAAAAAAAAAAAAAIcIAAAAAAAAiAgAAAAAAAAAAAAAiAgAAAAAAACJCAAAAAAAAAAAAAA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAIEIAAAAAAAAgQgAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					30,
+					1,
+					"insert",
+					{
+						"characters": "egister("
+					},
+					"CAAAAIkIAAAAAAAAiggAAAAAAAAAAAAAiggAAAAAAACLCAAAAAAAAAAAAACLCAAAAAAAAIwIAAAAAAAAAAAAAIwIAAAAAAAAjQgAAAAAAAAAAAAAjQgAAAAAAACOCAAAAAAAAAAAAACOCAAAAAAAAI8IAAAAAAAAAAAAAI8IAAAAAAAAkAgAAAAAAAAAAAAAkAgAAAAAAACRCAAAAAAAAAAAAAA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAIkIAAAAAAAAiQgAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					31,
+					1,
+					"insert",
+					{
+						"characters": "="
+					},
+					"AQAAAJEIAAAAAAAAkggAAAAAAAAAAAAA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAJEIAAAAAAAAkQgAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					32,
+					1,
+					"left_delete",
+					null,
+					"AQAAAJEIAAAAAAAAkQgAAAAAAAABAAAAPQ",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAJIIAAAAAAAAkggAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					33,
+					1,
+					"insert",
+					{
+						"characters": ")"
+					},
+					"AQAAAJEIAAAAAAAAkggAAAAAAAAAAAAA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAJEIAAAAAAAAkQgAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					35,
+					1,
+					"insert_snippet",
+					{
+						"contents": "\"$0\""
+					},
+					"AQAAAJEIAAAAAAAAkwgAAAAAAAAAAAAA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAJEIAAAAAAAAkQgAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					36,
+					1,
+					"insert",
+					{
+						"characters": ",ame"
+					},
+					"BAAAAJIIAAAAAAAAkwgAAAAAAAAAAAAAkwgAAAAAAACUCAAAAAAAAAAAAACUCAAAAAAAAJUIAAAAAAAAAAAAAJUIAAAAAAAAlggAAAAAAAAAAAAA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAJIIAAAAAAAAkggAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					38,
+					1,
+					"left_delete",
+					null,
+					"AQAAAJIIAAAAAAAAkggAAAAAAAABAAAALA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAJMIAAAAAAAAkwgAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					39,
+					1,
+					"insert",
+					{
+						"characters": "n"
+					},
+					"AQAAAJIIAAAAAAAAkwgAAAAAAAAAAAAA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAJIIAAAAAAAAkggAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					42,
+					1,
+					"insert",
+					{
+						"characters": ","
+					},
+					"AQAAAJcIAAAAAAAAmAgAAAAAAAAAAAAA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAJcIAAAAAAAAlwgAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					43,
+					1,
+					"insert",
+					{
+						"characters": " list"
+					},
+					"BQAAAJgIAAAAAAAAmQgAAAAAAAAAAAAAmQgAAAAAAACaCAAAAAAAAAAAAACaCAAAAAAAAJsIAAAAAAAAAAAAAJsIAAAAAAAAnAgAAAAAAAAAAAAAnAgAAAAAAACdCAAAAAAAAAAAAAA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAJgIAAAAAAAAmAgAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					47,
+					1,
+					"left_delete",
+					null,
+					"AQAAAJYIAAAAAAAAlggAAAAAAAABAAAAIg",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAJcIAAAAAAAAlwgAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					49,
+					1,
+					"left_delete",
+					null,
+					"AQAAAJEIAAAAAAAAkQgAAAAAAAABAAAAIg",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAJIIAAAAAAAAkggAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					51,
+					1,
+					"insert",
+					{
+						"characters": ":"
+					},
+					"AQAAAJUIAAAAAAAAlggAAAAAAAAAAAAA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAJUIAAAAAAAAlQgAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					52,
+					1,
+					"insert",
+					{
+						"characters": " str"
+					},
+					"BAAAAJYIAAAAAAAAlwgAAAAAAAAAAAAAlwgAAAAAAACYCAAAAAAAAAAAAACYCAAAAAAAAJkIAAAAAAAAAAAAAJkIAAAAAAAAmggAAAAAAAAAAAAA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAJYIAAAAAAAAlggAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					56,
+					1,
+					"insert_snippet",
+					{
+						"contents": "[$0]"
+					},
+					"AQAAAKAIAAAAAAAAoggAAAAAAAAAAAAA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAKAIAAAAAAAAoAgAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					57,
+					1,
+					"insert",
+					{
+						"characters": "tuple"
+					},
+					"BQAAAKEIAAAAAAAAoggAAAAAAAAAAAAAoggAAAAAAACjCAAAAAAAAAAAAACjCAAAAAAAAKQIAAAAAAAAAAAAAKQIAAAAAAAApQgAAAAAAAAAAAAApQgAAAAAAACmCAAAAAAAAAAAAAA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAKEIAAAAAAAAoQgAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					58,
+					1,
+					"insert_snippet",
+					{
+						"contents": "[$0]"
+					},
+					"AQAAAKYIAAAAAAAAqAgAAAAAAAAAAAAA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAKYIAAAAAAAApggAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					59,
+					1,
+					"insert",
+					{
+						"characters": "d"
+					},
+					"AQAAAKcIAAAAAAAAqAgAAAAAAAAAAAAA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAKcIAAAAAAAApwgAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					60,
+					1,
+					"left_delete",
+					null,
+					"AQAAAKcIAAAAAAAApwgAAAAAAAABAAAAZA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAKgIAAAAAAAAqAgAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					61,
+					1,
+					"insert",
+					{
+						"characters": "score,"
+					},
+					"BgAAAKcIAAAAAAAAqAgAAAAAAAAAAAAAqAgAAAAAAACpCAAAAAAAAAAAAACpCAAAAAAAAKoIAAAAAAAAAAAAAKoIAAAAAAAAqwgAAAAAAAAAAAAAqwgAAAAAAACsCAAAAAAAAAAAAACsCAAAAAAAAK0IAAAAAAAAAAAAAA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAKcIAAAAAAAApwgAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					62,
+					1,
+					"insert",
+					{
+						"characters": " regex"
+					},
+					"BgAAAK0IAAAAAAAArggAAAAAAAAAAAAArggAAAAAAACvCAAAAAAAAAAAAACvCAAAAAAAALAIAAAAAAAAAAAAALAIAAAAAAAAsQgAAAAAAAAAAAAAsQgAAAAAAACyCAAAAAAAAAAAAACyCAAAAAAAALMIAAAAAAAAAAAAAA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAK0IAAAAAAAArQgAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					65,
+					1,
+					"insert",
+					{
+						"characters": "\n"
+					},
+					"AQAAALsIAAAAAAAAvAgAAAAAAAAAAAAA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAALsIAAAAAAAAuwgAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					67,
+					1,
+					"insert",
+					{
+						"characters": "pythoo"
+					},
+					"BgAAALsIAAAAAAAAvAgAAAAAAAAAAAAAvAgAAAAAAAC9CAAAAAAAAAAAAAC9CAAAAAAAAL4IAAAAAAAAAAAAAL4IAAAAAAAAvwgAAAAAAAAAAAAAvwgAAAAAAADACAAAAAAAAAAAAADACAAAAAAAAMEIAAAAAAAAAAAAAA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAALsIAAAAAAAAuwgAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					68,
+					1,
+					"insert",
+					{
+						"characters": "n"
+					},
+					"AQAAAMEIAAAAAAAAwggAAAAAAAAAAAAA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAMEIAAAAAAAAwQgAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					70,
+					1,
+					"left_delete",
+					null,
+					"AQAAAMAIAAAAAAAAwAgAAAAAAAABAAAAbw",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAMEIAAAAAAAAwQgAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					72,
+					1,
+					"insert",
+					{
+						"characters": "\n"
+					},
+					"AQAAALgIAAAAAAAAuQgAAAAAAAAAAAAA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAALgIAAAAAAAAuAgAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					74,
+					1,
+					"insert",
+					{
+						"characters": "\n####"
+					},
+					"BQAAALgIAAAAAAAAuQgAAAAAAAAAAAAAuQgAAAAAAAC6CAAAAAAAAAAAAAC6CAAAAAAAALsIAAAAAAAAAAAAALsIAAAAAAAAvAgAAAAAAAAAAAAAvAgAAAAAAAC9CAAAAAAAAAAAAAA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAALgIAAAAAAAAuAgAAAAAAAAAAAAAAAAAAA"
+				],
+				[
+					75,
+					1,
+					"insert",
+					{
+						"characters": "#"
+					},
+					"AQAAAL0IAAAAAAAAvggAAAAAAAAAAAAA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAL0IAAAAAAAAvQgAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					76,
+					1,
+					"insert",
+					{
+						"characters": " Expres"
+					},
+					"BwAAAL4IAAAAAAAAvwgAAAAAAAAAAAAAvwgAAAAAAADACAAAAAAAAAAAAADACAAAAAAAAMEIAAAAAAAAAAAAAMEIAAAAAAAAwggAAAAAAAAAAAAAwggAAAAAAADDCAAAAAAAAAAAAADDCAAAAAAAAMQIAAAAAAAAAAAAAMQIAAAAAAAAxQgAAAAAAAAAAAAA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAL4IAAAAAAAAvggAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					77,
+					1,
+					"insert",
+					{
+						"characters": "sion"
+					},
+					"BAAAAMUIAAAAAAAAxggAAAAAAAAAAAAAxggAAAAAAADHCAAAAAAAAAAAAADHCAAAAAAAAMgIAAAAAAAAAAAAAMgIAAAAAAAAyQgAAAAAAAAAAAAA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAMUIAAAAAAAAxQgAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					80,
+					1,
+					"insert",
+					{
+						"characters": "s.py"
+					},
+					"BAAAAMkIAAAAAAAAyggAAAAAAAAAAAAAyggAAAAAAADLCAAAAAAAAAAAAADLCAAAAAAAAMwIAAAAAAAAAAAAAMwIAAAAAAAAzQgAAAAAAAAAAAAA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAMkIAAAAAAAAyQgAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					83,
+					1,
+					"insert",
+					{
+						"characters": "##"
+					},
+					"AgAAAL4IAAAAAAAAvwgAAAAAAAAAAAAAvwgAAAAAAADACAAAAAAAAAAAAAA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAL4IAAAAAAAAvggAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					84,
+					1,
+					"left_delete",
+					null,
+					"AQAAAL8IAAAAAAAAvwgAAAAAAAABAAAAIw",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAMAIAAAAAAAAwAgAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					89,
+					1,
+					"ensure_newline_at_eof",
+					null,
+					"AQAAANwIAAAAAAAA3QgAAAAAAAAAAAAA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAANwIAAAAAAAA3AgAAAAAAAAAAAAAAIBIQA"
+				],
+				[
+					92,
+					1,
+					"insert",
+					{
+						"characters": "ç"
+					},
+					"AQAAANkIAAAAAAAA2ggAAAAAAAAAAAAA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAANkIAAAAAAAA2QgAAAAAAAAAAAAAAADwvw"
+				]
+			]
+		},
+		{
+			"contents": "pyoload==2.0.1\nkkjkjkkkd_d_r      v",
+			"file": "requirements.txt",
+			"file_size": 16,
+			"file_write_time": 133643011220326872,
+			"settings":
+			{
+				"buffer_size": 35,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			},
+			"undo_stack":
+			[
+				[
+					7,
+					1,
+					"insert",
+					{
+						"characters": "==2.0"
+					},
+					"BQAAAAcAAAAAAAAACAAAAAAAAAAAAAAACAAAAAAAAAAJAAAAAAAAAAAAAAAJAAAAAAAAAAoAAAAAAAAAAAAAAAoAAAAAAAAACwAAAAAAAAAAAAAACwAAAAAAAAAMAAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAABwAAAAAAAAAHAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					8,
+					1,
+					"insert",
+					{
+						"characters": ".1"
+					},
+					"AgAAAAwAAAAAAAAADQAAAAAAAAAAAAAADQAAAAAAAAAOAAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAADAAAAAAAAAAMAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					15,
+					1,
+					"insert",
+					{
+						"characters": "kk"
+					},
+					"AgAAAA8AAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAARAAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAADwAAAAAAAAAPAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					16,
+					1,
+					"insert",
+					{
+						"characters": "j"
+					},
+					"AQAAABEAAAAAAAAAEgAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAEQAAAAAAAAARAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					17,
+					1,
+					"insert",
+					{
+						"characters": "k"
+					},
+					"AQAAABIAAAAAAAAAEwAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAEgAAAAAAAAASAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					18,
+					1,
+					"insert",
+					{
+						"characters": "j"
+					},
+					"AQAAABMAAAAAAAAAFAAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAEwAAAAAAAAATAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					19,
+					1,
+					"insert",
+					{
+						"characters": "k"
+					},
+					"AQAAABQAAAAAAAAAFQAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAFAAAAAAAAAAUAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					20,
+					1,
+					"insert",
+					{
+						"characters": "kk"
+					},
+					"AgAAABUAAAAAAAAAFgAAAAAAAAAAAAAAFgAAAAAAAAAXAAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAFQAAAAAAAAAVAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					23,
+					1,
+					"insert",
+					{
+						"characters": "d_d_r"
+					},
+					"BQAAABcAAAAAAAAAGAAAAAAAAAAAAAAAGAAAAAAAAAAZAAAAAAAAAAAAAAAZAAAAAAAAABoAAAAAAAAAAAAAABoAAAAAAAAAGwAAAAAAAAAAAAAAGwAAAAAAAAAcAAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAFwAAAAAAAAAXAAAAAAAAAAAAAAAAgFBA"
+				],
+				[
+					24,
+					1,
+					"insert",
+					{
+						"characters": "      v"
+					},
+					"BwAAABwAAAAAAAAAHQAAAAAAAAAAAAAAHQAAAAAAAAAeAAAAAAAAAAAAAAAeAAAAAAAAAB8AAAAAAAAAAAAAAB8AAAAAAAAAIAAAAAAAAAAAAAAAIAAAAAAAAAAhAAAAAAAAAAAAAAAhAAAAAAAAACIAAAAAAAAAAAAAACIAAAAAAAAAIwAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAHAAAAAAAAAAcAAAAAAAAAAAAAAAAAPC/"
 				]
 			]
 		}
@@ -2115,12 +2162,16 @@
 	},
 	"expanded_folders":
 	[
-		"/C/djamago"
+		"/C/djamago",
+		"/C/djamago/docs"
 	],
 	"file_history":
 	[
-		"/C/djamago/text_similarity.py",
+		"/C/djamago/src/setup.py",
 		"/C/djamago/src/djamago/__init__.py",
+		"/C/sublime_text/Data/Packages/User/pyparam.sublime-snippet",
+		"/C/djamago/docs/index.rst",
+		"/C/djamago/text_similarity.py",
 		"/C/djamago/src/example/main.py",
 		"/C/djamago/src/example/topics/main.py",
 		"/C/djamago/src/example/topics/djamago.py",
@@ -2132,9 +2183,7 @@
 		"/C/djamago/src/example/expressions.py",
 		"/C/djamago/README.md",
 		"/C/djamago/src/example/topics/__init__.py",
-		"/C/djamago/src/setup.py",
 		"/C/djamago/src/del.py",
-		"/C/djamago/docs/index.rst",
 		"/C/djamago/docs/installation.rst",
 		"/C/djamago/docs/api.rst",
 		"/C/pyoload/README.md",
@@ -2245,12 +2294,11 @@
 		"/C/Sbook/note/models.py",
 		"/C/pyoload/src/del.py",
 		"/C/pyoload/src/pyoload/__init__.py",
-		"/C/Sbook/note/urls.py",
-		"/C/Sbook/staticfiles/styles/make.bat"
+		"/C/Sbook/note/urls.py"
 	],
 	"find":
 	{
-		"height": 39.0
+		"height": 27.0
 	},
 	"find_in_files":
 	{
@@ -2323,15 +2371,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 417,
+						"buffer_size": 25267,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								417,
-								417
+								25267,
+								25267
 							]
 						],
 						"settings":
@@ -2343,23 +2391,7 @@
 							{
 							},
 							"bracket_highlighter.ignore": true,
-							"color_helper.scan":
-							{
-								"allow_scanning": false,
-								"color_class":
-								[
-									{
-										"class": "css-level-4",
-										"scopes": ""
-									}
-								],
-								"color_trigger": "(?xi)\n(?:\n    \\b(?<![-#&$])(?:\n        color\\((?!\\s*-)|(?:hsla?|(?:ok)?(?:lch|lab)|hwb|rgba?)\\(\n) |\n\\b(?<![-#&$])[\\w]{3,}(?![(-])\\b|(?<![&])\\#)\n",
-								"current_ext": null,
-								"current_syntax": "Text/Plain text",
-								"enabled": true,
-								"last_updated": 1719572140.76,
-								"scanning": "-comment"
-							},
+							"color_helper.refresh": true,
 							"color_scheme": "Terminus.hidden-color-scheme",
 							"draw_centered": false,
 							"draw_indent_guides": false,
@@ -2389,6 +2421,7 @@
 							],
 							"scroll_past_end": true,
 							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"terminus.highlight_counter": 506,
 							"terminus_view": true,
 							"terminus_view.args":
 							{
@@ -2420,8 +2453,41 @@
 							"terminus_view.natural_keyboard": true,
 							"terminus_view.reactivable": true,
 							"terminus_view.tag": null,
-							"terminus_view.viewport_y": 0.0,
+							"terminus_view.viewport_y": 2220.0,
 							"word_wrap": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2220.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"stack_multiselect": false,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/tests/test_parse.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 271,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								202,
+								202
+							]
+						],
+						"settings":
+						{
+							"color_helper.refresh": true,
+							"rainbow_checked": true,
+							"syntax": "Packages/subliminal/subliminal-Python.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -2432,7 +2498,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 1,
+					"buffer": 2,
 					"semi_transient": false,
 					"settings":
 					{
@@ -2530,48 +2596,34 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "docs/index.rst",
+					"buffer": 3,
+					"file": "README.md",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1646,
+						"buffer_size": 2270,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1557,
-								1557
+								2232,
+								2232
 							]
 						],
 						"settings":
 						{
-							"color_helper.scan":
-							{
-								"allow_scanning": false,
-								"color_class":
-								[
-									{
-										"class": "css-level-4",
-										"scopes": ""
-									}
-								],
-								"color_trigger": "(?xi)\n(?:\n    \\b(?<![-#&$])(?:\n        color\\((?!\\s*-)|(?:hsla?|(?:ok)?(?:lch|lab)|hwb|rgba?)\\(\n) |\n\\b(?<![-#&$])[\\w]{3,}(?![(-])\\b|(?<![&])\\#)\n",
-								"current_ext": ".rst",
-								"current_syntax": "RestructuredText Improved/reStructuredText Improved",
-								"enabled": true,
-								"last_updated": 1719646907.41,
-								"scanning": "-comment"
-							},
+							"color_helper.box_height": 18,
+							"color_helper.color_scheme": "Neon.sublime-color-scheme",
+							"color_helper.refresh": true,
 							"rainbow_checked": true,
-							"syntax": "Packages/RestructuredText Improved/reStructuredText Improved.tmLanguage",
-							"tab_size": 2,
+							"syntax": "Packages/Markdown/Markdown.sublime-syntax",
+							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 254.0,
+						"translation.y": 160.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
@@ -2579,21 +2631,21 @@
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "README.md",
+					"buffer": 4,
+					"file": "requirements.txt",
 					"selected": true,
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2142,
+						"buffer_size": 35,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2073,
-								2073
+								35,
+								35
 							]
 						],
 						"settings":
@@ -2612,19 +2664,18 @@
 									}
 								],
 								"color_trigger": "(?xi)\n(?:\n    \\b(?<![-#&$])(?:\n        color\\((?!\\s*-)|(?:hsla?|(?:ok)?(?:lch|lab)|hwb|rgba?)\\(\n) |\n\\b(?<![-#&$])[\\w]{3,}(?![(-])\\b|(?<![&])\\#)\n",
-								"current_ext": ".md",
+								"current_ext": ".txt",
 								"current_syntax": "Markdown/Markdown",
 								"enabled": true,
-								"last_updated": 1719646907.41,
+								"last_updated": 1719827503.58,
 								"scanning": "meta.declaration-list.css -support.type.property-name.css -comment -string,meta.property-value.css -comment -string,meta.value.css -comment -string,meta.tag.inline.any.html string.quoted -constant.character.entity.html,meta.tag.any.html meta.attribute-with-value.style.html"
 							},
+							"color_scheme": "Neon.sublime-color-scheme",
 							"rainbow_checked": true,
-							"syntax": "Packages/Markdown/Markdown.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/Markdown/Markdown.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 1614.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -2717,7 +2768,7 @@
 	"project": "djamago.sublime-project",
 	"replace":
 	{
-		"height": 70.0
+		"height": 50.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -2759,7 +2810,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 236.0,
+	"side_bar_width": 248.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
