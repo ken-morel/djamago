@@ -60,6 +60,7 @@ setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     install_requires=deps,
+    build_requires=deps,
     extras_require={
         "dev": extra_dev,
         "ci": extra_ci,
