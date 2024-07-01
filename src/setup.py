@@ -8,18 +8,14 @@ project_dir = Path(__file__).parent
 
 try:
     long_description = (project_dir / "README.md").read_text()
-    deps = tuple((project_dir / "requirements.txt").read_text().splitlines())
 except FileNotFoundError:
     try:
         long_description = Path("README.md").read_text()
-        deps = tuple(Path("requirements.txt").read_text().splitlines())
     except FileNotFoundError:
         try:
             long_description = Path("/src/README.md").read_text()
-            deps = tuple(Path("/src/requirements.txt").read_text().splitlines())
         except FileNotFoundError:
             long_description = (project_dir.parent / "README.md").read_text()
-            deps = tuple((project_dir.parent / "requirements.txt").read_text().splitlines())
 
 
 extra_test = (
