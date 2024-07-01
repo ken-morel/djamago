@@ -22,20 +22,13 @@ except FileNotFoundError:
             deps = tuple((project_dir.parent / "requirements.txt").read_text().splitlines())
 
 
-extra_flake8 = (
-    "flake8",
-    "flake8-commas",
-    "flake8-quotes",
-    "flake8-multiline-containers",
-)
-
 extra_test = (
     "pytest",
     "pytest-cov",
+    "pyoload",
 )
 
 extra_dev = (
-    # *extra_flake8,
     *extra_test,
 )
 
@@ -44,6 +37,8 @@ extra_ci = (
     *extra_test,
     "coveralls",
 )
+
+deps = ("pyoload",)
 
 setup(
     name="djamago",
