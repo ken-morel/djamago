@@ -1,26 +1,73 @@
+"""
+djamago is a python library which will help you create simple chatbots
+the simple way. It uses regular expressions to match queries and
+provide a response with the best match
+"""
+
 import re
 
 from pyoload import *
 from typing import Callable
+
 # from .contrib.spellcheck.correction import correction as text_correction
 
 
 @annotate
 class Pattern:
-    pass
+    def __init__(*_, **__):
+        raise NotImplementedError()
 
 
 @annotate
-class ReGex(Pattern):
-    def __init__(self, regexs: list[tuple[str | float | int]]):
+class Evaluator(Pattern):
+    def __init__(self, func):
+        self.__func__ = func
+
+    def check(
+        self, node: 'Node'
+    ) -> tuple[int | float, int, dict[str | re.Pattern, str]]:
+        val, var = self.__func__(node)
+        return (val, 0, var)
+
+
+@annotate
+class RegEx(Pattern):
+    """
+    Provides the base for regex pattern matching
+    """
+
+    @multimethod
+    def __init__(self: Pattern, regex: list[tuple[float | int, str]]):
+        """
+        Initializes a new Regular expression as Pattern
+        :param regex: a list of tuples (score, regular expression)
+        which will be used to match
+        """
         scores, res = zip(*regexs)
         res = map(re.compile, res)
         self.regexs = tuple(zip(res, scores))
 
-    def check(self, txt) -> tuple[int | re.Match]:
+    @multimethod
+    def __init__(self: Pattern, regex: str, score: int | float = 100.0):
+        """
+        Initializes a new Regular expression as Pattern
+        :param regex: the regex
+        which will be used to match
+        """
+        pattern = re.compile(regex)
+        self.regexs = [(score, pattern)]
+
+    def check(self: "RegEx", node: 'Node') -> tuple[int | float, int, re.Match]:
+        """
+        Compares all the RegEx's stored on initialization to the string
+        and if matching, returns the score and match object associated
+
+        :param txt: The string to test
+        :returns: A tuple (score, match Object)
+        """
         ms = []
-        for id, (regex, score) in enumerate(self.regexs):
-            if m := regex.search(txt):
+        for id, (score, regex) in enumerate(self.regexs):
+            if m := regex.search(node.query):
                 ms.append((score, id, m))
         ms.sort(key=lambda m: m[0], reverse=True)
         return ms[0]
@@ -28,92 +75,174 @@ class ReGex(Pattern):
 
 @annotate
 class Expression(Pattern):
+    """
+    Expression class to create a new expression, in the form
+
+    """
     ENTRIES: dict[str, list[tuple]] = {}
 
     @classmethod
-    def register(cls, name: str, vals: list[tuple[float | int | str]]):
+    @annotate
+    def register(
+        cls,
+        name: str,
+        vals: list[tuple[float | int, str]],
+    ) -> None:
+        """
+        Registers a new expression
+        :param name: The name under which to register the expression
+        :param vals: a list of tuples in the form (score, regex)
+        """
         cls.ENTRIES[name] = [(score, re.compile(txt)) for score, txt in vals]
 
-    @classmethod
-    def parse(cls, string):
-        if string[0] == ':':
-            return re.compile(string[1:-1])
+    @staticmethod
+    def parse(
+        string: str,
+    ) -> tuple[str | re.Pattern, int | float, tuple | re.Pattern]:
+        """
+        Expression.parses the passed Expression into tuples of (call, args)
+        :param string: The string to Expression.parse
+
+        :returns: The Expression.parsed expression tuple
+        """
+        global indent
         name = ""
+        has_args = True
+        i = 0
+        while i < len(string):
+            c = string[i]
+            if c.isalnum() or c == ":":
+                name += c
+                i += 1
+            else:
+                break
+        else:
+            has_args = False
+        if ":" in name:
+            name, score = name.rsplit(":", 1)
+            score = int(score)
+        else:
+            score = 100
+        if not has_args:
+            return (name, score, ())
+        i, string = 0, string[i + 1:]
         args = []
-        scope = 0
-        nin = 0
-        for c in string:
-            if c == " ":
-                continue
-            if scope == 0:
-                if c.isalpha():
-                    name += c
-                else:
-                    scope = 1
-            if scope == 1:
-                if nin == 0:
-                    if c == "(":
-                        nin = 1
-                        args.append("")
-                        continue
-                if nin == 1 and c == ",":
-                    args.append("")
-                    continue
-                if nin == 1 and c == '"':
-                    scope = 2
-                    args[-1] = ':'
-                    continue
-                if nin >= 1:
-                    if c == "(":
+        while i < len(string):
+            c = string[i]
+            if c == ")":
+                break
+            elif c == '"':  # A string argument
+                sargs = []
+                nin = 0
+                i += 1
+                regex = ""
+                while i < len(string):  # collecting string
+                    if string[i] == "(":
                         nin += 1
-                    elif c == ")":
+                    elif string[i] == ")":
                         nin -= 1
-                    args[-1] += c
-            elif scope == 2:
-                if c == '"':
-                    scope = 1
-                else:
-                    args[-1] += c
-        return (name, tuple(map(Expression.parse, args)))
+                    if nin == 0 and string[i] == '"':  # end of string
+                        if len(string) > i + 1 and string[i + 1] == ":":
+                            # then it is followed by score
+                            i += 2  # skip score
+                            sscore = ""
+                            while i < len(string) and string[i].isnumeric():
+                                # next score digit
+                                sscore += string[i]
+                                i += 1
+                            sscore = int(sscore)
+                        else:
+                            sscore = 100  # no score in expr
+                            i += 1
+                        if string[i] == "(":
+                            scall = ""  # store whole call here
+                            snin = 0
+                            while i < len(string):
+                                if snin == 0 and string[i] == ")":
+                                    i += 1
+                                    break
+                                if string[i] == '(':
+                                    snin += 1
+                                elif string[i] == ')':
+                                    snin -= 1
+                                scall += string[i]
+                                i += 1
+                            sargs = Expression.parse("a" + scall)[2]
+                            while i < len(string) and string[i] in ", ":
+                                i += 1
+                        break
+                    else:
+                        regex += string[i]
+                        i += 1
+                args.append((re.compile(regex), sscore, tuple(sargs)))
+            elif c.isalpha():  # other call
+                call = ""  # store whole call here
+                nin = 0
+                while i < len(string):
+                    if nin == 0 and string[i] == ")":
+                        i += 1
+                        break
+                    if string[i] == '(':
+                        nin += 1
+                    elif string[i] == ')':
+                        nin -= 1
+                    call += string[i]
+                    i += 1
+                args.append(Expression.parse(call))
+                while i < len(string) and string[i] in ", ":
+                    i += 1
+        i -= 1
+        return (name, score, tuple(args))
 
     @classmethod
-    def _check(cls, name, params, string):
-        # print("requesting expr", name, "params", params, "in", repr(string))
-        tests: list[tuple[float | int, dict]] = []
-        for id, (score, regex) in enumerate(cls.ENTRIES[name]):
-            # print("item:", id, "score:", score, "regex:", regex)
+    @annotate
+    def _check(
+        cls, name: str | re.Pattern, nscore, params: tuple[tuple | re.Pattern], string: str
+    ) -> tuple[int | float, int, dict[str | re.Pattern, str]]:
+        tests = []
+        if isinstance(name, str):
+            try:
+                regexs = cls.ENTRIES[name]
+            except KeyError:
+                raise ValueError(f"Expression {name!r} does not exist")
+        elif isinstance(name, re.Pattern):
+            regexs = [(100, name)]
+        for id, (score, regex) in enumerate(regexs):
             vars = {}
             mat = regex.search(string)
             if not mat:
-                # print("  no match")
                 continue
             args = mat.groups()
-            # print("match", args, params)
             args = args[:len(params)]
-            # print("strip", args)
             if len(params) != len(args):
-                # print("     LENGTH DISMATCH")
                 continue
+            match_score = 0
             for param, arg in zip(params, args):
                 if isinstance(param, tuple):
-                    paramname, paramargs = param
-                    vars[paramname] = arg
-                    # print("    ", (paramname, paramargs), arg)
-                    _, pscore, pvars = Expression._check(paramname, paramargs, arg)
+                    paramname, paramscore, paramargs = param
+                    vars[str(paramname)] = arg
+                    pscore, _, pvars = Expression._check(
+                        paramname,
+                        paramscore,
+                        paramargs,
+                        arg,
+                    )
                     for k, v in pvars.items():
                         vars[paramname + "." + k] = v
                     if pscore == -1:
                         continue
                     else:
-                        score += pscore
+                        match_score += pscore / 100 * score
                 elif isinstance(param, re.Pattern):
                     if param.search(arg):
-                        score += 100
+                        match_score += 100
                     else:
                         return -1, -1, {}
                 else:
                     raise Exception()
-            tests.append((score, id, vars))
+            if len(params) == 0:
+                match_score = 100
+            tests.append((match_score / 100 * nscore, id, vars))
 
         if len(tests) == 0:
             return (-1, -1, {})
@@ -124,38 +253,63 @@ class Expression(Pattern):
     def __init__(self, expr: str):
         self.expr = Expression.parse(expr)
 
-    def check(self, val):
-        return Expression._check(*self.expr, val)
+    def check(self, node: 'Node') -> _check.__annotations__.get("return"):
+        return Expression._check(*self.expr, node.query)
 
 
-@annotate
 class Callback:
     __func__: Callable
     pattern: Pattern
 
-    def __init__(self, pattern: "Pattern"):
-        self.pattern = pattern
+    @overload
+    def __init__(
+        self, patterns: "list[tuple[int | float, Pattern]]"
+    ):
+        self.patterns = patterns
 
-    def __call__(self, func: Callable):
+    @overload
+    def __init__(
+        self, pattern: Pattern
+    ):
+        self.patterns = [(100, pattern)]
+
+    @annotate
+    def __call__(self, func: Callable) -> "Callback":
         self.__func__ = func
         if hasattr(func, "overload"):
             self.overload = func.overload
         return self
 
-    def __set_name__(self, obj: type, name: str):
+    def __set_name__(self, obj: Type, name: str) -> None:
         obj.register(self)
         self.topic = obj
 
-    def __get__(self, obj):
+    def __get__(self, obj: "Topic") -> "Callback":
         return self
 
-    def respond(self, node: "Node", id: int = 0, vals=None):
+    @annotate
+    def respond(
+        self, node: "Node", id: int = 0, vals=None, cpid: int = 0
+    ) -> None:
         if not hasattr(self, "__func__"):
             raise RuntimeError("Callable not decorated")
         if vals is None:
-            self.__func__(node, *self.pattern.check(node.query)[-2:])
+            self.__func__(node, *self.patterns[cpid][1].check(node.query)[-2:])
         else:
             self.__func__(node, id, vals)
+
+    @annotate
+    def check(
+        self, node: "Node"
+    ) -> "list[tuple]":
+        matches = []
+        for cpid, (pscore, pattern) in enumerate(self.patterns):
+            ml, id, vals = pattern.check(node)
+            if ml >= 0:
+                matches.append(
+                    (cpid, ml / 100 * pscore, self, id, vals)
+                )
+        return matches
 
 
 class Topic:
@@ -169,18 +323,18 @@ class Topic:
         cls._callbacks.append(callback)
 
     @classmethod
-    def matches(cls, node):
+    def matches(
+        cls, node: 'Node'
+    ) -> tuple[int, float | int, Callback, int, dict[str, str]]:
         matches = []
         for callback in cls._callbacks:
-            ml, id, vals = callback.pattern.check(node.raw_query)
-            if ml >= 0:
-                matches.append((ml, callback, id, vals))
+            matches.extend(callback.check(node))
         return matches
 
 
 @annotate
 class Node:
-    topics: tuple[Topic | str] = ()
+    topics: tuple[tuple[int | float, str] | str] = ()
     parent: "Node | type(None)"
     response: str | type(None)
     query: str
@@ -230,7 +384,7 @@ class Djamago:
         node = Node(
             parent=self.nodes[-1],
             raw_query=query,
-            query=(query),
+            query=query.lower(),
         )
         self.respond_node(node)
         self.nodes.append(node)
@@ -241,10 +395,19 @@ class Djamago:
     def respond_node(self, node: Node) -> None:
         matches = []
         for topic in node.parent.topics:
-            matches.extend(self.topics.get(topic).matches(node))
+            if isinstance(topic, tuple):
+                score, topic = topic
+            else:
+                score = 100
+            matches.extend([
+                (s / 100 * score, c, cpid, i, v)
+                for cpid, s, c, i, v in self.topics.get(topic).matches(node)
+            ])
         matches.sort(key=lambda m: m[0], reverse=True)
-        id, var = matches[0][2:4]
-        matches[0][1].respond(node, id, var)
+        if len(matches) == 0:
+            raise ValueError("Node did not find any match")
+        cpid, id, var = matches[0][2:5]
+        matches[0][1].respond(node, id, var, cpid)
 
     @classmethod
     def topic(cls, topic: type):

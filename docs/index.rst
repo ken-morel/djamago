@@ -1,5 +1,5 @@
 
-Welcome to djamago v |version| documentation!
+Wealcome to djamago v |version| documentation!
 ===================================
 
 .. image:: https://github.com/ken-morel/djamago/actions/workflows/python-publish.yml/badge.svg
@@ -31,7 +31,9 @@ Hy pythonista, here is `djamago`, what is?
 
   A python chatbot library
 
-
+Djamago is a chatbot library which will help you creating simple
+chatbots, it inspires of chatbot project, and tries to improve accuracy
+using score based answers.
 
 .. toctree::
   :maxdepth: 1

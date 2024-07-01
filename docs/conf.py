@@ -72,4 +72,7 @@ rst_prolog = """\
 .. role:: py(code)
   :language: python
 
+.. role:: python(code)
+  :language: python
+
 """
