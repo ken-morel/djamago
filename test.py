@@ -1,6 +1,3 @@
-import re
-
-
 def parse(
     string: str,
 ) -> tuple:
@@ -15,6 +12,7 @@ def parse(
     name = ""
     has_args = True
     i = 0
+    print(repr(string))
     while i < len(string):
         c = string[i]
         if c.isalnum() or c == ":":
@@ -31,12 +29,10 @@ def parse(
         score = 100
     if not has_args:
         return (name, score, ())
-    i, string = 0, string[i + 1:]
+    i, string = 0, string[i + 1 :]
     args = []
     while i < len(string):
         c = string[i]
-        if c == ",":
-            i += 1
         if c == ")":
             break
         elif c == '"':  # A string argument
@@ -96,10 +92,33 @@ def parse(
                     nin -= 1
                 call += string[i]
                 i += 1
-            args.append(parse(call))
+            args.append(Expression.parse(call))
             while i < len(string) and string[i] in ", ":
                 i += 1
-    i -= 1
+        else:
+            i += 1
     return (name, score, tuple(args))
 
-print(parse('amas:3(name,"am","am":3,"kd",ama("dkd"))'))
+
+text = "hello('world'#world:50, name:25, other(name)#other)#15"
+
+
+class Expression:
+    STRING_QUOTES = "'\""
+
+    def parse(text):
+        name = None
+        regex = None
+        score = None
+        pos = 0
+        varname = ""
+
+        text = text.strip()
+
+        if text[pos] in Expression.STRING_QUOTES:
+            begin_char, text = text[pos], text[1:]
+            for quote in Expression.STRING_QUOTES:
+                if (idx := text.find(quote)) > 0:
+                    regex, text = text[:idx], text[idx + 1 :]
+                elif idx == 0:
+                    raise Expression.ParsingError(idx, "empty expression string")
