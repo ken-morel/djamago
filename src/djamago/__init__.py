@@ -180,7 +180,15 @@ class Expression(Pattern):
 
     @staticmethod
     @annotate
-    def parse(text: str) -> tuple[re.Pattern, list, str, int | float]:
+    def parse(text: str) -> tuple[re.Pattern | str, list, str, int | float]:
+        """
+        Parses the passed expression string
+
+        :param text: the string to parse
+
+        :returns: a tuple (pattern or name, arguments, variablename, score) gotten from parsing the
+        string.
+        """
         score = 100
         pos = 0
         args = []

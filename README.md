@@ -71,6 +71,8 @@ Expression.register("name", [
 ])
 ```
 
+[read more in read the docs](https://djamago.readthedocs.io)
+
 > [!WARNING]
 > Expressions are registered globaly, so if you wan't to create an extension
 > use prefixed names to prevent conflicts
