@@ -21,7 +21,12 @@ else:
     USE_NLTK = True
 
 
-TopicList = list[tuple[int | float, str]] | tuple[tuple[int | float, str]] | list[str] | tuple[str]
+TopicList = (
+    list[tuple[int | float, str]]
+    | tuple[tuple[int | float, str]]
+    | list[str]
+    | tuple[str]
+)
 
 
 @annotate
@@ -32,6 +37,7 @@ class Pattern:
     it can provide.
     You may subclass it but never instantiate it directly.
     """
+
     def __init__(*_, **__):
         raise NotImplementedError()
 
@@ -44,9 +50,8 @@ class Evaluator(Pattern):
     It may be used as decorator and recieves as argument a function
     which will return
     """
-    def __init__(
-        self, func: 'Callable[[Node], tuple[float | str, dict, dict]]'
-    ):
+
+    def __init__(self, func: "Callable[[Node], tuple[float | str, dict, dict]]"):
         """
         initializes the evaluator
         :param func: the function to be used as check
@@ -145,6 +150,18 @@ class Expression(Pattern):
     """
 
     ENTRIES: dict[str, list[tuple]] = {}
+    STRING_QUOTES = "'\""
+    NAME_CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_-"
+
+    class ParsingError(ValueError):
+        def __init__(self, begin, end, msg):
+            self.params = (begin, end, msg)
+            super().__init__(msg.format(begin, end))
+
+        def moved(self, num: int):
+            return self.__class__(
+                self.params[0] + num, self.params[1] + num, self.params[2]
+            )
 
     @classmethod
     @annotate
@@ -163,114 +180,119 @@ class Expression(Pattern):
 
     @staticmethod
     @annotate
-    def parse(
-        string: str,
-    ) -> tuple:
-        """
-        Expression.parses the passed Expression into tuples of
-        (call, score, args)
-        :param string: The string to Expression.parse
-
-        :returns: The Expression.parsed expression tuple
-        """
-        global indent
-        name = ""
-        has_args = True
-        i = 0
-        print(repr(string))
-        while i < len(string):
-            c = string[i]
-            if c.isalnum() or c == ":":
-                name += c
-                i += 1
-            else:
-                break
-        else:
-            has_args = False
-        if ":" in name:
-            name, score = name.rsplit(":", 1)
-            score = int(score)
-        else:
-            score = 100
-        if not has_args:
-            return (name, score, ())
-        i, string = 0, string[i + 1:]
+    def parse(text: str) -> tuple[re.Pattern, list, str, int | float]:
+        score = 100
+        pos = 0
         args = []
-        while i < len(string):
-            c = string[i]
-            if c == ")":
-                break
-            elif c == '"':  # A string argument
-                sargs = []
-                nin = 0
-                i += 1
-                regex = ""
-                while i < len(string):  # collecting string
-                    if string[i] == "(":
-                        nin += 1
-                    elif string[i] == ")":
-                        nin -= 1
-                    if nin == 0 and string[i] == '"':  # end of string
-                        if len(string) > i + 1 and string[i + 1] == ":":
-                            # then it is followed by score
-                            i += 2  # skip score
-                            sscore = ""
-                            while i < len(string) and string[i].isnumeric():
-                                # next score digit
-                                sscore += string[i]
-                                i += 1
-                            sscore = int(sscore)
-                        else:
-                            sscore = 100  # no score in expr
-                            i += 1
-                        if string[i] == "(":
-                            scall = ""  # store whole call here
-                            snin = 0
-                            while i < len(string):
-                                if snin == 0 and string[i] == ")":
-                                    i += 1
-                                    break
-                                if string[i] == "(":
-                                    snin += 1
-                                elif string[i] == ")":
-                                    snin -= 1
-                                scall += string[i]
-                                i += 1
-                            sargs = Expression.parse("a" + scall)[2]
-                            while i < len(string) and string[i] in ", ":
-                                i += 1
-                        break
-                    else:
-                        regex += string[i]
-                        i += 1
-                args.append((re.compile(regex), sscore, tuple(sargs)))
-            elif c.isalpha():  # other call
-                call = ""  # store whole call here
-                nin = 0
-                while i < len(string):
-                    if nin == 0 and string[i] == ")":
-                        i += 1
-                        break
-                    if string[i] == "(":
-                        nin += 1
-                    elif string[i] == ")":
-                        nin -= 1
-                    call += string[i]
-                    i += 1
-                args.append(Expression.parse(call))
-                while i < len(string) and string[i] in ", ":
-                    i += 1
+        name = ""
+
+        intersection = set(Expression.STRING_QUOTES) & set(Expression.NAME_CHARS)
+        if len(intersection) != 0:
+            raise RuntimeError(
+                f"found common characters {intersection} between djamago.Expression.STRING_QUOTES and djamago.Expression.NAME_CHARS"
+            )
+
+        text = text.strip()
+
+        if text[pos] in Expression.STRING_QUOTES:  # Is a string liretal
+            begin = pos + 1  # Index after quote
+            end = (
+                text[begin:].find(text[pos]) + begin
+            )  # find quote after first, then add back index
+            while text[end - 1] == "\\":
+                text = text[end - 1 : end]
+                begin2 = end + 1
+                end = text[begin2:].find(text[pos]) + begin2
+
+            if end - begin == -1:
+                raise Expression.ParsingError(
+                    begin,
+                    end,
+                    "Expression regex string literal began at {0} but never closed",
+                )
+            elif end - begin == 0:
+                raise Expression.ParsingError(
+                    begin, end, "empty expression string at {1}"
+                )
             else:
-                i += 1
-        return (name, score, tuple(args))
+                regex = re.compile(text[begin:end])
+                pos = end + 1
+        elif text[pos] in Expression.NAME_CHARS:
+            end = begin = pos
+            while len(text) > end and text[end] in Expression.NAME_CHARS:
+                end += 1
+            # regex = Expression.ENTRIES.get(text[begin:end])
+            # if regex is None:
+            #     raise Expression.ParsingError(
+            #         begin,
+            #         end,
+            #         "expression '"
+            #         + text[begin:end]
+            #         + "' never registerred at {0} to {1}",
+            #     )
+            regex = text[begin:end]
+            pos = end
+        if len(text) > pos and text[pos] == "(":  # arguments
+            pos += 1
+            still_args = True
+            while len(text) > pos and still_args:  # a loop for each arg
+                stack: list[int] = []  # the expression stack
+                begin = pos
+                if text[pos] == " ":
+                    pos += 1
+                    continue
+                elif text[pos] == ")":
+                    pos += 1
+                    break
+                for pos in range(begin, len(text)):
+                    if text[pos] in "," and len(stack) == 0:  # a closing character
+                        pos += 1
+                        break
+                    elif text[pos] in ")" and len(stack) == 0:
+                        still_args = False
+                        pos += 1
+                        break
+                    elif text[pos] == " " and len(stack) == 0:
+                        continue
+                    elif text[pos] == "(":
+                        stack.append(pos)
+                    elif text[pos] == ")":
+                        stack.pop()
+                if len(stack) > 0:
+                    raise Expression.ParsingError(
+                        stack[-1],
+                        pos,
+                        "brace opened at {0} never closed",
+                    )
+                try:
+                    end = pos
+                    parsed = Expression.parse(text[begin:end])
+                except Expression.ParsingError as e:
+                    raise e.moved(begin) from e
+                else:
+                    args.append(parsed)
+        if len(text) > pos and text[pos] == "#":
+            begin = pos = pos + 1
+            while len(text) > pos and text[pos] in Expression.NAME_CHARS:
+                pos += 1
+            end = pos
+            name = text[begin:end]
+        if len(text) > pos and text[pos] == ":":
+            begin = pos = pos + 1
+            while len(text) > pos and text[pos].isnumeric():
+                pos += 1
+            end = pos
+            score = int(text[begin:end])
+        return (regex, args, name, score)
 
     @classmethod
     @annotate
     def _check(
         cls,
         name: str | re.Pattern,
-        nscore,
         params: tuple[tuple | re.Pattern],
+        varname: str,
+        nscore: int | float,
         string: str,
     ) -> tuple[int | float, dict, dict[str, str]]:
         """
@@ -278,6 +300,7 @@ class Expression(Pattern):
 
         :param name: The name or re.Pattern to test
         :param nscore: The score to scale
+        :param varname: the variable name to store the match
         :param params: The actual parameters for subchecking
         :param string: The string to evaluate
 
@@ -297,22 +320,22 @@ class Expression(Pattern):
             if not mat:
                 continue
             args = mat.groups()
-            args = args[:len(params)]
+            args = args[: len(params)]
             if len(params) != len(args):
                 continue
             match_score = 0
             for param, arg in zip(params, args):
                 if isinstance(param, tuple):
-                    paramname, paramscore, paramargs = param
-                    vars[str(paramname)] = arg
+                    paramname, paramargs, paramvarname, paramscore = param
+                    vars[paramvarname] = arg
                     pscore, _, pvars = Expression._check(
                         paramname,
-                        paramscore,
                         paramargs,
+                        paramvarname,
+                        paramscore,
                         arg,
                     )
-                    for k, v in pvars.items():
-                        vars[paramname + "." + k] = v
+                    vars |= pvars
                     if pscore == -1:
                         continue
                     else:
@@ -375,6 +398,7 @@ class Callback:
     ...     def myfunc(Node):
     ...         pass
     """
+
     __func__: Callable
     patterns: list[tuple[int | float, Pattern]]
 
@@ -453,6 +477,7 @@ class Topic:
     """
     A topic to be used to group several callbacks together
     """
+
     _callbacks: list[Callback]
     name: str = None
 
@@ -540,6 +565,7 @@ class QA(Topic):
     Base topic subclass to register QA list to be used as fallback topic
     or as integral part of djamago instance
     """
+
     jaccard_score: float = 0.5
     cosine_score: float = 1.5
     difflib_score: float = 1
@@ -593,7 +619,7 @@ class QA(Topic):
         dot_product = sum(av * bv for av, bv in zip(a, b))
         magnitude_a = math.sqrt(sum(av**2 for av in a))
         magnitude_b = math.sqrt(sum(bv**2 for bv in b))
-        mag = (magnitude_a * magnitude_b)
+        mag = magnitude_a * magnitude_b
         if mag == 0:
             return 0.0
         else:
@@ -606,6 +632,7 @@ class QA(Topic):
         two list of strings returning the percent ratio
         """
         import difflib
+
         return (
             difflib.SequenceMatcher(
                 lambda x: x == " -._",
@@ -665,6 +692,7 @@ class QA(Topic):
         A quetion and answer instance of QA, it represents A question list
         and corresponding answers
         """
+
         questions: list[float, str]
         answers: list[str]
         tokens: list[tuple[int | float, list[str]]]
@@ -856,10 +884,9 @@ class Node:
         raise StopIteration()
 
     def set_topics(self, topics):
-        self.topics = tuple([
-            topic if isinstance(topic, tuple) else (100, topic)
-            for topic in topics
-        ])
+        self.topics = tuple(
+            [topic if isinstance(topic, tuple) else (100, topic) for topic in topics]
+        )
 
     def add_topic(self, topic):
         self.set_topics(self.topics + (topic,))
