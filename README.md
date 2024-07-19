@@ -15,242 +15,55 @@
 
 # Djamago
 
-Have you ever used `chatbot AI <https://pypi.org/project/chatbotAI/>`\_
-It is a python module for creating chatting robots.
+Hello, i am glad, to present to you **djamago**! :clap:
 
-I used chatbotai since it was extremely difficult to use ai powerred modules
-like `chatterbot <https://pypi.org/project/chatterbot/>`\_ which could not
-install on my pc, or trying to generate them myself using torch or tensorflow.
+Djamago is:
+- a python module :heavy_check_mark:
+- a chatbot robot library :heavy_check_mark:
+- my class 3's second classmate name :heavy_check_mark:
 
-Djamago provides a simple, bulky but personalized approach to that
-by adding support for some parsing like tools.
+> [!NOTE]
+> Sorry for the emojis, just install a new sublime plugin and really glad test it.
+> I am also fun of letting AI generate titles for me. :smirk:
 
-Djamago deeply uses `djamago <https://pypi.org/project/djamago>`\_
-and so will you see in the examples
+# Break away from the pack
 
-If you want to create a little chatbot, with simple and clear code... I will
-discourage you, It still appears that code with `djamago` is still somehow
-bulky or junk, but I'm working on that.
+What make Djamago unique from some other projects like chatbotai or chatterbot:
 
-# How works
+## Unmoor from ML-Imposed Orthodoxy
 
-<p align="center">
-    <img src="https://github.com/ken-morel/djamago/blob/main/flow.png?raw=true" />
-</p>
+Sorry, but it is not sort of an AI which you can fine tune in 3 lines of code
+to chat with your customers :cry: (I don't find the sad emoji, sorry). But that feature makes it pretty simple
+to run on low performance systems or servers(like a vercel free instance), or with some fixes I will be ready
+to care of, running on web browsers using brython.js(just made little tests).
 
-## Setting up Expressions
+## Score-Driven Regular Expression Matching for Enhanced Input Validation
 
-During this steps, the several expressions and dataset to be used are loaded to
-djamago, happens such: `Expression.register(name: str, list[tuple[score, regex]])`
+Imagine two callbacks, `wantto` and `ishungry`.
+`wantto("eat")` matches _I want to eat_, but `ishungry` matches that to!.
+In this simple case we could simply check ishungry before wantto, but lets see how djamago does fix.
 
-###### Expressions.py
+Djamago uses a score based matching, permiting you to create an expression, e.g `greetings`,
+map it to a set of scores to regular expressions, and infer the names.
+That promotes **DRY** style permiting your code to be less repetitive.
+
+Example, I could register
 
 ```python
-# Extract from pango
-from djamago import Expression
-
-
-question = lambda re: (
-    fr"(?:.*(?:please|question.?)? ?{re}\??)"
-    fr"|(?:may )?i ask you {re}\??"
-)  # Formulate the passed RegEx as a question
-
-Expression.register("whois", [
-    (100, r"(?:who is) (.*)"),
-    (30, r"(?:do you know) (.*)"),
-    # Score, regex
+Expression.register("question", [
+    (100, r"please (.+)\?"),  # perfect match
+    (90, r"please (.+)"),  # missing interrogation point!, bit faulty.
+    (20, r"(.+)\?"),  # just an interrogation point at the end
 ])
-Expression.register("greetings", [
-    (100, r"hello ?(.*)?"),
-    (100, r"good (?:morning|evening|night|after-?noon) ?(.*)?"),
-    (70, r"greetings ?(.*)?"),
-    (20, r"good day ?(.*)?"),
-])
-Expression.register("name", [
-    (70, r"((?:[\w_\-]+)+ ?)"),
+
+Expression.register("whatis", [
+    (100, r"what is (.+)"),  # perfect match
+    (70, r"do you know what is (.+)")  # step backwards
 ])
 ```
 
-[read more in read the docs](https://djamago.readthedocs.io)
+and infer them as: `question(whatis("my name"))`
+It will check the patterns as given and return the match with tha maximum score on match, or `-1`.
 
-> [!WARNING]
-> Expressions are registered globaly, so if you wan't to create an extension
-> use prefixed names to prevent conflicts
+# Enter the Demo Zone
 
-## Adding topics
-
-###### topics.py
-
-we create a topic simply by subclassing the topic class:
-
-```python
-class Biology(djamago.Topic):
-    pass
-```
-
-### Adding callbacks
-
-To add callbacks we simply define a method we will decorate with a `djamago.Callback`
-instance, it will automatically register the method
-
-> [!TIP]
-> You could change the handler for a callback simply by calling it over an other
-> method
-
-The Callback receives as argument a list of `djamago.Pattern` instances.
-
-example
-
-```python
-class Biology(Topic):
-    @Callback([
-        (100, Expression("greetings(name)"))
-    ])
-    def greeted(node: Node):
-        node.set_topics(("biology", "faq"))  # Set topics for the consecutive queries
-        node.response = "Hello %s!" % node.vars.get("name", "You")
-
-    @Callback([
-        (0, RegEx(".*"))  # 0 not to override other answers
-    ])
-    def anything(node: Node):
-        # not Setting topics will use parent topics
-        node.response = random.choice([
-            "Sorry, I did not understand",
-            "Could you reformulate, please"
-        ])
-```
-
-## Adding Faqs
-
-You have a good database of questions and answers?, here how to add it.
-
-`djamago.QA` is a `djamago.Topic` subclass which permit adding QAs of
-FAQs into the djamago bot. The QA should be a list containing tuple
-of questions, or question scores (`tuple[str] | tuple[tuple[float, str]]`)
-and a list of answers djamago will choose randomly.
-you may define a `format_response`, which will process the node
-before it is returned.
-
-There are few ways to create a QA:
-
-### Using data attribute
-
-Here the list of QAs are already parsed and stored as a list:
-
-```python
-class Faq(QA):
-    data = [
-        (
-            ("what is biology",),
-            ("The study of live things",),
-        ),
-        (
-            (
-                (70, "what is chemistry"),
-            ),
-            ("The study of chemical things",),
-        ),
-    ]
-
-    def format_response(node):
-        node.response = f"score: {node.score:5.2f}%\n" + node.response
-```
-
-### Using json file:
-
-```python
-class Faq(djamago.QA):
-    source_json = "faqs.json"
-
-    def format_response(node):
-        ...
-```
-
-> [!TIP]
-> To use `nltk` python features, call `pyoload.use_nltk(True)`, it will make
-> sure the required tools are installed before modifying the setting globally
-
-### Using yaml file, (easier to read)
-
-If you want an easy to read markup you will edit yourself, this the way forward
-
-Make sure you have yaml installed(`pip install PyYAML`), then create a yaml file:
-
-```yaml
-%YAML 1.2
----
-- - - what is biology
-    - what is the intent of biology
-  - |
-    Biology is the study of living things
-  - |
-    I do not know...
-- - - why sbook
-    - why creating sbook
-    - what is the need of sbook
-    - who needs sbook
-    - why do we need sbook
-  - |
-    It have been noticed by [UNESCO](https://unesco.org) that a high number
-    of children could not have acces to quality education, due to factors
-    like:
-
-    - Instability, political or location
-    - Risks or Security due to threats as Thieves, or bullies.
-    - Lack of infrastructure for building schools
-    - Defficient curricula leading to incomplete learning.
-
-    Reason why we @Antimony; crated Sbook, A web platform
-- - - Who created Sbook
-  - |
-    Sbook web platform and mobile app were two created by @Antimony;
-```
-
-Then, you are all set!!, let's join all of that into a Djamgo instance
-
-## Running the app
-
-### Subclassing Djamago
-
-We will simply sublass djamago
-
-```python
-class MyChatbot(Djamago):
-    def __init__(self):
-        super().__init__("Jane Doe")
-```
-
-### Adding the topics
-
-```python
-MyChatbot.topic(Biology)
-MyChatbot.topic(Faq)
-```
-
-### Running it...
-
-```python
-chatbot = MyChatbot()
-
-while True:
-    query = input("> ")
-    node = chatbot.respond(query)
-    print(node.response)
-```
-
-```
-> Good morning ken-morel
-Hello ken-morel!
-> good after-noon ama
-Hello ama!
-> what is biology?
-72.85533905932736
-score: 72.86%
-The study of live things
-> what is bio
-Sorry, I did not understand
-> what is chemistry
-Could you reformulate, please
->
-```

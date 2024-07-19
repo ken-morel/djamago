@@ -4,7 +4,6 @@ from djamago import *
 def test_parse():
     use_nltk()
 
-
     question = lambda re: (
         fr"(?:.*(?:please|question.?)? ?{re}\??)"
         fr"|(?:may )?i ask you {re}\??"
