@@ -4,14 +4,16 @@ the simple way. It uses regular expressions to match queries and
 provide a response with the best match
 """
 
+import difflib
 import math
-import re
 import random
+import re
 
 import collections
 
 from pyoload import *
-from typing import Callable, Iterable
+from typing import Callable
+from typing import Iterable
 
 try:
     import nltk
@@ -165,13 +167,13 @@ class Expression(Pattern):
             (50, re.compile(r".*who\s*is\s*(.+)\?")),
         ],
         "-greetings": [
-            # (
-            #     100,
-            #     re.compile(
-            #         r"good\s*(?:morning|day|evening|night|afternoon)"
-            #         r"|greetings|hello"
-            #     ),
-            # ),
+            (
+                100,
+                re.compile(
+                    r"good\s*(?:morning|day|evening|night|afternoon)"
+                    r"|greetings|hello"
+                ),
+            ),
             (
                 30,
                 re.compile(
@@ -237,10 +239,20 @@ class Expression(Pattern):
                 if not parent:
                     continue
                 if parent not in cls.ENTRIES:
+                    similar = []
+                    for expr in cls.ENTRIES.keys():
+                        similar.append((
+                            difflib.SequenceMatcher(lambda *_: False, parent, expr).ratio(),
+                            expr,
+                        ))
+                    similar.sort(key=lambda k: -k[0])
+                    add = ""
+                    if len(similar) > 0 and similar[0][0]:
+                        add = "Did you mean " + similar[0][1] + "?"
                     raise Expression.DoesNotExist(
                         f"Expression {name!r} subclasses {parent!r} in "
                         f"statement {statement!r} but expression {parent!r} "
-                        "does not exist"
+                        "does not exist. " + add
                     )
                 parent_defs.extend(cls.ENTRIES[parent])
         if name in cls.ENTRIES:
@@ -268,9 +280,19 @@ class Expression(Pattern):
         does not exist
         """
         if name not in cls.ENTRIES and _raise:
+            similar = []
+            for expr in cls.ENTRIES.keys():
+                similar.append((
+                    difflib.SequenceMatcher(lambda *_: False, parent, expr).ratio(),
+                    expr,
+                ))
+            similar.sort(key=lambda k: -k[0])
+            add = ""
+            if len(similar) > 0 and similar[0][0]:
+                add = " or subclassing " + similar[0][1] + "?"
             raise Expression.DoesNotExist(
                 f"you tried overriding {name!r}, which does not exist "
-                f"may be you meant registering it"
+                f"may be you meant registering it" + add
             )
         cls.ENTRIES[name] = [(score, re.compile(txt)) for score, txt in vals]
 
@@ -290,6 +312,20 @@ class Expression(Pattern):
         does not exist
         """
         if name not in cls.ENTRIES and _raise:
+            similar = []
+            for expr in cls.ENTRIES.keys():
+                similar.append((
+                    difflib.SequenceMatcher(lambda *_: False, parent, expr).ratio(),
+                    expr,
+                ))
+            similar.sort(key=lambda k: -k[0])
+            add = ""
+            if len(similar) > 0 and similar[0][0]:
+                add = " or subclassing " + similar[0][1] + "?"
+            raise Expression.DoesNotExist(
+                f"you tried overriding {name!r}, which does not exist "
+                f"may be you meant registering it" + add
+            )
             raise Expression.DoesNotExist(
                 f"you tried overriding {name!r}, which does not exist "
                 f"may be you meant registering it"
@@ -368,6 +404,11 @@ class Expression(Pattern):
             #     )
             regex = text[begin:end]
             pos = end
+        else:
+            raise Expression.ParsingError(
+                pos, pos,
+                f"Primary name or regex expression missing in {text!r}[{pos}]"
+            )
         if len(text) > pos and text[pos] == "(":  # arguments
             pos += 1
             still_args = True
@@ -415,7 +456,9 @@ class Expression(Pattern):
             name = text[begin:end]
         if len(text) > pos and text[pos] == ":":
             begin = pos = pos + 1
-            while len(text) > pos and text[pos].isnumeric():
+            while (
+                len(text) > pos and text[pos].isnumeric() or text[pos] == "."
+            ):
                 pos += 1
             end = pos
             score = int(text[begin:end])
@@ -446,7 +489,20 @@ class Expression(Pattern):
             try:
                 regexs = cls.ENTRIES[name]
             except KeyError:
-                raise ValueError(f"Expression {name!r} does not exist")
+                similar = []
+                for expr in cls.ENTRIES.keys():
+                    similar.append((
+                        difflib.SequenceMatcher(lambda *_: False, name, expr).ratio(),
+                        expr,
+                    ))
+                    print(name, expr, difflib.SequenceMatcher(lambda *_: False, name, expr).ratio())
+                similar.sort(key=lambda k: -k[0])
+                add = ""
+                if len(similar) > 0 and similar[0][0] > 0.5:
+                    add = " May be you meant " + similar[0][1] + "?"
+                raise Expression.DoesNotExist(
+                    f"Expression {name!r}, does not exist." + add
+                )
         elif isinstance(name, re.Pattern):
             regexs = [(100, name)]
         for id, (score, regex) in enumerate(regexs):
@@ -543,18 +599,33 @@ class Callback:
     patterns: list[tuple[int | float, Pattern]]
 
     @overload
-    def __init__(self, patterns: "Iterable[tuple[int | float, Pattern]]"):
-        self.patterns = patterns
-
-    @overload
-    def __init__(self, pattern: Pattern):
+    def __init__(self, pattern: str | Pattern):
         """
         Initializes the new callback with the specified arguments
 
         :param pattern: The Pattern to be used as check or a list of tuple
         mappings of (score, pattern)
         """
+        if isinstance(pattern, str):
+            pattern = Expression(pattern)
         self.patterns = [(100, pattern)]
+
+    @overload
+    def __init__(
+        self,
+        patterns: Iterable[tuple[int | float, Pattern | str] | Pattern | str],
+    ):
+        self.patterns = []
+        for pattern in patterns:
+            score = 100
+            if isinstance(pattern, tuple):
+                score, pattern = pattern
+            if isinstance(pattern, str):
+                if pattern.startswith("regex$"):
+                    pattern = RegEx(pattern[6:])
+                else:
+                    pattern = Expression(pattern)
+                self.patterns.append((score, pattern))
 
     @annotate
     def __call__(self, func: Callable) -> "Callback":
@@ -643,7 +714,17 @@ class Topic:
             if callback.name == name:
                 return callback
         else:
-            raise KeyError(f"callback {name!r} not in topic {cls!r}")
+            matches = []
+            for callback in cl._callbacks:
+                matches.append((
+                    difflib.SequenceMatcher(lambda *_: False, name, callback.name).ratio(),
+                    callback.name,
+                ))
+            matches.sort(key=lambda k: -k[0])
+            add = ""
+            if len(matches) > 0 and matches[0][0] > 0.5:
+                add = " May be you meant " + matches[0][1]
+            raise KeyError(f"callback {name!r} not in topic {cls!r}." + add)
 
     @classmethod
     @annotate
@@ -1053,12 +1134,15 @@ class Node:
         raise StopIteration()
 
     def set_topics(self, topics):
-        self.topics = tuple(
-            [
-                topic if isinstance(topic, tuple) else (100, topic)
-                for topic in topics
-            ]
-        )
+        if isinstance(topics, str):
+            self.topics = ((100, topics),)
+        else:
+            self.topics = tuple(
+                [
+                    topic if isinstance(topic, tuple) else (100, topic)
+                    for topic in topics
+                ]
+            )
 
     def add_topic(self, topic):
         self.set_topics(self.topics + (topic,))
@@ -1081,24 +1165,25 @@ class Djamago:
         """
         return cls.topics[name]
 
-    def __init__(self, name: str = "", initial_node=None):
+    def __init__(self, name: str = "", initial_node=None, topics=None):
         """
         Initializes the djamago object
 
         :param name: The name of the chatbot
         :param initial_node: An optional initial node
+        :param topics: THe topics for the inital node
         """
         self.name = name
-        self.nodes = [
-            initial_node
-            or Node(
-                topics=tuple(self.topics.keys()),
-                parent=None,
-                query="",
-                raw_query="",
-                response="",
-            )
-        ]
+        node = initial_node or Node(
+            topics=tuple(self.topics.keys()),
+            parent=None,
+            query="",
+            raw_query="",
+            response="",
+        )
+        if topics is not None:
+            node.set_topics(topics)
+        self.nodes = [node]
 
     @unannotable
     @overload
@@ -1176,7 +1261,8 @@ class Djamago:
                     "Node did not find any match"
                     + (
                         ". Note, The parent node had a .next attribute"
-                        if usedNext else ""
+                        if usedNext
+                        else ""
                     )
                 )
 
