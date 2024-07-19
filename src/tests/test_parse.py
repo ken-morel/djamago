@@ -4,7 +4,6 @@ from djamago import *
 def test_parse():
     use_nltk()
 
-
     question = lambda re: (
         fr"(?:.*(?:please|question.?)? ?{re}\??)"
         fr"|(?:may )?i ask you {re}\??"
@@ -27,7 +26,7 @@ def test_parse():
 
 
     class Biology(Topic):
-        @Callback([
+        @Callback([k
             (100, Expression("greetings(name)"))
         ])
         def greeted(node: Node):
