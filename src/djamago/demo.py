@@ -1,23 +1,36 @@
-from __init__ import *
+try:
+    from . import *
+except ImportError:
+    from __init__ import *
+
 import random
+import datetime
 
 
 Expression.register(
     "greetings(-greetings)",  # Subclass the predefined -greetings
-    [],
-)
-
-Expression.register(
-    "greetings_to(-greetings-to)",  # Subclass the predefined -greetings-to
-    [],
-)
-
-Expression.register(
-    "wanting_current-time",
     [
-        (100, r"what\s*time\s*is\s*it(?:\s*now)"),
-        (100, r"que\s*es\s*la\s*hora"),
+        (100, r"haloa!?"),
+    ],
+)
+
+Expression.alias("greetings_to", "-greetings-to")
+
+Expression.register(
+    "aking_current-time",
+    [
+        (100, r"what time is it(?:\s*now)?"),
+        (100, r"que es la hora"),
         (70, r"time please"),
+    ],
+)
+
+Expression.register(
+    "aking_current-date",
+    [
+        (100, r"what day (?:are|is) (?:it|we)(?:\s*(?:now|today))?"),
+        (100, r"what the date of today"),
+        (70, r"date please"),
     ],
 )
 
@@ -31,19 +44,13 @@ class Chatbot(Djamago):
 class Main(Topic):
     @Callback(r"greetings")  # matches greetings
     def greet(node):
-        print(node.score)
         node.response = "Hy"
 
-    @Callback(
-        r"greetings_to('.+'#collected_name)"  # matches greetings_to, to regex
+    hy_from = Callback(r"greetings_to('.+'#collected_name)")(
+        responses=["Hy! (from %(collected_name)s)"],
     )  # and store match as colletced_name
-    def greet_to(node):
-        print(node.score)
-        node.response = (
-            "Hy! (from " + node.vars.get("collected_name", "bot") + ")"
-        )
 
-    @Callback(r"question('how are you.*')")
+    @Callback(r"'.*how are you.*'")
     def how_are_you(node, cache={}):
         if "asked" not in cache:
             node.response = (
@@ -62,16 +69,45 @@ class Main(Topic):
                 )
             )
 
+    @Callback(r"-question(aking_current-time)")
+    def current_time(node):
+        print(node.score)
+        node.response = datetime.datetime.now().strftime(
+            random.choice((
+                "We are a %A and it is: %I:%M",
+                "It is: %I:%M",
+            )),
+        )
+
+    @Callback(r"-question(aking_current-date)")
+    def current_date(node):
+        node.response = datetime.datetime.now().strftime(
+            random.choice((
+                "We are a %A on the %d of %B",
+            )),
+        )
+
 
 @Chatbot.topic
 class HowAreYou(Topic):
-    @Callback(r"'.*(?:fine|well|ok|nice).*'")
-    def feel_fine(node):
-        node.response = "feel fine, that is good!, Well letá change topic"
-        node.set_topics("main")
+    feel_fine = Callback(r"'.*(?:fine|well|ok|nice).*'")(
+        responses=["feel fine, that is good!, Well letá change topic"],
+        topics=("main",)
+    )
+    fallback = Callback(r"'.*'")(
+        responses=["that is not what I expected as answer..."],
+        topics=("howareyou",)
+    )
 
 
 bot = Chatbot()
-msg = ""
-while msg != "quit":
-    print(bot.respond(msg := input("> ")).response)
+
+
+def cli():
+    msg = ""
+    while msg != "quit":
+        print(bot.respond(msg := input("> ")).response)
+
+
+if __name__ == '__main__':
+    cli()

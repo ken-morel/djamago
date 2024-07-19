@@ -67,3 +67,14 @@ It will check the patterns as given and return the match with tha maximum score 
 
 # Enter the Demo Zone
 
+Well, let's now explore the demo and see how it does:
+
+```python
+from djamago.demo import cli
+
+cli()
+```
+
+```
+
+```
