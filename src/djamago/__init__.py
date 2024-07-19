@@ -11,7 +11,7 @@ import random
 import collections
 
 from pyoload import *
-from typing import Callable
+from typing import Callable, Iterable
 
 try:
     import nltk
@@ -21,12 +21,7 @@ else:
     USE_NLTK = True
 
 
-TopicList = (
-    list[tuple[int | float, str]]
-    | tuple[tuple[int | float, str]]
-    | list[str]
-    | tuple[str]
-)
+TopicList = Iterable[str | tuple[int | float, str]]
 
 
 @annotate
@@ -51,7 +46,9 @@ class Evaluator(Pattern):
     which will return
     """
 
-    def __init__(self, func: "Callable[[Node], tuple[float | str, dict, dict]]"):
+    def __init__(
+        self, func: "Callable[[Node], tuple[float | str, dict, dict]]"
+    ):
         """
         initializes the evaluator
         :param func: the function to be used as check
@@ -78,7 +75,7 @@ class RegEx(Pattern):
     """
 
     @multimethod
-    def __init__(self: Pattern, regex: list[tuple[float | int, str]]):
+    def __init__(self: Pattern, regex: Iterable[tuple[float | int, str]]):
         scores, res = zip(*regexs)
         res = map(re.compile, res)
         self.regexs = tuple(zip(res, scores))
@@ -112,7 +109,7 @@ class RegEx(Pattern):
         """
         ms = []
         for id, (score, regex) in enumerate(self.regexs):
-            if m := regex.search(node.query):
+            if m := regex.fullmatch(node.query):
                 ms.append(
                     (
                         score,
@@ -149,9 +146,52 @@ class Expression(Pattern):
     in `"hello (.*)"("world")`, `(.*)` is passed to match "world"
     """
 
-    ENTRIES: dict[str, list[tuple]] = {}
+    ENTRIES: dict[str, list[tuple]] = {
+        "-question": [
+            (
+                100,
+                re.compile(
+                    r"please,?\s*(?:do\s*you\s*know|tell\s*me|may\s*I\s*ask)?"
+                    r"\s*(.+)\??",
+                ),
+            ),
+        ],
+        "-whatis": [
+            (100, re.compile(r"what\s*is\s*(.+)\?")),
+            (50, re.compile(r".*what\s*is\s*(.+)\?")),
+        ],
+        "-whois": [
+            (100, re.compile(r"who\s*is\s*(.+)\?")),
+            (50, re.compile(r".*who\s*is\s*(.+)\?")),
+        ],
+        "-greetings": [
+            # (
+            #     100,
+            #     re.compile(
+            #         r"good\s*(?:morning|day|evening|night|afternoon)"
+            #         r"|greetings|hello"
+            #     ),
+            # ),
+            (
+                30,
+                re.compile(
+                    r"(?:good\s*(?:morning|day|evening|night|afternoon)"
+                    r"|greetings|hello)\s*.+"
+                ),
+            ),
+        ],
+        "-greetings-to": [
+            (
+                100,
+                re.compile(
+                    r"(?:good\s*(?:morning|day|evening|night|afternoon)"
+                    r"|greetings|hello)\s*(.+)"
+                ),
+            ),
+        ],
+    }
     STRING_QUOTES = "'\""
-    NAME_CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_-"
+    NAME_CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_-@<>;"
 
     class ParsingError(ValueError):
         def __init__(self, begin, end, msg):
@@ -163,20 +203,100 @@ class Expression(Pattern):
                 self.params[0] + num, self.params[1] + num, self.params[2]
             )
 
+    class AlreadyExists(ValueError):
+        """
+        Raised when an expression to `Expression.register`, already exists"""
+
+    class DoesNotExist(ValueError):
+        """
+        Raised when an expression to `Expression.register`, already exists"""
+
     @classmethod
     @annotate
     def register(
         cls,
         name: str,
-        vals: list[tuple[float | int, str]],
+        vals: Iterable[tuple[float | int, str]],
     ) -> None:
         """
         Registers a new expression
         :param name: The name under which to register the expression
+        could be a simple name as in `greetings` or a subclassing as
+        `hello(a, b, ...)`
         :param vals: a list of tuples in the form (score, regex)
         to be used as match
         """
+        parent_defs = []
+        statement = name
+        if "(" in name:
+            begin = name.find("(")
+            end = name.rfind(")")
+            name, parents = name[:begin], name[begin + 1 : end]
+            for parent in parents.split(","):
+                parent = parent.strip()
+                if not parent:
+                    continue
+                if parent not in cls.ENTRIES:
+                    raise Expression.DoesNotExist(
+                        f"Expression {name!r} subclasses {parent!r} in "
+                        f"statement {statement!r} but expression {parent!r} "
+                        "does not exist"
+                    )
+                parent_defs.extend(cls.ENTRIES[parent])
+        if name in cls.ENTRIES:
+            raise Expression.AlreadyExists(
+                f"Expression {name!r} already exists, may be you meant using "
+                "Expression.override or Expression.extend"
+            )
+        cls.ENTRIES[name] = [
+            (score, re.compile(txt)) for score, txt in vals
+        ] + parent_defs
+
+    @classmethod
+    @annotate
+    def override(
+        cls,
+        name: str,
+        vals: Iterable[tuple[float | int, str]],
+        _raise: bool = True,
+    ) -> None:
+        """
+        Overrides an existing expression
+        :param name: The expression name to override
+        :param vals: new values
+        :param _raise: Optional, if should raise `Expression.DoesNotExist` if
+        does not exist
+        """
+        if name not in cls.ENTRIES and _raise:
+            raise Expression.DoesNotExist(
+                f"you tried overriding {name!r}, which does not exist "
+                f"may be you meant registering it"
+            )
         cls.ENTRIES[name] = [(score, re.compile(txt)) for score, txt in vals]
+
+    @classmethod
+    @annotate
+    def extend(
+        cls,
+        name: str,
+        vals: Iterable[tuple[float | int, str]],
+        _raise: bool = True,
+    ) -> None:
+        """
+        Extends an existing expression
+        :param name: The expression name to extend
+        :param vals: new values to add
+        :param _raise: Optional, if should raise `Expression.DoesNotExist` if
+        does not exist
+        """
+        if name not in cls.ENTRIES and _raise:
+            raise Expression.DoesNotExist(
+                f"you tried overriding {name!r}, which does not exist "
+                f"may be you meant registering it"
+            )
+        cls.ENTRIES[name].extend(
+            [(score, re.compile(txt)) for score, txt in vals],
+        )
 
     @staticmethod
     @annotate
@@ -186,7 +306,8 @@ class Expression(Pattern):
 
         :param text: the string to parse
 
-        :returns: a tuple (pattern or name, arguments, variablename, score) gotten from parsing the
+        :returns: a tuple (pattern or name, arguments, variablename, score)
+        gotten from parsing the
         string.
         """
         score = 100
@@ -194,10 +315,14 @@ class Expression(Pattern):
         args = []
         name = ""
 
-        intersection = set(Expression.STRING_QUOTES) & set(Expression.NAME_CHARS)
+        intersection = set(Expression.STRING_QUOTES) & set(
+            Expression.NAME_CHARS
+        )
         if len(intersection) != 0:
             raise RuntimeError(
-                f"found common characters {intersection} between djamago.Expression.STRING_QUOTES and djamago.Expression.NAME_CHARS"
+                f"found common characters {intersection} between "
+                "djamago.Expression.STRING_QUOTES and "
+                "djamago.Expression.NAME_CHARS"
             )
 
         text = text.strip()
@@ -216,7 +341,10 @@ class Expression(Pattern):
                 raise Expression.ParsingError(
                     begin,
                     end,
-                    "Expression regex string literal began at {0} but never closed",
+                    (
+                        "Expression regex string literal began at {0}"
+                        " but never closed"
+                    ),
                 )
             elif end - begin == 0:
                 raise Expression.ParsingError(
@@ -253,7 +381,7 @@ class Expression(Pattern):
                     pos += 1
                     break
                 for pos in range(begin, len(text)):
-                    if text[pos] in "," and len(stack) == 0:  # a closing character
+                    if text[pos] in "," and len(stack) == 0:
                         pos += 1
                         break
                     elif text[pos] in ")" and len(stack) == 0:
@@ -298,9 +426,8 @@ class Expression(Pattern):
     def _check(
         cls,
         name: str | re.Pattern,
-        params: tuple[tuple | re.Pattern],
+        params: Iterable[tuple | re.Pattern],
         varname: str,
-        nscore: int | float,
         string: str,
     ) -> tuple[int | float, dict, dict[str, str]]:
         """
@@ -324,9 +451,11 @@ class Expression(Pattern):
             regexs = [(100, name)]
         for id, (score, regex) in enumerate(regexs):
             vars = {}
-            mat = regex.search(string)
+            mat = regex.fullmatch(string)
             if not mat:
+                # print(score, "no", regex, "to", string)
                 continue
+            # print(score, mat)
             args = mat.groups()
             args = args[: len(params)]
             if len(params) != len(args):
@@ -340,16 +469,15 @@ class Expression(Pattern):
                         paramname,
                         paramargs,
                         paramvarname,
-                        paramscore,
                         arg,
                     )
                     vars |= pvars
                     if pscore == -1:
                         continue
                     else:
-                        match_score += pscore / 100 * score
+                        match_score += pscore / 100 * paramscore
                 elif isinstance(param, re.Pattern):
-                    if param.search(arg):
+                    if param.fullmatch(arg):
                         match_score += 100
                     else:
                         return -1, {}, {}
@@ -357,9 +485,10 @@ class Expression(Pattern):
                     raise Exception()
             if len(params) == 0:
                 match_score = 100
+            # print("scaling:", match_score, "to", score, id, name)
             tests.append(
                 (
-                    match_score / 100 * nscore,
+                    match_score / 100 * score,
                     {
                         "sub_pattern_id": id,
                     },
@@ -380,7 +509,7 @@ class Expression(Pattern):
 
         :param expr: The expression to be parsed
         """
-        self.expr = Expression.parse(expr)
+        self.regex, self.params, self.name, self.score = Expression.parse(expr)
 
     @annotate
     def check(self, node: "Node") -> _check.__annotations__.get("return"):
@@ -392,7 +521,10 @@ class Expression(Pattern):
 
         :returns: a tuple (score, param, var)
         """
-        return Expression._check(*self.expr, node.query)
+        score, param, var = Expression._check(
+            self.regex, self.params, self.name, node.query
+        )
+        return (score / 100 * self.score, param, var)
 
 
 class Callback:
@@ -411,7 +543,7 @@ class Callback:
     patterns: list[tuple[int | float, Pattern]]
 
     @overload
-    def __init__(self, patterns: "list[tuple[int | float, Pattern]]"):
+    def __init__(self, patterns: "Iterable[tuple[int | float, Pattern]]"):
         self.patterns = patterns
 
     @overload
@@ -439,6 +571,7 @@ class Callback:
     def __set_name__(self, obj: Type, name: str) -> None:
         obj.register(self)
         self.topic = obj
+        self.name = name
 
     def __get__(self, obj: "Topic") -> "Callback":
         return self
@@ -456,7 +589,7 @@ class Callback:
         self.__func__(node)
 
     @annotate
-    def check(self, node: "Node") -> list[tuple[int | float, dict, dict]]:
+    def check(self, node: "Node") -> Iterable[tuple[int | float, dict, dict]]:
         """
         Performs the score evaluation on a state-1 node
 
@@ -466,6 +599,7 @@ class Callback:
         matches = []
         for cpid, (pscore, pattern) in enumerate(self.patterns):
             score, param, var = pattern.check(node)
+            # print("score for", node, pscore, score, cpid, self.__func__)
             if score >= 0:
                 matches.append(
                     (
@@ -504,7 +638,16 @@ class Topic:
 
     @classmethod
     @annotate
-    def matches(cls, node: "Node") -> list[tuple[float | int, dict, dict]]:
+    def get_callback(cls, name: str) -> Callback:
+        for callback in cls._callbacks:
+            if callback.name == name:
+                return callback
+        else:
+            raise KeyError(f"callback {name!r} not in topic {cls!r}")
+
+    @classmethod
+    @annotate
+    def matches(cls, node: "Node") -> Iterable[tuple[float | int, dict, dict]]:
         """
         Gets all the callback matches for a specific state-1 node
 
@@ -703,9 +846,11 @@ class QA(Topic):
 
         questions: list[float, str]
         answers: list[str]
-        tokens: list[tuple[int | float, list[str]]]
+        tokens: Iterable[tuple[int | float, list[str]]]
 
-        def check(self, node: "Node") -> list[tuple[int | float, dict, dict]]:
+        def check(
+            self, node: "Node"
+        ) -> Iterable[tuple[int | float, dict, dict]]:
             """
             Compares all the questions tokens to that of the node query
             and returns the matches score and parameters with the question
@@ -771,12 +916,12 @@ class QA(Topic):
 
     @classmethod
     @annotate
-    def matches(cls, node: "Node") -> list[tuple[int | float, dict, dict]]:
+    def matches(cls, node: "Node") -> Iterable[tuple[int | float, dict, dict]]:
         f"""{Topic.matches.__doc__}"""
         matches = []
         for qa in cls.QAs:
             for score, param, var in qa.check(node):
-                print(score)
+                # print(score)
                 matches.append(
                     (
                         score,
@@ -844,16 +989,23 @@ class Node:
         "params",
         "raw_query",
         "candidates",
+        "next",
     )
 
-    topics: tuple[tuple[float | int, str]]
+    topics: Iterable[tuple[float | int, str]]
     parent: "Node | type(None)"
     response: str
     query: str
     score: int | float
     vars: dict
     params: dict
-    candidates: tuple[tuple[int | float, dict, dict]]
+    candidates: Iterable[tuple[int | float, dict, dict]]
+    next: (
+        str
+        | Callback
+        | Iterable[str | Callback]
+        | Iterable[tuple[float | int, str | Callback]]
+    )
 
     @annotate
     def __init__(
@@ -879,9 +1031,18 @@ class Node:
             self.response = response
         self.query = query
         self.raw_query = raw_query
+        self.score = 0
+        self.params = {}
+        self.vars = {}
+        self.candidates = ()
+        self.response = ""
+        self.next = ()
 
     def __str__(self):
-        return f"<djamado.Node({self.query!r}) -> {self.response!r}>"
+        return (
+            f"<djamado.Node({self.query!r}) ->{self.score}"
+            f":{self.topics}:{self.response!r}:>"
+        )
 
     @annotate
     def hierarchy(self):
@@ -893,7 +1054,10 @@ class Node:
 
     def set_topics(self, topics):
         self.topics = tuple(
-            [topic if isinstance(topic, tuple) else (100, topic) for topic in topics]
+            [
+                topic if isinstance(topic, tuple) else (100, topic)
+                for topic in topics
+            ]
         )
 
     def add_topic(self, topic):
@@ -909,6 +1073,13 @@ class Djamago:
 
     def __init_subclass__(cls):
         cls.topics = {}
+
+    @classmethod
+    def get_topic(cls, name: str):
+        """
+        Queries a topic from the topic name
+        """
+        return cls.topics[name]
 
     def __init__(self, name: str = "", initial_node=None):
         """
@@ -952,26 +1123,62 @@ class Djamago:
         Responds to a state-1 node
         """
         matches = []
-        for topic in node.parent.topics:
-            if isinstance(topic, tuple):
-                score, topic = topic
+        usedNext = False
+        if hasattr(node.parent, "next") and node.parent.next:
+            usedNext = True
+            next = node.parent.next
+            if isinstance(next, tuple):
+                for callback in next:
+                    score = 100
+                    if isinstance(callback, tuple):
+                        score, callback = callback
+                    if isinstance(callback, str):
+                        ct, cn = callback.split(".")
+                        callback = self.get_topic(ct).get_callback(cn)
+                    matches.extend(
+                        (s / 100 * score, p, v)
+                        for s, p, v in callback.check(node)
+                    )
             else:
-                score = 100
-            matches.extend(
-                [
-                    (sscore / 100 * score, param, var)
-                    for (sscore, param, var) in self.topics.get(topic).matches(node)
-                ]
-            )
-        matches.sort(key=lambda m: m[0], reverse=True)
-        if len(matches) == 0:
-            raise ValueError("Node did not find any match")
-        score, param, var = matches[0]
-        node.candidates = tuple(matches)
-        node.params = param
-        node.vars = var
-        node.score = score
-        param["topic"].respond(node)
+                matches.extend(next.check(node))
+        else:
+            for topic in node.parent.topics:
+                if isinstance(topic, tuple):
+                    score, topic = topic
+                else:
+                    score = 100
+                matches.extend(
+                    [
+                        (sscore / 100 * score, param, var)
+                        for (sscore, param, var) in self.get_topic(
+                            topic
+                        ).matches(node)
+                    ]
+                )
+        while True:
+            matches.sort(key=lambda m: m[0], reverse=True)
+            for idx, (score, param, var) in enumerate(tuple(matches)):
+                node.candidates = tuple(matches)
+                node.params = param
+                node.vars = var
+                node.score = score
+                try:
+                    return param["topic"].respond(node)
+                except ScoreChange as scorechange:
+                    matches[idx] = (
+                        scorechange.score,
+                        param | scorechange.param,
+                        var | scorechange.var,
+                    )
+                    break
+            else:
+                raise ValueError(
+                    "Node did not find any match"
+                    + (
+                        ". Note, The parent node had a .next attribute"
+                        if usedNext else ""
+                    )
+                )
 
     @classmethod
     def topic(cls, topic: type):
@@ -981,6 +1188,34 @@ class Djamago:
         name = topic.name or topic.__name__.lower()
         cls.topics[name] = topic
         return topic
+
+
+class ScoreChange(ValueError):
+    """
+    ScoreChange, to raise in a callback to update the score,
+
+    raise ScoreChange(-1)
+
+    """
+
+    score: int | float
+    param: dict
+    var: dict
+
+    @annotate
+    def __init__(
+        self,
+        score: int | float = -1,
+        param: dict = {},
+        var: dict = {},
+    ):
+        """
+        :param score: The new score for the callback
+        """
+        self.score = score
+        self.param = param
+        self.var = var
+        super().__init__(f"Score changed to {score}")
 
 
 __version__ = "0.0.1"
