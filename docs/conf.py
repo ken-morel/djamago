@@ -34,12 +34,12 @@ html_static_path = ["_static"]
 autoclass_content = "both"
 
 sys.setrecursionlimit(500)
-project = "pyoload"
+project = "djamago"
 copyright = "2024, ken-morel"
 author = "ken-morel"
 
-release = "2.0.0"
-version = "2.0.0"
+release = "0.1.0"
+version = "0.1.0"
 
 # -- General configuration
 

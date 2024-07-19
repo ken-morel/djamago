@@ -27,23 +27,29 @@ Wealcome to djamago v |version| documentation!
   :target: https://portfolio-ken-morel-projects.vercel.app/
   :alt: Hit count
 
-Hy pythonista, here is `djamago`, what is?
+===============================================================================
+Getting introduced
+===============================================================================
 
-  A python chatbot library
+Djamago is a chatbot module which will help you build python chat robots.
+It implements regular expression matching and score based evaluation to improve
+result accuracy while keeping interesting performance.
 
-Djamago is a chatbot library which will help you creating simple
-chatbots, it inspires of chatbot project, and tries to improve accuracy
-using score based answers.
+**It does not use AI**, making it fast but dacading result uniquness, making
+it better for building simple bots for advertisement, or simple dynamic
+answering.
+
+
+
 
 .. toctree::
   :maxdepth: 1
 
-  examples
-  usage
-  api
   installation
+  expressions
   whatsnew
+  examples
+  api
   report
   genindex
   modindex
-  oload-or-multi

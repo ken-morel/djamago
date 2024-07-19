@@ -153,7 +153,7 @@ class Expression(Pattern):
             (
                 100,
                 re.compile(
-                    r"please,?\s*(?:do\s*you\s*know|tell\s*me|may\s*I\s*ask)?"
+                    r"(?:please,?)?\s*(?:do you know|tell(?: me)?|may I ask)?"
                     r"\s*(.+)\??",
                 ),
             ),
@@ -241,10 +241,14 @@ class Expression(Pattern):
                 if parent not in cls.ENTRIES:
                     similar = []
                     for expr in cls.ENTRIES.keys():
-                        similar.append((
-                            difflib.SequenceMatcher(lambda *_: False, parent, expr).ratio(),
-                            expr,
-                        ))
+                        similar.append(
+                            (
+                                difflib.SequenceMatcher(
+                                    lambda *_: False, parent, expr
+                                ).ratio(),
+                                expr,
+                            )
+                        )
                     similar.sort(key=lambda k: -k[0])
                     add = ""
                     if len(similar) > 0 and similar[0][0]:
@@ -282,10 +286,14 @@ class Expression(Pattern):
         if name not in cls.ENTRIES and _raise:
             similar = []
             for expr in cls.ENTRIES.keys():
-                similar.append((
-                    difflib.SequenceMatcher(lambda *_: False, parent, expr).ratio(),
-                    expr,
-                ))
+                similar.append(
+                    (
+                        difflib.SequenceMatcher(
+                            lambda *_: False, parent, expr
+                        ).ratio(),
+                        expr,
+                    )
+                )
             similar.sort(key=lambda k: -k[0])
             add = ""
             if len(similar) > 0 and similar[0][0]:
@@ -314,10 +322,14 @@ class Expression(Pattern):
         if name not in cls.ENTRIES and _raise:
             similar = []
             for expr in cls.ENTRIES.keys():
-                similar.append((
-                    difflib.SequenceMatcher(lambda *_: False, parent, expr).ratio(),
-                    expr,
-                ))
+                similar.append(
+                    (
+                        difflib.SequenceMatcher(
+                            lambda *_: False, parent, expr
+                        ).ratio(),
+                        expr,
+                    )
+                )
             similar.sort(key=lambda k: -k[0])
             add = ""
             if len(similar) > 0 and similar[0][0]:
@@ -333,6 +345,42 @@ class Expression(Pattern):
         cls.ENTRIES[name].extend(
             [(score, re.compile(txt)) for score, txt in vals],
         )
+
+    @classmethod
+    @annotate
+    def alias(
+        cls,
+        alias: str,
+        name: str,
+        _raise: bool = True,
+    ) -> None:
+        """
+        Extends an existing expression
+        :param alias: The alias name
+        :param name: The expression name to alias
+        :param _raise: Optional, if should raise `Expression.DoesNotExist` if
+        does not exist
+        """
+        if name not in cls.ENTRIES and _raise:
+            similar = []
+            for expr in cls.ENTRIES.keys():
+                similar.append(
+                    (
+                        difflib.SequenceMatcher(
+                            lambda *_: False, parent, expr
+                        ).ratio(),
+                        expr,
+                    )
+                )
+            similar.sort(key=lambda k: -k[0])
+            add = ""
+            if len(similar) > 0 and similar[0][0]:
+                add = similar[0][1] + "?"
+            raise Expression.DoesNotExist(
+                f"you tried aliassing {name!r}, which does not exist "
+                f"may be you meant " + add
+            )
+        cls.ENTRIES[alias] = cls.ENTRIES[name]
 
     @staticmethod
     @annotate
@@ -406,8 +454,9 @@ class Expression(Pattern):
             pos = end
         else:
             raise Expression.ParsingError(
-                pos, pos,
-                f"Primary name or regex expression missing in {text!r}[{pos}]"
+                pos,
+                pos,
+                f"Primary name or regex expression missing in {text!r}[{pos}]",
             )
         if len(text) > pos and text[pos] == "(":  # arguments
             pos += 1
@@ -491,11 +540,14 @@ class Expression(Pattern):
             except KeyError:
                 similar = []
                 for expr in cls.ENTRIES.keys():
-                    similar.append((
-                        difflib.SequenceMatcher(lambda *_: False, name, expr).ratio(),
-                        expr,
-                    ))
-                    print(name, expr, difflib.SequenceMatcher(lambda *_: False, name, expr).ratio())
+                    similar.append(
+                        (
+                            difflib.SequenceMatcher(
+                                lambda *_: False, name, expr
+                            ).ratio(),
+                            expr,
+                        )
+                    )
                 similar.sort(key=lambda k: -k[0])
                 add = ""
                 if len(similar) > 0 and similar[0][0] > 0.5:
@@ -509,14 +561,12 @@ class Expression(Pattern):
             vars = {}
             mat = regex.fullmatch(string)
             if not mat:
-                # print(score, "no", regex, "to", string)
                 continue
-            # print(score, mat)
             args = mat.groups()
             args = args[: len(params)]
             if len(params) != len(args):
                 continue
-            match_score = 0
+            match_score = -1
             for param, arg in zip(params, args):
                 if isinstance(param, tuple):
                     paramname, paramargs, paramvarname, paramscore = param
@@ -539,9 +589,10 @@ class Expression(Pattern):
                         return -1, {}, {}
                 else:
                     raise Exception()
+            if match_score > -1:
+                match_score += 1
             if len(params) == 0:
                 match_score = 100
-            # print("scaling:", match_score, "to", score, id, name)
             tests.append(
                 (
                     match_score / 100 * score,
@@ -565,7 +616,11 @@ class Expression(Pattern):
 
         :param expr: The expression to be parsed
         """
+        self.text = expr
         self.regex, self.params, self.name, self.score = Expression.parse(expr)
+
+    def __str__(self):
+        return f"<Expression({self.text!r})>"
 
     @annotate
     def check(self, node: "Node") -> _check.__annotations__.get("return"):
@@ -628,15 +683,37 @@ class Callback:
                 self.patterns.append((score, pattern))
 
     @annotate
-    def __call__(self, func: Callable) -> "Callback":
+    def __call__(
+        self,
+        func: Callable | None = None,
+        *,
+        responses: Iterable[str] | str = (),
+        topics=None,
+        next=None,
+    ):
         """
         Simple decorator over the callback the Callback object should call
         :param func: The callback to use
+
+        :param responses: automatic responses if no func
+        :param topics: automatic topics if no func
+        :param next: automatic next if no func
         :returns: self
         """
-        self.__func__ = func
-        if hasattr(func, "overload"):
-            self.overload = func.overload
+        if isinstance(responses, str):
+            responses = (responses,)
+        if func is not None:
+            self.__func__ = func
+        else:
+            def _func(node):
+                import random
+
+                node.response = random.choice(responses) % node.vars
+                if topics is not None:
+                    node.set_topics(topics)
+                if next is not None:
+                    node.next = next
+            self.__func__ = _func
         return self
 
     def __set_name__(self, obj: Type, name: str) -> None:
@@ -670,7 +747,6 @@ class Callback:
         matches = []
         for cpid, (pscore, pattern) in enumerate(self.patterns):
             score, param, var = pattern.check(node)
-            # print("score for", node, pscore, score, cpid, self.__func__)
             if score >= 0:
                 matches.append(
                     (
@@ -716,10 +792,14 @@ class Topic:
         else:
             matches = []
             for callback in cl._callbacks:
-                matches.append((
-                    difflib.SequenceMatcher(lambda *_: False, name, callback.name).ratio(),
-                    callback.name,
-                ))
+                matches.append(
+                    (
+                        difflib.SequenceMatcher(
+                            lambda *_: False, name, callback.name
+                        ).ratio(),
+                        callback.name,
+                    )
+                )
             matches.sort(key=lambda k: -k[0])
             add = ""
             if len(matches) > 0 and matches[0][0] > 0.5:
@@ -1002,7 +1082,6 @@ class QA(Topic):
         matches = []
         for qa in cls.QAs:
             for score, param, var in qa.check(node):
-                # print(score)
                 matches.append(
                     (
                         score,
@@ -1301,7 +1380,11 @@ class ScoreChange(ValueError):
         self.score = score
         self.param = param
         self.var = var
-        super().__init__(f"Score changed to {score}")
+        super().__init__(
+            f"Score changed to {score}. Should normally be caught by djamago."
+            ", if you see this please report at "
+            "https://github.com/ken-norel/djamago/issues/new"
+        )
 
 
-__version__ = "0.0.1"
+__version__ = "0.1.0"
