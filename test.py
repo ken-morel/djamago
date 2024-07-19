@@ -1,105 +1,125 @@
 import re
 
 
-def parse(
-    string: str,
-) -> tuple:
-    """
-    Expression.parses the passed Expression into tuples of
-    (call, score, args)
-    :param string: The string to Expression.parse
+text = "hello('world'#world:50, name:25, other(name)#other)#15"
 
-    :returns: The Expression.parsed expression tuple
-    """
-    global indent
-    name = ""
-    has_args = True
-    i = 0
-    while i < len(string):
-        c = string[i]
-        if c.isalnum() or c == ":":
-            name += c
-            i += 1
-        else:
-            break
-    else:
-        has_args = False
-    if ":" in name:
-        name, score = name.rsplit(":", 1)
-        score = int(score)
-    else:
+
+class Expression:
+    class ParsingError(ValueError):
+        def __init__(self, begin, end, msg):
+            self.params = (begin, end, msg)
+            super().__init__(msg.format(begin, end))
+
+        def moved(self, num: int):
+            return self.__class__(
+                self.params[0] + num, self.params[1] + num, self.params[2]
+            )
+
+    STRING_QUOTES = "'\""
+    NAME_CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_-"
+    ENTRIES = {"hello": "hello world"}
+
+    @staticmethod
+    def parse(text: str):
         score = 100
-    if not has_args:
-        return (name, score, ())
-    i, string = 0, string[i + 1:]
-    args = []
-    while i < len(string):
-        c = string[i]
-        if c == ",":
-            i += 1
-        if c == ")":
-            break
-        elif c == '"':  # A string argument
-            sargs = []
-            nin = 0
-            i += 1
-            regex = ""
-            while i < len(string):  # collecting string
-                if string[i] == "(":
-                    nin += 1
-                elif string[i] == ")":
-                    nin -= 1
-                if nin == 0 and string[i] == '"':  # end of string
-                    if len(string) > i + 1 and string[i + 1] == ":":
-                        # then it is followed by score
-                        i += 2  # skip score
-                        sscore = ""
-                        while i < len(string) and string[i].isnumeric():
-                            # next score digit
-                            sscore += string[i]
-                            i += 1
-                        sscore = int(sscore)
-                    else:
-                        sscore = 100  # no score in expr
-                        i += 1
-                    if string[i] == "(":
-                        scall = ""  # store whole call here
-                        snin = 0
-                        while i < len(string):
-                            if snin == 0 and string[i] == ")":
-                                i += 1
-                                break
-                            if string[i] == "(":
-                                snin += 1
-                            elif string[i] == ")":
-                                snin -= 1
-                            scall += string[i]
-                            i += 1
-                        sargs = Expression.parse("a" + scall)[2]
-                        while i < len(string) and string[i] in ", ":
-                            i += 1
-                    break
-                else:
-                    regex += string[i]
-                    i += 1
-            args.append((re.compile(regex), sscore, tuple(sargs)))
-        elif c.isalpha():  # other call
-            call = ""  # store whole call here
-            nin = 0
-            while i < len(string):
-                if nin == 0 and string[i] == ")":
-                    i += 1
-                    break
-                if string[i] == "(":
-                    nin += 1
-                elif string[i] == ")":
-                    nin -= 1
-                call += string[i]
-                i += 1
-            args.append(parse(call))
-            while i < len(string) and string[i] in ", ":
-                i += 1
-    i -= 1
-    return (name, score, tuple(args))
+        pos = 0
+        args = []
+        name = ""
 
-print(parse('amas:3(name,"am","am":3,"kd",ama("dkd"))'))
+        intersection = set(Expression.STRING_QUOTES) & set(Expression.NAME_CHARS)
+        if len(intersection) != 0:
+            raise RuntimeError(
+                f"found common characters {intersection} between djamago.Expression.STRING_QUOTES and djamago.Expression.NAME_CHARS"
+            )
+
+        text = text.strip()
+
+        if text[pos] in Expression.STRING_QUOTES:  # Is a string liretal
+            begin = pos + 1  # Index after quote
+            end = (
+                text[begin:].find(text[pos]) + begin
+            )  # find quote after first, then add back index
+            while text[end - 1] == "\\":
+                text = text[end - 1 : end]
+                begin2 = end + 1
+                end = text[begin2:].find(text[pos]) + begin2
+
+            if end - begin == -1:
+                raise Expression.ParsingError(
+                    begin,
+                    end,
+                    "Expression regex string literal began at {0} but never closed",
+                )
+            elif end - begin == 0:
+                raise Expression.ParsingError(
+                    begin, end, "empty expression string at {1}"
+                )
+            else:
+                regex = re.compile(text[begin:end])
+                pos = end + 1
+        elif text[pos] in Expression.NAME_CHARS:
+            end = begin = pos
+            while len(text) > end and text[end] in Expression.NAME_CHARS:
+                end += 1
+            regex = Expression.ENTRIES.get(text[begin:end])
+            if regex is None:
+                raise Expression.ParsingError(
+                    begin,
+                    end,
+                    "expression '"
+                    + text[begin:end]
+                    + "' never registerred at {0} to {1}",
+                )
+            pos = end
+        if len(text) > pos and text[pos] == "(":  # arguments
+            pos += 1
+            still_args = True
+            while len(text) > pos and still_args:  # a loop for each arg
+                stack: list[int] = []  # the expression stack
+                begin = pos
+                if text[pos] == " ":
+                    pos += 1
+                    continue
+                elif text[pos] == ")":
+                    pos += 1
+                    break
+                for pos in range(begin, len(text)):
+                    if text[pos] in "," and len(stack) == 0:  # a closing character
+                        pos += 1
+                        break
+                    elif text[pos] in ")" and len(stack) == 0:
+                        still_args = False
+                        pos += 1
+                        break
+                    elif text[pos] == " " and len(stack) == 0:
+                        continue
+                    elif text[pos] == "(":
+                        stack.append(pos)
+                    elif text[pos] == ")":
+                        stack.pop()
+                if len(stack) > 0:
+                    raise Expression.ParsingError(
+                        stack[-1],
+                        pos,
+                        "brace opened at {0} never closed",
+                    )
+                try:
+                    end = pos
+                    parsed = Expression.parse(text[begin:end])
+                except Expression.ParsingError as e:
+                    raise e.moved(begin) from e
+                else:
+                    args.append(parsed)
+        if len(text) > pos and text[pos] == "#":
+            begin = pos = pos + 1
+            while len(text) > pos and text[pos] in Expression.NAME_CHARS:
+                pos += 1
+            end = pos
+            name = text[begin:end]
+        if len(text) > pos and text[pos] == ":":
+            begin = pos = pos + 1
+            while len(text) > pos and text[pos].isnumeric():
+                pos += 1
+            end = pos
+            score = int(text[begin:end])
+        return (regex, args, name, score)

@@ -7,6 +7,7 @@
 [![Pypi downloads](https://img.shields.io/pypi/dd/djamago)](https://pypi.org/project/djamago)
 [![Pypi downloads](https://img.shields.io/pypi/dw/djamago)](https://pypi.org/project/djamago)
 [![Pypi downloads](https://img.shields.io/pypi/dm/djamago)](https://pypi.org/project/djamago)
+
 <p align="center">
     <h1>Djamago</h1>
     <img src="https://github.com/ken-morel/djamago/blob/main/djamago.png?raw=true" alt="djamago logo" />
@@ -14,33 +15,242 @@
 
 # Djamago
 
-Djamago will help you to create chatbots **not using AI** as does some other projects like chatterbot.
-It simply matches input to a set regular expressions to determine which function or callback to call.
+Have you ever used `chatbot AI <https://pypi.org/project/chatbotAI/>`\_
+It is a python module for creating chatting robots.
 
-What makes Djamago different are:
+I used chatbotai since it was extremely difficult to use ai powerred modules
+like `chatterbot <https://pypi.org/project/chatterbot/>`\_ which could not
+install on my pc, or trying to generate them myself using torch or tensorflow.
 
-- It's score based approach permitting you to match each callback to several formulations of the
-  same sentences or expressions
-- Expressions permitting you to reuse regular expressions and save brain cells.
-- Nodes, helping you keep track of questions and answers past.
+Djamago provides a simple, bulky but personalized approach to that
+by adding support for some parsing like tools.
 
-# installation
+Djamago deeply uses `djamago <https://pypi.org/project/djamago>`\_
+and so will you see in the examples
 
-You can install it from Pypi:
+If you want to create a little chatbot, with simple and clear code... I will
+discourage you, It still appears that code with `djamago` is still somehow
+bulky or junk, but I'm working on that.
 
-```bash
-pip install --upgrade djamago
+# How works
+
+<p align="center">
+    <img src="https://github.com/ken-morel/djamago/blob/main/flow.png?raw=true" />
+</p>
+
+## Setting up Expressions
+
+During this steps, the several expressions and dataset to be used are loaded to
+djamago, happens such: `Expression.register(name: str, list[tuple[score, regex]])`
+
+###### Expressions.py
+
+```python
+# Extract from pango
+from djamago import Expression
+
+
+question = lambda re: (
+    fr"(?:.*(?:please|question.?)? ?{re}\??)"
+    fr"|(?:may )?i ask you {re}\??"
+)  # Formulate the passed RegEx as a question
+
+Expression.register("whois", [
+    (100, r"(?:who is) (.*)"),
+    (30, r"(?:do you know) (.*)"),
+    # Score, regex
+])
+Expression.register("greetings", [
+    (100, r"hello ?(.*)?"),
+    (100, r"good (?:morning|evening|night|after-?noon) ?(.*)?"),
+    (70, r"greetings ?(.*)?"),
+    (20, r"good day ?(.*)?"),
+])
+Expression.register("name", [
+    (70, r"((?:[\w_\-]+)+ ?)"),
+])
 ```
-To be sure to have the latest version
 
-Or you can *risk* yourself with the github version
+[read more in read the docs](https://djamago.readthedocs.io)
 
-```bash
-git clone https://github.com/ken-morel/djamago.git
-cd djamago/src
-pip install .
+> [!WARNING]
+> Expressions are registered globaly, so if you wan't to create an extension
+> use prefixed names to prevent conflicts
+
+## Adding topics
+
+###### topics.py
+
+we create a topic simply by subclassing the topic class:
+
+```python
+class Biology(djamago.Topic):
+    pass
 ```
 
-# demo
+### Adding callbacks
 
-Adding something here...
+To add callbacks we simply define a method we will decorate with a `djamago.Callback`
+instance, it will automatically register the method
+
+> [!TIP]
+> You could change the handler for a callback simply by calling it over an other
+> method
+
+The Callback receives as argument a list of `djamago.Pattern` instances.
+
+example
+
+```python
+class Biology(Topic):
+    @Callback([
+        (100, Expression("greetings(name)"))
+    ])
+    def greeted(node: Node):
+        node.set_topics(("biology", "faq"))  # Set topics for the consecutive queries
+        node.response = "Hello %s!" % node.vars.get("name", "You")
+
+    @Callback([
+        (0, RegEx(".*"))  # 0 not to override other answers
+    ])
+    def anything(node: Node):
+        # not Setting topics will use parent topics
+        node.response = random.choice([
+            "Sorry, I did not understand",
+            "Could you reformulate, please"
+        ])
+```
+
+## Adding Faqs
+
+You have a good database of questions and answers?, here how to add it.
+
+`djamago.QA` is a `djamago.Topic` subclass which permit adding QAs of
+FAQs into the djamago bot. The QA should be a list containing tuple
+of questions, or question scores (`tuple[str] | tuple[tuple[float, str]]`)
+and a list of answers djamago will choose randomly.
+you may define a `format_response`, which will process the node
+before it is returned.
+
+There are few ways to create a QA:
+
+### Using data attribute
+
+Here the list of QAs are already parsed and stored as a list:
+
+```python
+class Faq(QA):
+    data = [
+        (
+            ("what is biology",),
+            ("The study of live things",),
+        ),
+        (
+            (
+                (70, "what is chemistry"),
+            ),
+            ("The study of chemical things",),
+        ),
+    ]
+
+    def format_response(node):
+        node.response = f"score: {node.score:5.2f}%\n" + node.response
+```
+
+### Using json file:
+
+```python
+class Faq(djamago.QA):
+    source_json = "faqs.json"
+
+    def format_response(node):
+        ...
+```
+
+> [!TIP]
+> To use `nltk` python features, call `pyoload.use_nltk(True)`, it will make
+> sure the required tools are installed before modifying the setting globally
+
+### Using yaml file, (easier to read)
+
+If you want an easy to read markup you will edit yourself, this the way forward
+
+Make sure you have yaml installed(`pip install PyYAML`), then create a yaml file:
+
+```yaml
+%YAML 1.2
+---
+- - - what is biology
+    - what is the intent of biology
+  - |
+    Biology is the study of living things
+  - |
+    I do not know...
+- - - why sbook
+    - why creating sbook
+    - what is the need of sbook
+    - who needs sbook
+    - why do we need sbook
+  - |
+    It have been noticed by [UNESCO](https://unesco.org) that a high number
+    of children could not have acces to quality education, due to factors
+    like:
+
+    - Instability, political or location
+    - Risks or Security due to threats as Thieves, or bullies.
+    - Lack of infrastructure for building schools
+    - Defficient curricula leading to incomplete learning.
+
+    Reason why we @Antimony; crated Sbook, A web platform
+- - - Who created Sbook
+  - |
+    Sbook web platform and mobile app were two created by @Antimony;
+```
+
+Then, you are all set!!, let's join all of that into a Djamgo instance
+
+## Running the app
+
+### Subclassing Djamago
+
+We will simply sublass djamago
+
+```python
+class MyChatbot(Djamago):
+    def __init__(self):
+        super().__init__("Jane Doe")
+```
+
+### Adding the topics
+
+```python
+MyChatbot.topic(Biology)
+MyChatbot.topic(Faq)
+```
+
+### Running it...
+
+```python
+chatbot = MyChatbot()
+
+while True:
+    query = input("> ")
+    node = chatbot.respond(query)
+    print(node.response)
+```
+
+```
+> Good morning ken-morel
+Hello ken-morel!
+> good after-noon ama
+Hello ama!
+> what is biology?
+72.85533905932736
+score: 72.86%
+The study of live things
+> what is bio
+Sorry, I did not understand
+> what is chemistry
+Could you reformulate, please
+>
+```
