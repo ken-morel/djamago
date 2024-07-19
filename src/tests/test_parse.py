@@ -27,7 +27,7 @@ def test_parse():
 
 
     class Biology(Topic):
-        @Callback([
+        @Callback([k
             (100, Expression("greetings(name)"))
         ])
         def greeted(node: Node):
