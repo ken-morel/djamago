@@ -90,8 +90,8 @@ class Main(Topic):
 
 @Chatbot.topic
 class HowAreYou(Topic):
-    feel_fine = Callback(r"'.*(?:fine|well|ok|nice).*'")(
-        responses=["feel fine, that is good!, Well letá change topic"],
+    feel_fine = Callback(r"'.*(?:fine|well|ok|nice|I am).*'")(
+        responses=["feel fine!, that is good!, Well letá change topic"],
         topics=("main",)
     )
     fallback = Callback(r"'.*'")(
