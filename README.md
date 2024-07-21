@@ -76,5 +76,76 @@ cli()
 ```
 
 ```
+> good morning
+Hy
+> what time is it
+We are a Saturday and it is: 12:57
+> what day are we
+We are a Saturday and it is: 12:57
+> how are you
+I am a bot. you know I cannot feel bad. Nor fine too :cry: but I will say I feel fine, and you?
+> fine
+feel fine, that is good!, Well lets change topic
+```
+
+
+# Building a chatbot, quickstart
+
+## fiat `expressions(in latin!)`
+
+One basic components of djamago are expressions, what are?
+In normal mode you may like to use regular expressions to match phrases
+expressions permit you to map a list of mappings of scores to regular
+expressions, which will then be evaluated so when used.
+
+```python
+Expression.register("I@hungry", [
+    (100, r"i am hungry!?"),  # he is hungry, perfect
+    (60, r"i want to eat"),  # should not override 'i want' expression, so 60
+])
+Expression.register("him@hungry", [
+    (100, r"he is hungry!?"),  # he is hungry, perfect
+    (60, r"he wants to eat"),  # should not override 'i want' expression, so 60
+])
+Expression.register("somebody-hungry(am-hungry, his-hungry)", [ # inherits definitions
+    ...
+])
+Expression.alias("hungryness", "his-hungry")
+Expression.override("somebody-hungry", [
+    (99, r"(.+) is hungry!?"),  # not to override him@hungry
+    (59, r"(.+) wants to eat"),  # same thing here
+])
+```
+
+> [!NOTE]
+> The capturing groups of these regex expressoins will be used later to further
+> match expression arguments.
+
+## Using expressions
+
+Djamago has sort of special syntax for using expressions, is
 
 ```
+Expression name   optional epression   optional storing
+or simple regex        arguments          name alias
+       |                  /              /          _ optional score
+       |                 /              /          /
+somebody-hungry ( "my friend" )   #statement  : 100
+       |              |              /          /
+      /              /              x          x
+"doing (.+)"(".+"#something)
+```
+
+simple regexs are quoted, and the name aliases specified after the hash
+will be available in `node.vars` attribute.
+
+if i-love maps to `"i love (.+)"` then examples:
+
+- `i-love('python')` gives `i love(python)`
+- `i-love('.+'#name_of_what_i_love)` gives `i love (.+)` and stores capture as *name_of_what_i_love*
+- `'.+'` matches anything
+
+you can nest such function like calls and add more, many more things
+
+
+##

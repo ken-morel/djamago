@@ -11,8 +11,11 @@ import re
 
 import collections
 
+from functools import cached_property
 from pyoload import *
+from typing import Any
 from typing import Callable
+from typing import Generator
 from typing import Iterable
 
 try:
@@ -24,6 +27,90 @@ else:
 
 
 TopicList = Iterable[str | tuple[int | float, str]]
+
+
+class _Response:
+    """\
+    Simply a type for responses, may be synchronious or asynchronios
+    is a base class for the return of functions
+    """
+    __slots__ = ()
+
+
+@annotate
+class SyncResponse(_Response):
+    """\
+    A synchronious response return from a callback
+    receives a generator as arguments which is used to generate the response
+    """
+
+    __slots__ = ("pending", "generator", "responses")
+    pending: bool
+    generator: Generator
+    responses: list[Any]
+
+    def __init__(self, generator: Generator):
+        """
+        :param generator: The generator to use for response
+        """
+        self.generator = generator
+        self.pending = True
+        self.responses = []
+
+    @cached_property
+    def text(self):
+        """
+        Loops through the generator and returns the catenated output
+        """
+        while self.pending:
+            try:
+                self.responses.append(next(self))
+            except StopIteration:
+                self.pending = False
+        return "".join(self.responses)
+
+    def get(self) -> list[Any]:
+        """
+        Loops through the generator and returns the output list
+        """
+        while self.pending:
+            try:
+                self.responses.append(next(self))
+            except StopIteration:
+                self.pending = False
+        return self.responses
+
+    def __next__(self) -> Any:
+        return next(self.generator)
+
+
+@annotate
+class Response(_Response):
+    """\
+    A response return from a callback
+    """
+
+    __slots__ = ("value",)
+    value: Any
+
+    def __init__(self, value: Any):
+        """
+        :param generator: The generator to use for response
+        """
+        self.value = value
+
+    @cached_property
+    def text(self):
+        """
+        Loops through the generator and returns the catenated output
+        """
+        return str(self.value)
+
+    def get(self) -> Any:
+        """
+        Loops through the generator and returns the output list
+        """
+        return self.value
 
 
 @annotate
@@ -708,11 +795,11 @@ class Callback:
             def _func(node):
                 import random
 
-                node.response = random.choice(responses) % node.vars
                 if topics is not None:
                     node.set_topics(topics)
                 if next is not None:
                     node.next = next
+                return Response(random.choice(responses) % node.vars)
             self.__func__ = _func
         return self
 
@@ -734,7 +821,7 @@ class Callback:
         """
         if not hasattr(self, "__func__"):
             raise RuntimeError("Callable not decorated")
-        self.__func__(node)
+        node.response = self.__func__(node)
 
     @annotate
     def check(self, node: "Node") -> Iterable[tuple[int | float, dict, dict]]:
@@ -1150,6 +1237,7 @@ class Node:
         "raw_query",
         "candidates",
         "next",
+        "response",
     )
 
     topics: Iterable[tuple[float | int, str]]
@@ -1166,6 +1254,7 @@ class Node:
         | Iterable[str | Callback]
         | Iterable[tuple[float | int, str | Callback]]
     )
+    response: _Response
 
     @annotate
     def __init__(
@@ -1321,8 +1410,8 @@ class Djamago:
                 )
         while True:
             matches.sort(key=lambda m: m[0], reverse=True)
+            node.candidates = tuple(matches)
             for idx, (score, param, var) in enumerate(tuple(matches)):
-                node.candidates = tuple(matches)
                 node.params = param
                 node.vars = var
                 node.score = score

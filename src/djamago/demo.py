@@ -53,39 +53,39 @@ class Main(Topic):
     @Callback(r"'.*how are you.*'")
     def how_are_you(node, cache={}):
         if "asked" not in cache:
-            node.response = (
+            node.response = Response(
                 "I am a bot. you know I cannot feel bad. Nor fine too :cry: "
                 "but I will say I feel fine, and you?"
             )
             cache["asked"] = True
             node.set_topics("howareyou")
         else:
-            node.response = random.choice(
+            node.response = Response(random.choice(
                 (
                     "I do not know, you tell me, How am I?",
                     "you again and that question!",
                     "why not doing something completely different now?",
                     "Cameroon government calls, `CHANGE TOPIC`",
                 )
-            )
+            ))
 
     @Callback(r"-question(aking_current-time)")
     def current_time(node):
         print(node.score)
-        node.response = datetime.datetime.now().strftime(
+        node.response = Response(datetime.datetime.now().strftime(
             random.choice((
                 "We are a %A and it is: %I:%M",
                 "It is: %I:%M",
             )),
-        )
+        ))
 
     @Callback(r"-question(aking_current-date)")
     def current_date(node):
-        node.response = datetime.datetime.now().strftime(
+        node.response = Response(datetime.datetime.now().strftime(
             random.choice((
                 "We are a %A on the %d of %B",
             )),
-        )
+        ))
 
 
 @Chatbot.topic
